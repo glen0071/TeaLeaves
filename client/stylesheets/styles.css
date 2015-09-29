@@ -1,0 +1,17 @@
+.container {
+  padding-top: 50px;
+}
+
+li {
+  list-style-type: none;
+  text-align: center;
+}
+
+.question-text {
+  width: 300px;
+  height: 80px;
+}
+
+.add-question-field {
+  margin: 4px;
+}
