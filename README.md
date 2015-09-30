@@ -8,7 +8,7 @@ Collections
     createdOn: new Date(),
     email: "string",
     password: "string",
-    Score: integer
+    Score: Number
   }  
 2. Questions
   Properties:

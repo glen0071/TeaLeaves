@@ -15,12 +15,21 @@
                 <li><a href="#">Leaders</a></li>
                 <li><a href="#">Trending</a></li>
                 <li><a href="#">Search</a></li>
+                {{#if currentUser}}
                 <li><a href="{{pathFor route='addQuestion'}}" style="color:red">Ask a Question</a></li>
+                {{/if }}
               </ul>
               <ul class="nav navbar-nav navbar-right">
                 <li><a href="{{pathFor route='myProfile'}}">My Profile</a></li>
 
-                <li><a href="#">Logout</a></li>
+                {{#if currentUser}}
+                  <li><a href="#">Logout</a></li>
+                {{else}}
+                <li><a href="#">Login</a></li>
+                <li><a href="{{pathFor route='register'}}">Register</a></li>
+                  <!-- make logout etc. conditional on if currentUser -->
+                {{/if}}
+
               </ul>
             </div><!--/.nav-collapse -->
           </div><!--/.container-fluid -->

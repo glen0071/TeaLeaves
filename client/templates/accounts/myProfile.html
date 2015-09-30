@@ -1,13 +1,44 @@
 <template name="myProfile">
   <h3>My Profile</h3>
+     <!-- get _id from currentUser -->
   <p>
     Edit and view profile from here
   </p>
-
-  <!-- Show who/what user is following.
-  Edit as needed.
-
+  <p>
+    {{email}}
+  </p>
+  <p>
+    Question you've created:
+    <!--
+    if ={0}, then it should not display,
+    or maybe display an invitation to create a question
     -->
-
-
+    <ul>
+      <li>
+        <a href="#">When will Dan come back to the US?</a> <!-- link to the question's page -->
+      </li>
+    </ul>
+  </p>
+  <p>
+    Question's you've answered:
+    <!--
+    display with different colors/font weights
+    depending on whether answered correctly or
+    if the deadline has not been reached
+    -->
+    <ul>
+      <li>
+        <a href="#">When will this site go live?</a> <!-- link to the question's page -->
+      </li>
+    </ul>
+  </p>
+  {{#if 'editFollowing'}}
+  <form>
+    <input type="text" value="{{followingThemes}}" name="EditTopics">
+    <input type="submit">
+  </form>
+  {{else}}
+    {{followingThemes}}
+    {{followingUsers}}
+  {{/if}}
 </template>
