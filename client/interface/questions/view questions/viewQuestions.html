@@ -1,0 +1,44 @@
+<template name="viewQuestions">
+  <h4 class="text-center">View Questions</h4>
+  <div class="row">
+       <div class="col-sm-12">
+           <div class="btn-group" data-toggle="buttons">
+               <label class="btn btn-default">
+                   <input type="radio" class="viewQuestionBtn" name="trendQuestionsBtn" value="1" /> Top Trending Questions
+               </label>
+               <label class="btn btn-default">
+                   <input type="radio" class="viewQuestionBtn" name="recentQuestionsBtn" value="2" /> Recently Posted Questions
+               </label>
+               <label class="btn btn-default">
+                   <input type="radio" class="viewQuestionBtn" name="closeSoonQuestionsBtn" value="3" /> Deadlines Approaching
+               </label>
+               <label class="btn btn-default">
+                   <input type="radio" class="viewQuestionBtn" name="topRatedQuestionsBtn" value="4" /> Top Rated Questions
+               </label>
+           </div>
+       </div>
+   </div>
+   <!-- Insert a search box -->
+   <!-- Title corresponds to button above? or active button is descriptive enough?  -->
+    <div>
+      {{#if Template.subscriptionsReady}}
+        <ul>
+          {{#each questions}}
+            {{> viewQuestion}}
+          {{/each}}
+        </ul>
+      {{else}}
+        <p>
+          gathering all the questions
+        </p>
+      {{/if}}
+    </div>
+</template>
+
+<template name="viewQuestion">
+  <li>
+    <a href="{{pathFor 'questionDetail'}}">
+      {{text}}
+    </a>
+  </li>
+</template>

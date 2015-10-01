@@ -3,3 +3,7 @@ Template.viewQuestions.helpers({
     return Questions.find();
   }
 });
+
+Template.viewQuestions.onCreated(function () {
+    this.subscribe('questions');
+});

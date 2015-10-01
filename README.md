@@ -18,7 +18,7 @@ Collections
       createdOn: new Date(),
       text: "string",
       headline: "string",
-      deadline: Date(),
+      deadline: Date() || null,
       themes: ["array", "array"],
       userAnswer: boolean,
       correctAnswer: boolean
