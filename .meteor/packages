@@ -21,3 +21,5 @@ accounts-password
 twbs:bootstrap
 msavin:mongol
 ejson
+tsega:bootstrap3-datetimepicker
+momentjs:moment

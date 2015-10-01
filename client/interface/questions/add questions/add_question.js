@@ -5,8 +5,13 @@ Template.addQuestion.events({
     var varHeadline = $('[name=headline]').val();
     var varText = $('[name=text]').val();
     var varThemes = $('[name=tthemes]').val();
-    Meteor.call('createNewQuestion', varHeadline, varText, varThemes, function() {
+    var varDeadline=$('.datetimepicker').data("DateTimePicker").date().toDate();
+    Meteor.call('createNewQuestion', varHeadline, varText, varThemes,varDeadline, function() {
 
     });
   }
+});
+Template.addQuestion.onRendered(function() {
+    this.$('.datetimepicker').datetimepicker({minDate:new Date().setHours(0,0,0,0),defaultDate:moment().add(3, 'days')});
+
 });
