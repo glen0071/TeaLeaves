@@ -34,8 +34,8 @@
               </ul>
               <ul class="nav navbar-nav navbar-right">
                 {{#if currentUser}}
-                <li><a href="{{pathFor route='myProfile'}}">My Profile</a></li>
-                  <li>{{userName}} | <a href="#" class="logout">Logout</a></li>
+                <li><a href="{{pathFor route='myProfile'}}">My Profile ({{userName}})</a></li>
+                  <li><a href="#" class="logout">Logout</a></li>
                 {{else}}
                 <li><a href="{{pathFor route='login'}}">Login</a></li>
                 <li><a href="{{pathFor route='register'}}">Register</a></li>
