@@ -1,5 +1,9 @@
 .container {
-  padding-top: 50px;
+  padding-top: 30px;
+  padding-bottom:30px;
+  border-width: thin;
+  border-style: dashed;
+  border-color: black;
 }
 
 li {
@@ -13,4 +17,14 @@ li {
 
 .add-question-field {
   margin: 4px;
+}
+.themes{
+  font-size: 11px;
+  font-style: italic;
+}
+.created-by{
+  font-size: 11px;
+}
+.datetimepicker{
+  width: 300px;
 }
