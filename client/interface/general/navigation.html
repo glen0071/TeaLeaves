@@ -36,9 +36,9 @@
                 <li><a href="{{pathFor route='myProfile'}}">My Profile</a></li>
 
                 {{#if currentUser}}
-                  <li><a href="#">Logout</a></li>
+                  <li>{{userName}} | <a href="#" class="logout">Logout</a></li>
                 {{else}}
-                <li><a href="#">Login</a></li>
+                <li><a href="{{pathFor route='login'}}">Login</a></li>
                 <li><a href="{{pathFor route='register'}}">Register</a></li>
                   <!-- make logout etc. conditional on if currentUser -->
                 {{/if}}
