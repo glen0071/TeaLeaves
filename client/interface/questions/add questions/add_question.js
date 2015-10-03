@@ -6,8 +6,18 @@ Template.addQuestion.events({
     var varText = $('[name=text]').val();
     var varThemes = $('[name=themes]').val();
     var varDeadline=$('.datetimepicker').data("DateTimePicker").date().toDate();
-    Meteor.call('createNewQuestion', varHeadline, varText, varThemes,varDeadline, function() {
-
+    Meteor.call('createNewQuestion', varHeadline, varText, varThemes,varDeadline, function(error,results) {
+      if(error){
+        console.log(error.reason);
+      }else{
+        Router.go('questionDetail', {
+          _id: results
+        });
+        $('[name=headline]').val('');
+        $('[name=themes]').val('');
+        $('[name=text]').val('');
+        $('.datetimepicker').val('');
+      }
     });
   }
 });
