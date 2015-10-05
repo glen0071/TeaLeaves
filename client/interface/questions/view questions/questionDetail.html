@@ -1,21 +1,26 @@
 <template name="questionDetail">
   {{#if Template.subscriptionsReady}}
-  <h3>
-    {{headline}}
-  </h3>
-<!--<p class="themes">{{#each themes}}{{this}}{{/each}}</p>-->
-<p class="themes">{{themes}}</p>
-<p class="created-by">asked by {{userName}} on {{createdOnString}}</p>
-<p class="question-text">{{text}}</p>
-<table>
-  <tr>
-    <td class = "voteYes"><a href="#">Yes</a></td><td class="voteNo"><a href="#">No</a></td>
-  </tr>
-</table>
-<p class = "deadline">This question will self-destruct on {{deadlineString}}</p>
+    <h3>
+      {{headline}}
+    </h3>
+  <p class="themes">
+    <ul class="question-themes">
+      {{#each themes}}
+        <li class="question-themes-list"><a href="#" class="theme-link">{{this}}</a></li>
+      {{/each}}
+    </ul>
+  </p>
+  <p class="created-by">asked by {{userName}} on {{createdOnString}}</p>
+  <p class="question-text">{{text}}</p>
+  <table>
+    <tr>
+      <td class = "voteYes"><a href="#">Yes</a></td><td class="voteNo"><a href="#">No</a></td>
+    </tr>
+  </table>
+  <p class = "deadline">This question will self-destruct on {{deadlineString}}</p>
 {{else}}
   <p>
-loading question...
+    articulating question...
   </p>
 {{/if}}
 </template>

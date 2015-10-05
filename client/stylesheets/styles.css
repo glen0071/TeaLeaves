@@ -62,3 +62,18 @@ color:black;
   text-decoration: none;
 color:black;
 }
+
+.question-themes-list {
+  display: inline-block;
+  margin-left: 3px;
+  margin-right: 3px;
+}
+
+.theme-link {
+  color: black;
+}
+
+.theme-link:hover {
+  color: black;
+  text-decoration: underline;
+}

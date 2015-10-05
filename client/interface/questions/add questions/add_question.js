@@ -4,9 +4,9 @@ Template.addQuestion.events({
     console.log("workin it!");
     var varHeadline = $('[name=headline]').val();
     var varText = $('[name=text]').val();
-    var varThemes = $('[name=themes]').val();
+    var varThemes = $('[name=themes]').val().split(/,+\s*/);
     var varDeadline=$('.datetimepicker').data("DateTimePicker").date().toDate();
-    Meteor.call('createNewQuestion', varHeadline, varText, varThemes,varDeadline, function(error,results) {
+    Meteor.call('createNewQuestion', varHeadline, varText, varThemes, varDeadline, function(error,results) {
       if(error){
         console.log(error.reason);
       }else{
