@@ -85,3 +85,14 @@ color:black;
 .view-question-filters {
   text-align: center;
 }
+
+.social-list {
+  list-style-type: circle;
+}
+
+.social-link {
+  font-size: 120%;
+  margin: 5px;
+  font-style: italic;
+  color: black;
+}
