@@ -77,3 +77,11 @@ color:black;
   color: black;
   text-decoration: underline;
 }
+
+.view-question-list {
+  margin: 10px;
+}
+
+.view-question-filters {
+  text-align: center;
+}

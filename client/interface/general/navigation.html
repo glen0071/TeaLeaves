@@ -27,7 +27,7 @@
               </li>
                 <li><a href="#">Leaders</a></li>
                 <li><a href="#">Trending</a></li>
-                <li><a href="#">Search</a></li>
+                <li><a href="{{pathFor route='search'}}">Search</a></li>
                 {{#if currentUser}}
                 <li><a href="{{pathFor route='addQuestion'}}" style="color:red">Ask a Question</a></li>
                 {{/if }}

@@ -1,0 +1,26 @@
+<template name="search">
+
+  <h4 class="text-center">Search Questions</h4>
+
+   Search themes or topics here: &nbsp; &nbsp; {{> esInput index="questions" placeholder="Search themes here..." }}
+
+    <ul>
+        {{#esEach index="questions"}}
+            <li>
+              <a href="#">
+                {{text}}
+              </a>
+            </li>
+        {{/esEach}}
+    </ul>
+
+    {{> esLoadMoreButton index="questions"}}
+
+    {{#ifEsHasNoResults index="questions"}}
+        <div class="no-results">No results found!</div>
+    {{/ifEsHasNoResults}}
+
+    {{#ifEsIsSearching index="questions"}}
+            <div>Loading...</div>
+    {{/ifEsIsSearching}}
+</template>
