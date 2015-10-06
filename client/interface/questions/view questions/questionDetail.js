@@ -22,6 +22,7 @@ Template.questionDetail.helpers({
 Template.questionDetail.onCreated(function () {
     this.subscribe('questions');
 });
+
 Template.questionDetail.events({
     'click .theme-link': function(event) {
       event.preventDefault();

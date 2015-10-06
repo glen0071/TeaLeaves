@@ -12,10 +12,3 @@ Template.viewTheme.helpers({
     return Questions.find({themes:theTheme}, {sort: {createdOn: -1}});
   }
 });
-Template.viewTheme.events({
-  'click .theme-link': function(event) {
-    event.preventDefault();
-    var theTheme = event.target.text;
-    Router.go('viewTheme',{theme:theTheme});
-  }  
-});

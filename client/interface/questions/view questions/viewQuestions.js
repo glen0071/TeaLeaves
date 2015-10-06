@@ -20,10 +20,13 @@ Template.viewQuestions.events({
   },
   "change [name=topRatedQuestionsBtn]": function(event, template){
     console.log('test4');
-  },
-      'click .theme-link': function(event) {
-        event.preventDefault();
-        var theTheme = event.target.text;
-        Router.go('viewTheme',{theme:theTheme});
-      }
+  }
+});
+
+Template.viewQuestion.events({
+  'click .theme-link': function(event) {
+    event.preventDefault();
+    var theTheme = event.target.text;
+    Router.go('viewTheme',{theme:theTheme});
+  }
 });
