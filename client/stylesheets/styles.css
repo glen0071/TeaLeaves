@@ -71,6 +71,8 @@ color:black;
 
 .theme-link {
   color: black;
+  font-size: 11px;
+  font-style: italic;
 }
 
 .theme-link:hover {

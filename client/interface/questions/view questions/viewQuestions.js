@@ -22,3 +22,11 @@ Template.viewQuestions.events({
     console.log('test4');
   }
 });
+
+Template.viewQuestion.events({
+  'click .theme-link': function(event) {
+    event.preventDefault();
+    var theTheme = event.target.text;
+    Router.go('viewTheme',{theme:theTheme});
+  }
+});
