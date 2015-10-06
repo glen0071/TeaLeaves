@@ -1,0 +1,17 @@
+<template name="viewTheme">
+  <h4 class="text-center">Theme: {{theme}}</h4>
+
+    <div class="view-question-list">
+      {{#if Template.subscriptionsReady}}
+        <ul>
+          {{#each questions}}
+            {{> viewQuestion}}
+          {{/each}}
+        </ul>
+      {{else}}
+        <p>
+          gathering all the questions related to {{theme}}...
+        </p>
+      {{/if}}
+    </div>
+</template>
