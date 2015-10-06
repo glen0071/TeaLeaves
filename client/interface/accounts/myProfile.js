@@ -14,6 +14,10 @@ Template.myProfile.helpers({
     var currentUser = Meteor.userId();
     return Questions.find({createdBy: currentUser});
   },
+  questionsAnswered: function(){
+    var currentUser = Meteor.userId();
+    return Questions.find({answeredBy: currentUser}).count();
+  },
   questionsUserAnswered: function(){
     var currentUser = Meteor.userId();
     return Questions.find({answeredBy: currentUser});

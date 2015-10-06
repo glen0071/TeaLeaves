@@ -1,27 +1,23 @@
 <template name="myProfile">
   <h3>My Profile</h3>
-     <!-- get _id from currentUser -->
   <p>
     Edit and view profile from here
   </p>
+{{#if questionsAsked}}
   <p>
-    {{email}}
-  </p>
-  <p>
-    Question you've created:
-      {{#if questionsUserAsked}}
+    Questions you've created:
+
         <ul>
           {{#each questionsUserAsked}}
             {{> viewQuestion}}
           {{/each}}
         </ul>
-      {{else}}
-        <br>
-        <p>
-          Click <a href="{{pathFor route='addQuestion'}}">here</a> to write your first question!
-        </p>
-      {{/if}}
   </p>
+{{else}}
+  <br>
+  <h4>Click <a href="{{pathFor route='addQuestion'}}">here</a> to write your first question!</h4>
+{{/if}}
+{{#if questionsAnswered}}
   <p>
     Question's you've answered:
     <!--
@@ -35,6 +31,11 @@
       {{/each}}
     </ul>
   </p>
+{{else}}
+  <br>
+  <h4>Click <a href="{{pathFor route='viewQuestions'}}">here</a> to answer your first question!</h4>
+  <br>
+{{/if}}
   {{#if 'editFollowing'}}
   <form>
     <input type="text" value="{{followingThemes}}" name="EditTopics">
