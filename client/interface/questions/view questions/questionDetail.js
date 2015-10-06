@@ -12,7 +12,10 @@ Template.questionDetail.helpers({
   },
   deadlineString:function(){
     var dead=this.deadline;
-    return moment(dead).format("dddd, MMMM D, YYYY, h:mm a");
+    var deadMoment = moment(dead);
+    var timeLeft = deadMoment.fromNow();
+    var deadString = deadMoment.format("dddd, MMMM D, YYYY, h:mm a")+" ("+timeLeft+")" ;
+    return deadString;
   }
 });
 
