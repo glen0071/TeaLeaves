@@ -9,15 +9,18 @@
   </p>
   <p>
     Question you've created:
-    <!--
-    if ={0}, then it should not display,
-    or maybe display an invitation to create a question
-    -->
-    <ul>
-      <li>
-        <a href="#">When will Dan come back to the US?</a> <!-- link to the question's page -->
-      </li>
-    </ul>
+      {{#if questionsUserAsked}}
+        <ul>
+          {{#each questionsUserAsked}}
+            {{> viewQuestion}}
+          {{/each}}
+        </ul>
+      {{else}}
+        <br>
+        <p>
+          Click <a href="{{pathFor route='addQuestion'}}">here</a> to write your first question!
+        </p>
+      {{/if}}
   </p>
   <p>
     Question's you've answered:
@@ -27,9 +30,9 @@
     if the deadline has not been reached
     -->
     <ul>
-      <li>
-        <a href="#">When will this site go live?</a> <!-- link to the question's page -->
-      </li>
+      {{#each questionsUserAnswered}}
+        {{> viewQuestion}}
+      {{/each}}
     </ul>
   </p>
   {{#if 'editFollowing'}}
