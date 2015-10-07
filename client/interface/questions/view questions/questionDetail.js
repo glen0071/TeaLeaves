@@ -1,3 +1,7 @@
+Template.questionDetail.onCreated(function () {
+    this.subscribe('questions');
+});
+
 Template.questionDetail.helpers({
   questions: function(){
     return Questions.find();
@@ -19,14 +23,22 @@ Template.questionDetail.helpers({
   }
 });
 
-Template.questionDetail.onCreated(function () {
-    this.subscribe('questions');
-});
-
 Template.questionDetail.events({
     'click .theme-link': function(event) {
       event.preventDefault();
       var theTheme = event.target.text;
       Router.go('viewTheme',{theme:theTheme});
+    },
+    'click .voteYes': function(event) {
+      event.preventDefault();
+      currentQuestion = this._id;
+      console.log(currentQuestion);
+      Meteor.call('voteYes', currentQuestion);
+    },
+    'click .voteNo': function(event) {
+      event.preventDefault();
+      currentQuestion = this._id;
+      console.log(currentQuestion);
+      Meteor.call('voteNo', currentQuestion);
     }
   });
