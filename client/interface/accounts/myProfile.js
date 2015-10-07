@@ -16,11 +16,11 @@ Template.myProfile.helpers({
   },
   questionsAnswered: function(){
     var currentUser = Meteor.userId();
-    return Questions.find({answeredBy: currentUser}).count();
+    return Questions.find({"answers.userId": currentUser}).count();
   },
   questionsUserAnswered: function(){
     var currentUser = Meteor.userId();
-    return Questions.find({answeredBy: currentUser});
+    return Questions.find({"answers.userId": currentUser});
   }
 });
 
