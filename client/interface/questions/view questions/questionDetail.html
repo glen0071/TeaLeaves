@@ -10,12 +10,23 @@
       {{/each}}
     </ul>
   </p>
+
   <p class="created-by">asked by {{userName}} on {{createdOnString}}</p>
   <p class="question-text">{{text}}</p>
   <table>
     <tr>
-      <td class="voteYes"><a href="#">Yes</a></td>
-      <td class="voteNo"><a href="#">No</a></td>
+      {{#if unanswered}}
+        <td id="newVoteYes" class="voteYes btn btn-success"><a href="#">Yes</a></td>
+        <td id="newVoteNo" class="voteNo btn btn-danger"><a href="#">No</a></td>
+      {{/if}}
+      {{#if answeredYes}}
+        <td id="revoteYes" class="voteYes btn btn-success {{votedYes}}"><a href="#">Yes</a></td>
+        <td id="changeVoteNo" class="voteNo btn btn-danger {{votedNo}}"><a href="#">No</a></td>
+      {{/if}}
+      {{#if answeredNo}}
+        <td id="changeVoteYes" class="voteYes btn btn-success {{votedYes}}"><a href="#">Yes</a></td>
+        <td id="revoteNo" class="voteNo btn btn-danger {{votedNo}}"><a href="#">No</a></td>
+      {{/if}}
     </tr>
   </table>
   <p class = "deadline">This question will self-destruct on {{deadlineString}}</p>

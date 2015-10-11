@@ -20,6 +20,69 @@ Template.questionDetail.helpers({
     var timeLeft = deadMoment.fromNow();
     var deadString = deadMoment.format("dddd, MMMM D, YYYY, h:mm a")+" ("+timeLeft+")" ;
     return deadString;
+  },
+  answerStatus:function(){
+    Session.get('unanswered');
+  },
+  unanswered:function(){
+    var answersArray = this.answers;
+    var currentUser = Meteor.userId();
+    var filtered = answersArray.filter(function(object){
+      return (object.userId === currentUser)
+    });
+    if(filtered.length === 0) {
+      return true
+    }
+  },
+  answered:function(){
+    var answersArray = this.answers;
+    var currentUser = Meteor.userId();
+    var filtered = answersArray.filter(function(object){
+      return (object.userId === currentUser)
+    });
+    if(filtered.length > 0) {
+      return true
+    }
+  },
+  answeredYes:function(){
+    var answersArray = this.answers;
+    var currentUser = Meteor.userId();
+    var filtered = answersArray.filter(function(object){
+      return ((object.userId === currentUser) && (object.answer === true))
+    });
+    if(filtered.length > 0) {
+      return true
+    }
+  },
+  answeredNo:function(){
+    var answersArray = this.answers;
+    var currentUser = Meteor.userId();
+    var filtered = answersArray.filter(function(object){
+      return ((object.userId === currentUser) && (object.answer === false))
+    });
+    if(filtered.length > 0) {
+      return true
+    }
+  },
+  votedYes:function(){
+    var answersArray = this.answers;
+    var currentUser = Meteor.userId();
+    var filtered = answersArray.filter(function(object){
+      return ((object.userId === currentUser) && (object.answer === true))
+    });
+    if(filtered.length == 1) {
+      return "disabled"
+    }
+  },
+  votedNo:function(){
+    var answersArray = this.answers;
+    var currentUser = Meteor.userId();
+    var filtered = answersArray.filter(function(object){
+      return ((object.userId === currentUser) && (object.answer === false))
+    });
+    if(filtered.length == 1) {
+      return "disabled"
+    }
   }
 });
 
@@ -29,16 +92,32 @@ Template.questionDetail.events({
       var theTheme = event.target.text;
       Router.go('viewTheme',{theme:theTheme});
     },
-    'click .voteYes': function(event) {
+    'click #newVoteYes': function(event) {
       event.preventDefault();
       currentQuestion = this._id;
-      console.log(currentQuestion);
-      Meteor.call('voteYes', currentQuestion);
+      Meteor.call('newVoteYes', currentQuestion);
     },
-    'click .voteNo': function(event) {
+    'click #newVoteNo': function(event) {
       event.preventDefault();
       currentQuestion = this._id;
-      console.log(currentQuestion);
-      Meteor.call('voteNo', currentQuestion);
+      Meteor.call('newVoteNo', currentQuestion);
+    },
+    'click #changeVoteYes': function(event) {
+      event.preventDefault();
+      currentQuestion = this._id;
+      Meteor.call('changeVoteYes', currentQuestion);
+    },
+    'click #changeVoteNo': function(event) {
+      event.preventDefault();
+      currentQuestion = this._id;
+      Meteor.call('changeVoteNo', currentQuestion);
+    },
+    'click #revoteYes': function(event) {
+      event.preventDefault();
+      alert("you already voted Yes");
+    },
+    'click #revoteNo': function(event) {
+      event.preventDefault();
+      alert("you already voted No");
     }
   });
