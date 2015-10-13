@@ -11,5 +11,7 @@ Template.register.events({
       followingThemes: [],
       followingUsers: []
     });
+    Meteor.loginWithPassword(varEmail, varPassword);
+    Router.go("viewQuestions");
   }
 });
