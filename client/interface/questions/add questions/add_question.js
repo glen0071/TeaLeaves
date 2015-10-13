@@ -1,7 +1,6 @@
 Template.addQuestion.events({
   'submit form': function(event, template){
     event.preventDefault();
-    console.log("workin it!");
     var varHeadline = $('[name=headline]').val();
     var varText = $('[name=text]').val();
     var varThemes = $('[name=themes]').val().split(/,+\s*/);

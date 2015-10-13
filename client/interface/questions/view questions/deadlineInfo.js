@@ -9,5 +9,12 @@ Template.deadlineInfo.helpers({
       return true;
     }
     return false;
+  },
+  deadlineString:function(){
+    var dead=this.deadline;
+    var deadMoment = moment(dead);
+    var timeLeft = deadMoment.fromNow();
+    var deadString = deadMoment.format("dddd, MMMM D, YYYY, h:mm a")+" ("+timeLeft+")" ;
+    return deadString;
   }
 });
