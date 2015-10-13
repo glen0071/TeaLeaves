@@ -1,0 +1,13 @@
+<template name ="deadlineInfo">
+{{#if deadlinePassed}}
+<p class = "deadline">The deadline for answering this question has passed!</p>
+{{else}}
+  <table>
+    <tr>
+      <td class="voteYes"><a href="#">Yes</a></td>
+      <td class="voteNo"><a href="#">No</a></td>
+    </tr>
+  </table>
+  <p class = "deadline">This question will self-destruct on {{deadlineString}}</p>
+  {{/if}}
+</template>
