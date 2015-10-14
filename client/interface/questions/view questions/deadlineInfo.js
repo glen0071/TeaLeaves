@@ -1,6 +1,6 @@
 Template.deadlineInfo.helpers({
   deadlinePassed:function(){
-    console.log(this);
+    //console.log(this);
 
     var dead=this.deadline;
     var deadMoment = moment(dead);

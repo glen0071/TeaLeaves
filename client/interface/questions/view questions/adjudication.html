@@ -1,0 +1,26 @@
+<template name="adjudication">
+  {{#if unadjudicated}}
+      {{#if questionBelongsToCurrentUser}}
+        <table>
+          <tr>
+            <td>
+              <p class="adjudication">Please choose the correct answer based on an objective reading of events. Points will be awarded to users who have answered correctly based on your adjudication.</p>
+              <form id="adjudication-form">
+                <div id="adjudication-group" class="btn-group" data-toggle="buttons">
+                  <label label-default="" class="btn btn-primary">
+                    <input type="radio" name="adjudicationYes" id="adjudicationYes" value="1">Yes</label>
+                  <label label-default="" class="btn btn-primary">
+                    <input type="radio" name="adjudicationNo" id="adjudicationNo" value="0">No</label>
+                </div>
+                <input type="submit" value="Adjudicate" id="submit-adjudication" class="submit-adjudication" disabled="true" />
+              </form>
+            </td>
+          </tr>
+        </table>
+        {{else}}
+          <p class="adjudication">This question is awaiting adjudication by its creator.</p>
+        {{/if}}
+    {{else}}
+      {{> results}}
+    {{/if}}
+</template>

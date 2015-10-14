@@ -1,6 +1,7 @@
 <template name ="deadlineInfo">
 {{#if deadlinePassed}}
 <p class = "deadline">The deadline for answering this question has passed!</p>
+{{> adjudication}}
 {{else}}
 {{> voting}}
   <p class = "deadline">This question will self-destruct on {{deadlineString}}</p>
