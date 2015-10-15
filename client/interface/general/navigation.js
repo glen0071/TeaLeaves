@@ -8,5 +8,8 @@ Template.navigation.events({
   Template.navigation.helpers({
     userName:function(){
       return Meteor.user().emails[0].address;
+    },
+    points:function () {
+      return Meteor.user().points;
     }
   });

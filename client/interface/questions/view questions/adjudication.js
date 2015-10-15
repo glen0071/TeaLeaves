@@ -42,22 +42,27 @@ Template.adjudication.helpers({
 
 Template.adjudication.events({
   "click .btn": function(event){
-    console.log("click btn");
+//    console.log("click btn");
     $('#submit-adjudication').prop('disabled', false);
 },
   "click #submit-adjudication": function(event){
-    console.log("click submit-adjudication");
-    event.preventDefault();
-    var answer=($('#adjudication-group label.active input').val());
-    var currentQuestion = this._id;
-    //console.log('answer: '+answer);
-    Meteor.call('adjudicate', answer, currentQuestion, function(error,results) {
-      if(error){
-        console.log(error.reason);
-      }else{
-
+//      console.log("click submit-adjudication");
+      event.preventDefault();
+      var answer=($('#adjudication-group label.active input').val());
+      var currentQuestion = this._id;
+      //console.log('answer: '+answer);
+      Meteor.call('adjudicate', answer, currentQuestion, function(error,results) {
+        if(error){
+          console.log(error.reason);
+        }else{
+            Meteor.call('awardPoints',currentQuestion,function(error,results){
+                if(error){
+                console.log(error.reason);
+                }else{
+            //      console.log('successfully awarded points');
+                }
+              });
       }
     });
-
   }
 });
