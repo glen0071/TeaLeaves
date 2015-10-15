@@ -20,9 +20,12 @@ Template.viewQuestions.events({
   },
   "change [name=topRatedQuestionsBtn]": function(event, template){
     console.log('test4');
-  }
+  },
+  'click .question-link': selectQuestion
 });
-
+function selectQuestion(e,t){
+     Session.set('current_question',this._id);
+}
 Template.viewQuestion.events({
   'click .theme-link': function(event) {
     event.preventDefault();
