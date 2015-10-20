@@ -1,0 +1,11 @@
+<template name="upVoteIcon">
+  {{#if voted}}
+  <a href="#" name="unVote">
+    <span class="glyphicon glyphicon-heart"></span>
+  </a>
+  {{else}}
+  <a href="#" name="upVote">
+    <span class="glyphicon glyphicon-heart-empty"></span>
+  </a>
+  {{/if}}
+</template>

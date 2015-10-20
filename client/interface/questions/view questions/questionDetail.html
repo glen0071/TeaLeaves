@@ -1,7 +1,7 @@
 <template name="questionDetail">
   {{#if Template.subscriptionsReady}}
     <h3>
-      {{headline}}
+      {{headline}} &nbsp; &nbsp; {{> upVoteIcon}}
     </h3>
   <p class="themes">
     <ul class="question-themes">
@@ -10,7 +10,6 @@
       {{/each}}
     </ul>
   </p>
-
   <p class="created-by">asked by {{userName}} on {{createdOnString}}</p>
   <p class="question-text">{{text}}</p>
 {{> deadlineInfo}}
