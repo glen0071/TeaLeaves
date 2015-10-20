@@ -87,23 +87,43 @@ Template.questionDetail.events({
     },
     'click #newVoteYes': function(event) {
       event.preventDefault();
+      var currentUser = Meteor.userId();
       currentQuestion = this._id;
-      Meteor.call('newVoteYes', currentQuestion);
+      if(!currentUser){
+        alert('sorry, you must be logged in to do that. Please sign up or login now!')
+      } else {
+        Meteor.call('newVoteYes', currentQuestion);
+      }
     },
     'click #newVoteNo': function(event) {
       event.preventDefault();
+      var currentUser = Meteor.userId();
       currentQuestion = this._id;
-      Meteor.call('newVoteNo', currentQuestion);
+      if(!currentUser){
+        alert('sorry, you must be logged in to do that. Please sign up or login now!')
+      } else {
+        Meteor.call('newVoteNo', currentQuestion);
+      }
     },
     'click #changeVoteYes': function(event) {
       event.preventDefault();
+      var currentUser = Meteor.userId();
       currentQuestion = this._id;
-      Meteor.call('changeVoteYes', currentQuestion);
+      if(!currentUser){
+        alert('sorry, you must be logged in to do that. Please sign up or login now!')
+      } else {
+        Meteor.call('changeVoteYes', currentQuestion);
+      }
     },
     'click #changeVoteNo': function(event) {
       event.preventDefault();
+      var currentUser = Meteor.userId();
       currentQuestion = this._id;
-      Meteor.call('changeVoteNo', currentQuestion);
+      if(!currentUser){
+        alert('sorry, you must be logged in to do that. Please sign up or login now!')
+      } else {
+        Meteor.call('changeVoteNo', currentQuestion);
+      }
     },
     'click #revoteYes': function(event) {
       event.preventDefault();

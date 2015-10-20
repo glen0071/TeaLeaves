@@ -13,20 +13,27 @@ Template.upVoteIcon.helpers({
       return true
     }
   },
-
 });
 
 Template.upVoteIcon.events({
   'click [name=upVote]': function(event) {
     event.preventDefault();
-    console.log('upvoted');
+    var currentUser = Meteor.userId();
     currentQuestion = this._id;
-    Meteor.call('newUpVote', currentQuestion);
+    if(!currentUser){
+      alert('sorry, you must be logged in to do that. Please sign up or login now!')
+    } else {
+      Meteor.call('newUpVote', currentQuestion);
+    }
   },
   'click [name=unVote]': function(event) {
     event.preventDefault();
-    console.log('upvoted');
+    var currentUser = Meteor.userId();
     currentQuestion = this._id;
-    Meteor.call('removeVote', currentQuestion);
+    if(!currentUser){
+      alert('sorry, you must be logged in to do that. Please sign up or login now!')
+    } else {
+      Meteor.call('removeVote', currentQuestion);
+    }
   },
 });
