@@ -3,18 +3,24 @@
   <div class="row view-question-filters">
        <div class="col-sm-12">
            <div class="btn-group" data-toggle="buttons">
-               <label class="btn btn-default">
-                   <input type="checkbox" class="viewQuestionBtn" name="trendQuestionsBtn" value="1" {{checked}}> Top Trending Questions
-               </label>
-               <label class="btn btn-default">
-                   <input type="checkbox" class="viewQuestionBtn" name="recentQuestionsBtn" value="2" {{checked}}> Recently Posted Questions
-               </label>
-               <label class="btn btn-default">
-                   <input type="checkbox" class="viewQuestionBtn" name="closeSoonQuestionsBtn" value="3" {{checked}}> Deadlines Approaching
-               </label>
-               <label class="btn btn-default">
-                   <input type="checkbox" class="viewQuestionBtn" name="topRatedQuestionsBtn" value="4" {{checked}}> Top Rated Questions
-               </label>
+                <label class="btn btn-default">
+                    <input type="radio" class="viewQuestionBtn" name="viewQsBtn" value="1"> Newest
+                </label>
+                <label class="btn btn-default">
+                    <input type="radio" class="viewQuestionBtn" name="viewQsBtn" value="2"> Oldest
+                </label>
+                <label class="btn btn-default">
+                    <input type="radio" class="viewQuestionBtn" name="viewQsBtn" value="3"> Deadlines Approaching
+                </label>
+                <label class="btn btn-default">
+                    <input type="radio" class="viewQuestionBtn" name="viewQsBtn" value="4"> The Most Answers
+                </label>
+                <label class="btn btn-default">
+                    <input type="radio" class="viewQuestionBtn" name="viewQsBtn" value="5"> The Least Answers
+                </label>
+                <label class="btn btn-default">
+                    <input type="radio" class="viewQuestionBtn" name="viewQsBtn" value="6"> Top Rated
+                </label>
            </div>
        </div>
    </div>
@@ -23,9 +29,38 @@
     <div class="view-question-list">
       {{#if Template.subscriptionsReady}}
         <ul>
-          {{#each questions}}
-            {{> viewQuestion}}
-          {{/each}}
+
+          {{#if newQs}}
+            {{#each showNewQs}}
+              {{> viewQuestion}}
+            {{/each}}
+          {{/if}}
+          {{#if oldQs}}
+            {{#each showOldQs}}
+              {{> viewQuestion}}
+            {{/each}}
+          {{/if}}
+          {{#if endQs}}
+            {{#each showEndQs}}
+              {{> viewQuestion}}
+            {{/each}}
+          {{/if}}
+          {{#if popQs}}
+            {{#each showPopQs}}
+              {{> viewQuestion}}
+            {{/each}}
+          {{/if}}
+          {{#if unpopQs}}
+            {{#each showUnpopQs}}
+              {{> viewQuestion}}
+            {{/each}}
+          {{/if}}
+          {{#if topRatedQs}}
+            {{#each showTopRatedQs}}
+              {{> viewQuestion}}
+            {{/each}}
+          {{/if}}
+
         </ul>
       {{else}}
         <p>
