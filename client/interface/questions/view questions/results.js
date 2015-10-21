@@ -4,12 +4,17 @@ var numberOfVotes = function(question){
 };
 var numberOfYesVotes = function(question){
   var questionDoc = Questions.findOne(question);
-return questionDoc.answers.filter(testForTrue).length;
+  if(questionDoc){
+    return questionDoc.answers.filter(testForTrue).length;
+  }
+  return 0;
 };
 var numberOfNoVotes = function(question){
   var questionDoc = Questions.findOne(question);
-return questionDoc.answers.filter(testForFalse).length;
-};
+  if(questionDoc){
+    return questionDoc.answers.filter(testForFalse).length;
+  }
+  return 0;};
 var testForTrue = function(value){
   return value.answer==true;
 };
