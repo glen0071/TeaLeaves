@@ -2,6 +2,10 @@ Meteor.publish('questions', function() {
   return Questions.find();
 });
 
+Meteor.publish('questionData',function(question){
+  return Questions.find({_id:question});
+});
+
 Meteor.publish("allUserData", function () {
   return Meteor.users.find({}, {fields: {'emails': 1,'points':1}});
 });

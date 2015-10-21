@@ -1,5 +1,4 @@
 Template.questionDetail.onCreated(function () {
-    this.subscribe('questions');
 });
 
 Template.questionDetail.helpers({
