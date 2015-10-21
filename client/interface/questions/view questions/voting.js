@@ -1,7 +1,4 @@
 Template.voting.helpers({
-  answerStatus:function(){
-    Session.get('unanswered');
-  },
   unanswered:function(){
     var answersArray = this.answers;
     var currentUser = Meteor.userId();
