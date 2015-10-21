@@ -85,6 +85,11 @@ Template.questionDetail.events({
       var theTheme = event.target.text;
       Router.go('viewTheme',{theme:theTheme});
     },
+    'click .profile-link': function(event) {
+        event.preventDefault();
+        var user=this.createdBy;
+        Router.go('userProfile',{_id:user});
+      },
     'click #newVoteYes': function(event) {
       event.preventDefault();
       var currentUser = Meteor.userId();

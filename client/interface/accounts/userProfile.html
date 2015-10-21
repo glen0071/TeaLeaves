@@ -1,0 +1,33 @@
+<template name="userProfile">
+  <h3>{{userName}}'s Profile</h3>
+
+  <h2>Points: {{points}}</h2>
+{{#if questionsAsked}}
+  <p>
+    Questions created by this user:
+
+        <ul>
+          {{#each questionsUserAsked}}
+            {{> viewQuestion}}
+          {{/each}}
+        </ul>
+  </p>
+{{/if}}
+{{#if questionsAnswered}}
+  <p>
+    Questions answered by this user:
+    <!--
+    display with different colors/font weights
+    depending on whether answered correctly or
+    if the deadline has not been reached
+    -->
+    <ul>
+      {{#each questionsUserAnswered}}
+        {{> viewQuestion}}
+      {{/each}}
+    </ul>
+  </p>
+  {{/if}}
+    {{followingThemes}}
+    {{followingUsers}}
+</template>
