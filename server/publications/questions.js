@@ -7,12 +7,12 @@ Meteor.publish('questionData',function(question){
 });
 
 Meteor.publish("allUserData", function () {
-  return Meteor.users.find({}, {fields: {'emails': 1,'points':1}});
+  return Meteor.users.find({}, {fields: {'username':1,'emails': 1,'points':1}});
 });
 
 Meteor.publish("userData", function (currentUser) {
     return Meteor.users.find({_id: currentUser},
-        {fields: {'emails':1,'points':1}});
+        {fields: {'username':1,'emails':1,'points':1}});
 });
 
 Meteor.publish("creatorData", function (currentQuestion) {

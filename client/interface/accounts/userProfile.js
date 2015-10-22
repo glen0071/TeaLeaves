@@ -19,7 +19,8 @@ Template.userProfile.helpers({
     return Questions.find({"answers.userId": this._id});
   },
   userName:function(){
-      return Meteor.users.findOne({_id:this._id}).emails[0].address;
+    var user = Meteor.users.findOne({_id:this._id});
+    return user.username ? user.username : user.emails[0].address;
     },
     points:function(){
       return Meteor.users.findOne({_id:this._id}).points;

@@ -7,7 +7,7 @@ Template.navigation.events({
   });
   Template.navigation.helpers({
     userName:function(){
-      return Meteor.user().emails[0].address;
+      return Meteor.user().username ? Meteor.user().username : Meteor.user().emails[0].address;
     },
     points:function () {
       return Meteor.user().points;

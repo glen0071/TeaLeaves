@@ -6,8 +6,9 @@ Template.questionDetail.helpers({
     return Questions.find();
   },
   userName:function(){
-    var user=this.createdBy;
-    return Meteor.users.findOne({_id:user}).emails[0].address;
+    var user = Meteor.users.findOne({_id:this.createdBy});
+    return user.username ? user.username : user.emails[0].address;
+
   },
   createdOnString:function(){
     var created=this.createdOn;
