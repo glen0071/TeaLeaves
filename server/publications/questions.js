@@ -18,7 +18,7 @@ Meteor.publish("userData", function (currentUser) {
 Meteor.publish("creatorData", function (currentQuestion) {
   var questionDoc = Questions.findOne(currentQuestion);
     return Meteor.users.find({_id: questionDoc.createdBy},
-        {fields: {'emails':1}});
+        {fields: {'username':1,'emails':1}});
 });
 
 Meteor.publish("answererData", function (currentQuestion) {
