@@ -1,11 +1,14 @@
 Template.viewQuestions.onCreated(function () {
-    this.subscribe('questions');
     this.newQs = new ReactiveVar( true );
     this.oldQs = new ReactiveVar( false );
     this.endQs = new ReactiveVar( false );
     this.popQs = new ReactiveVar( false );
     this.unpopQs = new ReactiveVar( false );
     this.topRatedQs = new ReactiveVar( false );
+
+    Tracker.autorun(function(){
+      var handle = Meteor.subscribe('questions', 20);
+    });
 });
 
 Template.viewQuestions.helpers({

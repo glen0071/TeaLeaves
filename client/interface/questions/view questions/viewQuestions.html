@@ -1,7 +1,7 @@
 <template name="viewQuestions">
   <h4 class="text-center">View Questions</h4>
   <div class="row view-question-filters">
-       <div class="col-sm-12">
+       <div class="col-sm-9">
            <div class="btn-group" data-toggle="buttons">
                 <label class="btn btn-default">
                     <input type="radio" class="viewQuestionBtn" name="viewQsBtn" value="1"> Newest
@@ -22,8 +22,7 @@
                     <input type="radio" class="viewQuestionBtn" name="viewQsBtn" value="6"> Top Rated
                 </label>
            </div>
-       </div>
-   </div>
+
     <div class="view-question-list">
       {{#if Template.subscriptionsReady}}
         <ul>
@@ -66,9 +65,15 @@
         </p>
       {{/if}}
     </div>
+  </div>
+  <div class="col-sm-3">
     <div class="search-box">
       {{> search}}
     </div>
+  </div>
+
+
+</div>
 </template>
 
 <template name="viewQuestion">

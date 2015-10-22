@@ -1,5 +1,5 @@
-Meteor.publish('questions', function() {
-  return Questions.find();
+Meteor.publish('questions', function(limit) {
+  return Questions.find({}, {limit: limit});
 });
 
 Meteor.publish('questionData',function(question){
