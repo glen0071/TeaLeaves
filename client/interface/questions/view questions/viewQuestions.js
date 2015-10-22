@@ -6,9 +6,6 @@ Template.viewQuestions.onCreated(function () {
     this.unpopQs = new ReactiveVar( false );
     this.topRatedQs = new ReactiveVar( false );
 
-    Tracker.autorun(function(){
-      var handle = Meteor.subscribe('questions', 20);
-    });
 });
 
 Template.viewQuestions.helpers({
@@ -112,5 +109,6 @@ Template.viewQuestion.events({
     event.preventDefault();
     var theTheme = event.target.text;
     Router.go('viewTheme',{theme:theTheme});
-  }
+  },
+
 });
