@@ -1,5 +1,4 @@
 Template.viewQuestions.onCreated(function () {
-    this.subscribe('questions');
     this.newQs = new ReactiveVar( true );
     this.oldQs = new ReactiveVar( false );
     this.endQs = new ReactiveVar( false );
@@ -104,10 +103,23 @@ Template.viewQuestions.events({
   },
 });
 
+Template.viewQuestions.created = function() {
+  $(window).scroll(function() {
+   if($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
+       this.nextPath();
+   }
+ });
+};
+
+Template.viewQuestions.destroyed = function() {
+   $(window).off('scroll');
+};
+
 Template.viewQuestion.events({
   'click .theme-link': function(event) {
     event.preventDefault();
     var theTheme = event.target.text;
     Router.go('viewTheme',{theme:theTheme});
-  }
+  },
+
 });
