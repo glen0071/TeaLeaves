@@ -25,44 +25,7 @@
 
     <div class="view-question-list">
       {{#if Template.subscriptionsReady}}
-        <ul>
-
-          {{#if newQs}}
-            {{#each showNewQs}}
-              {{> viewQuestion}}
-            {{/each}}
-          {{/if}}
-          {{#if oldQs}}
-            {{#each showOldQs}}
-              {{> viewQuestion}}
-            {{/each}}
-          {{/if}}
-          {{#if endQs}}
-            {{#each showEndQs}}
-              {{> viewQuestion}}
-            {{/each}}
-          {{/if}}
-          {{#if popQs}}
-            {{#each showPopQs}}
-              {{> viewQuestion}}
-            {{/each}}
-          {{/if}}
-          {{#if unpopQs}}
-            {{#each showUnpopQs}}
-              {{> viewQuestion}}
-            {{/each}}
-          {{/if}}
-          {{#if topRatedQs}}
-            {{#each showTopRatedQs}}
-              {{> viewQuestion}}
-            {{/each}}
-          {{/if}}
-
-          {{#if nextPath}}
-            <a class="load-more" href="{{nextPath}}" id="load_more">Load more</a>
-          {{/if}}
-
-        </ul>
+      {{ > Questions}}
       {{else}}
         <p>
           gathering all the questions
@@ -84,4 +47,9 @@
     <a href="{{pathFor 'questionDetail'}}" class="question-link">
       {{headline}}</a>     {{#each themes}}<a href="#" class="theme-link">{{this}}</a> {{/each}}
   </li>
+</template>
+
+<template name="Questions">
+  {{> pages}}
+  {{> pagesNav}}
 </template>
