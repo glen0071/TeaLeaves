@@ -1,8 +1,7 @@
 // A user can view and edit his profile from here
 Template.myProfile.onCreated(function () {
-    this.subscribe('questions', {limit: 10});
+    this.subscribe('questions', {limit: 100});
 });
-
 
 Template.myProfile.helpers({
   questionsAsked: function(){
@@ -20,6 +19,15 @@ Template.myProfile.helpers({
   questionsUserAnswered: function(){
     var currentUser = Meteor.userId();
     return Questions.find({"answers.userId": currentUser});
+  },
+  userName: function(){
+    return Meteor.user().username ? Meteor.user().username : '';
+  },
+  email: function(){
+    return Meteor.user().emails[0].address;
+  },
+  aboutMe: function() {
+    return Meteor.user().aboutMe;
   }
 });
 

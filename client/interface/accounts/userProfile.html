@@ -16,11 +16,6 @@
 {{#if questionsAnswered}}
   <p>
     Questions answered by this user:
-    <!--
-    display with different colors/font weights
-    depending on whether answered correctly or
-    if the deadline has not been reached
-    -->
     <ul>
       {{#each questionsUserAnswered}}
         {{> viewQuestion}}
