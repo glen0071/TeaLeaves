@@ -80,8 +80,8 @@
 </template>
 
 <template name="viewQuestion">
-  <li>
+  <li class="single-question">
     <a href="{{pathFor 'questionDetail'}}" class="question-link">
-      {{headline}}</a>     {{#each themes}}<a href="#" class="theme-link">{{this}}</a> {{/each}}
+      {{headline}}</a>     {{#each themes}}<a href="#" class="theme-link">{{this}}</a> {{/each}} {{> votingSmall}}
   </li>
 </template>

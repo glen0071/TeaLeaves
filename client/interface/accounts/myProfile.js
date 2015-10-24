@@ -1,7 +1,6 @@
 // A user can view and edit his profile from here
 Template.myProfile.onCreated(function () {
-    this.subscribe('questions');
-    // limit to questions user created or answered
+    this.subscribe('questions', {limit: 10});
 });
 
 
