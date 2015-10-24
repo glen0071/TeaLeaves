@@ -1,16 +1,5 @@
 Template.deadlineInfo.helpers({
-  deadlinePassed:function(){
-    //console.log(this);
-
-    var dead=this.deadline;
-    var deadMoment = moment(dead);
-    var now = moment();
-    if (now.isAfter(deadMoment)){
-      return true;
-    }
-    return false;
-  },
-  deadlineString:function(){
+    deadlineString:function(){
     var dead=this.deadline;
     var deadMoment = moment(dead);
     var timeLeft = deadMoment.fromNow();
@@ -18,3 +7,19 @@ Template.deadlineInfo.helpers({
     return deadString;
   }
 });
+
+Template.registerHelper("deadlinePassed", function(){
+    if (this.closed) {
+      return true;
+    }else{
+      var dead=this.deadline;
+      var deadMoment = moment(dead);
+      var now = moment();
+      if (now.isAfter(deadMoment)){
+        Meteor.call("closeQuestion",this._id);
+        return true;
+      }
+      return false;
+    }
+  }
+);
