@@ -1,6 +1,3 @@
-Template.questionDetail.onCreated(function () {
-});
-
 Template.questionDetail.helpers({
   questions: function(){
     return Questions.find();
@@ -80,16 +77,16 @@ Template.questionDetail.helpers({
 });
 
 Template.questionDetail.events({
+  'click .profile-link': function(event) {
+      event.preventDefault();
+      var user=this.createdBy;
+      Router.go('userProfile',{_id:user});
+    },
     'click .theme-link': function(event) {
       event.preventDefault();
       var theTheme = event.target.text;
       Router.go('viewTheme',{theme:theTheme});
     },
-    'click .profile-link': function(event) {
-        event.preventDefault();
-        var user=this.createdBy;
-        Router.go('userProfile',{_id:user});
-      },
     'click #newVoteYes': function(event) {
       event.preventDefault();
       var currentUser = Meteor.userId();
@@ -138,4 +135,4 @@ Template.questionDetail.events({
       event.preventDefault();
       alert("you already voted No");
     }
-  });
+});

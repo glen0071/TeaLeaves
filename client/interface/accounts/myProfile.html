@@ -1,48 +1,58 @@
 <template name="myProfile">
   <h3>My Profile</h3>
-  <p>
-    Edit and view profile from here
-  </p>
-{{#if questionsAsked}}
-  <p>
-    Questions you've created:
+  <div class="row">
+    <div class="user-info">
+      <div class="col-md-4">
+        <img src="assets/default_profile.jpg" alt="default profile photo" class="profile-pic" />
+        <h5>Username: {{userName}}</h5>
+        <h5>Email: {{email}}</h5>
+        <p>
+          {{aboutMe}}
+        </p>
+      </div>
+    </div>
+      <div class="col-md-8">
+        <div class="question-record">
+          {{#if questionsAsked}}
+            <p>
+              Questions you've created:
 
-        <ul>
-          {{#each questionsUserAsked}}
-            {{> viewQuestion}}
-          {{/each}}
-        </ul>
-  </p>
-{{else}}
-  <br>
-  <h4>Click <a href="{{pathFor route='addQuestion'}}">here</a> to write your first question!</h4>
-{{/if}}
-{{#if questionsAnswered}}
-  <p>
-    Questions you've answered:
-    <!--
-    display with different colors/font weights
-    depending on whether answered correctly or
-    if the deadline has not been reached
-    -->
-    <ul>
-      {{#each questionsUserAnswered}}
-        {{> viewQuestion}}
-      {{/each}}
-    </ul>
-  </p>
-{{else}}
-  <br>
-  <h4>Click <a href="{{pathFor route='viewQuestions'}}">here</a> to answer your first question!</h4>
-  <br>
-{{/if}}
-  {{#if 'editFollowing'}}
-  <form>
-    <input type="text" value="{{followingThemes}}" name="EditTopics">
-    <input type="submit">
-  </form>
-  {{else}}
-    {{followingThemes}}
-    {{followingUsers}}
-  {{/if}}
+                  <ul>
+                    {{#each questionsUserAsked}}
+                      {{> viewQuestion}}
+                    {{/each}}
+                  </ul>
+            </p>
+          {{else}}
+            <br>
+            <h4>Click <a href="{{pathFor route='addQuestion'}}">here</a> to write your first question!</h4>
+          {{/if}}
+          {{#if questionsAnswered}}
+            <p>
+              Questions you've answered:
+              <ul>
+                {{#each questionsUserAnswered}}
+                  {{> viewQuestion}}
+                {{/each}}
+              </ul>
+            </p>
+          {{else}}
+            <br>
+            <h4>Click <a href="{{pathFor route='viewQuestions'}}">here</a> to answer your first question!</h4>
+            <br>
+          {{/if}}
+        </div>
+
+        {{#if 'editFollowing'}}
+        <form>
+          <input type="text" value="{{followingThemes}}" name="EditTopics">
+          <input type="submit">
+        </form>
+        {{else}}
+          {{followingThemes}}
+          {{followingUsers}}
+        {{/if}}
+      </div>
+  </div>
+
 </template>

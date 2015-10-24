@@ -1,5 +1,5 @@
 Template.viewTheme.onCreated(function () {
-    this.subscribe('questions');
+    this.subscribe('questions', {limit: 10});
 });
 
 Template.viewTheme.helpers({

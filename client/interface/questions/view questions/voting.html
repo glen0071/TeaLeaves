@@ -16,3 +16,22 @@
  </tr>
 </table>
 </template>
+
+<template name="votingSmall">
+<table class="small-btn">
+ <tr>
+   {{#if unanswered}}
+     <td id="newVoteYes" class="btn btn-xs btn-success"><a href="#">Yes</a></td>
+     <td id="newVoteNo" class="btn btn-xs btn-danger"><a href="#">No</a></td>
+   {{/if}}
+   {{#if answeredYes}}
+     <td id="revoteYes" class="btn btn-xs  btn-success {{votedYes}}"><a href="#">Yes</a></td>
+     <td id="changeVoteNo" class="btn btn-xs btn-danger {{votedNo}}"><a href="#">No</a></td>
+   {{/if}}
+   {{#if answeredNo}}
+     <td id="changeVoteYes" class="btn btn-xs btn-success {{votedYes}}"><a href="#">Yes</a></td>
+     <td id="revoteNo" class="btn btn-xs btn-danger {{votedNo}}"><a href="#">No</a></td>
+   {{/if}}
+ </tr>
+</table>
+</template>

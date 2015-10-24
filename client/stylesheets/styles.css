@@ -31,36 +31,35 @@ li {
 .voteYes{
   background-color: green;
   padding: 30px, 30px, 30px 50px;
-font-size: 48px;
-font-weight: bold;
-width: 150px;
-text-align: center;
-
+  font-size: 48px;
+  font-weight: bold;
+  width: 150px;
+  text-align: center;
 }
 
 .voteYes a{
   text-decoration: none;
-color:black;
+  color:black;
 }
 .voteYes a:hover{
   text-decoration: none;
-color:black;
+  color:black;
 }
 .voteNo{
   background-color: red;
   padding: 30px, 30px, 30px 50px;
-font-size: 48px;
-font-weight: bold;
-width: 150px;
-text-align: center;
+  font-size: 48px;
+  font-weight: bold;
+  width: 150px;
+  text-align: center;
 }
 .voteNo a{
   text-decoration: none;
-color:black;
+  color:black;
 }
 .voteNo a:hover{
   text-decoration: none;
-color:black;
+  color:black;
 }
 
 .question-themes-list {
@@ -84,10 +83,6 @@ color:black;
   margin: 10px;
 }
 
-.view-question-filters {
-  text-align: center;
-}
-
 .social-list {
   list-style-type: circle;
 }
@@ -101,4 +96,26 @@ color:black;
 
 .submit-adjudication{
   margin-left: 60px;
+}
+
+.single-question {
+  width: 300px;
+  margin: 5px 0px;
+}
+
+a.question-link {
+  display: inline;
+}
+
+.small-btn {
+  float: right;
+}
+
+.grayed {
+  background-color: gray;
+}
+
+.profile-pic {
+  width: 175px;
+  height: 150px;
 }
