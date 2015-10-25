@@ -22,7 +22,9 @@
                     <input type="radio" class="viewQuestionBtn" name="viewQsBtn" value="6"> Top Rated
                 </label>
            </div>
-
+           <label class="btn btn-default">
+               <input type="checkbox" class="viewQuestionBtn" name="showClosed"> Show closed questions
+           </label>
     <div class="view-question-list">
       {{#if Template.subscriptionsReady}}
       {{ > Questions}}

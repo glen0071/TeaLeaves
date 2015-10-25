@@ -7,6 +7,18 @@ Template.viewQuestions.helpers({
 });
 
 Template.viewQuestions.events({
+  "change [name=showClosed]": function(event, template){
+    var btnValue = $('[name=showClosed]:checked').val();
+      if(btnValue=='on'){
+        Pages.set({
+          filters: {}
+        });
+      }else{
+        Pages.set({
+          filters: {closed: {$ne:true}}
+        });
+      }
+  },
   "change [name=viewQsBtn]": function(event, template){
     var btnValue = $('[name=viewQsBtn]:checked').val();
       switch (btnValue) {
@@ -21,9 +33,12 @@ Template.viewQuestions.events({
   });
           break;
         case "3":
+        $('[name=showClosed]:checked').prop('checked',false);
           Pages.set({
-    sort: {deadline: 1}
+    sort: {deadline: 1},
+    filters: {closed: {$ne:true}}
   });
+
           break;
         case "4":
           Pages.set({
