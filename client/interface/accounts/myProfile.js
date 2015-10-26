@@ -1,6 +1,7 @@
 // A user can view and edit his profile from here
 Template.myProfile.onCreated(function () {
     this.subscribe('questions', {limit: 100});
+    this.editProfileMode = new ReactiveVar( false );
 });
 
 Template.myProfile.helpers({
@@ -27,13 +28,29 @@ Template.myProfile.helpers({
     return Meteor.user().emails[0].address;
   },
   aboutMe: function() {
-    return Meteor.user().aboutMe;
+    return Meteor.user().profile['aboutme'];
+  },
+  editProfileMode: function() {
+    return Template.instance().editProfileMode.get();
+  },
+  name: function() {
+    return Meteor.user().profile['name'];
   }
 });
 
 Template.myProfile.events({
-  "submit form": function(event, template){
-    event.preventDefault();
-    var varEditTopics = $('[editTopics]').val();
-  }
+  'click #edit-profile-link': function(event, template){
+      event.preventDefault();
+      template.editProfileMode.set( true );
+  },
+  'submit form': function(event, template){
+      event.preventDefault();
+      var newUserName = $('[name=username]').val();
+      var newAboutMe = $('[name=aboutme]').val();
+      var newName = $('[name=name]').val();
+      Meteor.call('updateProfile', newUserName, newAboutMe, newName)
+
+      template.editProfileMode.set( false );
+  },
+
 });
