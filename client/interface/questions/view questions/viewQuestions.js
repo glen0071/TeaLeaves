@@ -4,8 +4,8 @@ Template.viewQuestions.onCreated(function () {
      //console.log('filters: '+EJSON.stringify(filters, {indent: true}));
      if(filters){
        Pages.set({
-              filters: filters}
-            );
+              filters: filters
+            });
     }
   });
 });
