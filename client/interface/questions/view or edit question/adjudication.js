@@ -49,9 +49,10 @@ Template.adjudication.events({
 //      console.log("click submit-adjudication");
       event.preventDefault();
       var answer=($('#adjudication-group label.active input').val());
+      var reason=$('[name=judge-reason]').val();
       var currentQuestion = this._id;
       //console.log('answer: '+answer);
-      Meteor.call('adjudicate', answer, currentQuestion, function(error,results) {
+      Meteor.call('adjudicate', answer, reason, currentQuestion, function(error,results) {
         if(error){
           console.log(error.reason);
         }else{

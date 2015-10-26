@@ -146,3 +146,18 @@ a.question-link {
 #question-record-div {
   margin-top: 15px;
 }
+
+/*           Adjudication Page            */
+#judge-reason {
+  margin: 5px 20px;
+  position: relative;
+  top: 30px;
+  left: 28px;
+  color: inherit;
+  border-width: thin;
+  border-color: #006dcc;
+  border-radius: 5px;
+}
+::-webkit-input-placeholder {color: rgba(0,109,204,.3);}
+::-moz-placeholder {color: rgba(0,109,204,.3);}
+:-ms-input-placeholder {color: rgba(0,109,204,.3);}
