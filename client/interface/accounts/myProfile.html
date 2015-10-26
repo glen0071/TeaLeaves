@@ -1,58 +1,75 @@
 <template name="myProfile">
-  <h3>My Profile</h3>
-  <div class="row">
-    <div class="user-info">
-      <div class="col-md-4">
-        <img src="assets/default_profile.jpg" alt="default profile photo" class="profile-pic" />
-        <h5>Username: {{userName}}</h5>
-        <h5>Email: {{email}}</h5>
-        <p>
-          {{aboutMe}}
-        </p>
+{{#if editProfileMode}}
+  <form>
+    <h2>My Profile &nbsp; &nbsp;<span id="save-profile-btn"><button type="submit" id="save-profile-link">Save Profile</button></span></h2>
+    <div class="row user-info-div">
+      <div class="col-xs-3">
+        <img src="assets/default_profile.jpg" alt="default profile photo" id="profile-pic" />
       </div>
+      <div class="col-xs-6">
+        <h5>Username: <input type="username" name="username" value="{{userName}}"></h5>
+        <p>Name: <input type="name" name="name" value="{{name}}"></p>
+        <h5>Email: <input type="email" name="email" value="{{email}}"></h5>
+        <p>  About me: <textarea type="aboutme" name="aboutme" value="{{aboutMe}}"></textarea></p>
+      </div>
+      <div class="col-md-3">
+        Following:
+          Topics, Users
+      </div>
+    </div> <!--user info closing dive-->
+  </form>
+{{else}}
+  <h2>My Profile &nbsp; &nbsp;<span id="edit-profile-btn"><a href="#" id="edit-profile-link">Edit Profile</a></span></h2>
+  <div class="row user-info-div">
+    <div class="col-sm-3">
+      <img src="assets/default_profile.jpg" alt="default profile photo" id="profile-pic" />
     </div>
-      <div class="col-md-8">
-        <div class="question-record">
-          {{#if questionsAsked}}
-            <p>
-              Questions you've created:
+    <div class="col-md-6">
+      <h5>Username: {{userName}}</h5>
+      <p>Name: {{name}}</p>
+      <h5>Email: {{email}}</h5>
+      <p>About me: {{aboutMe}}</p>
+    </div>
+    <div class="col-md-3">
+      Following:
+        Topics, Users
+    </div>
+  </div> <!--user info closing dive-->
+{{/if}}
 
-                  <ul>
-                    {{#each questionsUserAsked}}
-                      {{> viewQuestion}}
-                    {{/each}}
-                  </ul>
-            </p>
-          {{else}}
-            <br>
-            <h4>Click <a href="{{pathFor route='addQuestion'}}">here</a> to write your first question!</h4>
-          {{/if}}
-          {{#if questionsAnswered}}
-            <p>
-              Questions you've answered:
-              <ul>
-                {{#each questionsUserAnswered}}
-                  {{> viewQuestion}}
-                {{/each}}
-              </ul>
-            </p>
-          {{else}}
-            <br>
-            <h4>Click <a href="{{pathFor route='viewQuestions'}}">here</a> to answer your first question!</h4>
-            <br>
-          {{/if}}
-        </div>
+  <div class="row" id="question-record-div">
+    <div class="col-lg-12">
+      {{#if questionsAnswered}}
+        <p>
+          Questions you've answered:
+          <ul>
+            {{#each questionsUserAnswered}}
+              {{> viewQuestion}}
+            {{/each}}
+          </ul>
+        </p>
+      {{else}}
+        <br>
+        <h4>Click <a href="{{pathFor route='viewQuestions'}}">here</a> to answer your first question!</h4>
+        <br>
+      {{/if}}
+      {{#if questionsAsked}}
+        <p>
+          Questions you've created:
+          <ul>
+            {{#each questionsUserAsked}}
+              {{> viewQuestion}}
+            {{/each}}
+          </ul>
+        </p>
+      {{else}}
+        <br>
+        <h4>Click <a href="{{pathFor route='addQuestion'}}">here</a> to write your first question!</h4>
+      {{/if}}
+    </div>
+  </div> <!--question record div-->
 
-        {{#if 'editFollowing'}}
-        <form>
-          <input type="text" value="{{followingThemes}}" name="EditTopics">
-          <input type="submit">
-        </form>
-        {{else}}
-          {{followingThemes}}
-          {{followingUsers}}
-        {{/if}}
-      </div>
-  </div>
 
 </template>
+
+<!-- Allow user to see popularity of questions they've created? show number of answers or upvotes a question has? -->

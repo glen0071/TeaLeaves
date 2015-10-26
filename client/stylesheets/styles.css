@@ -111,11 +111,38 @@ a.question-link {
   float: right;
 }
 
-.grayed {
-  background-color: gray;
-}
-
-.profile-pic {
+#profile-pic {
   width: 175px;
   height: 150px;
+  padding: 10px;
+}
+
+#edit-profile-btn {
+  font-size: 10px;
+  line-height: 10px;
+}
+
+#edit-profile-link {
+  color: black;
+  border: black solid 1px;
+  padding: 0px 8px;
+  background-color: rgba(220,220,220,.5);
+  border-radius: 50px;
+}
+
+#save-profile-btn {
+  font-size: 10px;
+  line-height: 10px;
+}
+
+#save-profile-link {
+  color: darkblue;
+  border: darkblue solid 1px;
+  padding: 0px 8px;
+  background-color: rgba(135,206,250,.3);
+  border-radius: 50px;
+}
+
+#question-record-div {
+  margin-top: 15px;
 }
