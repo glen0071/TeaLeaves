@@ -1,25 +1,46 @@
 Template.viewQuestions.onCreated(function () {
-
+  this.autorun(function(c){
+    var filters=Session.get('filters');
+     //console.log('filters: '+EJSON.stringify(filters, {indent: true}));
+     if(filters){
+       Pages.set({
+              filters: filters}
+            );
+    }
+  });
 });
 
 Template.viewQuestions.helpers({
-
+  theme:function(){
+    return Iron.controller().getParams().theme;
+  },
+  filters:function(){
+    var filterz = Session.get('filters');
+    return (_.pairs(_.omit(filterz,'closed')));
+  }
 });
 
 Template.viewQuestions.events({
-  "change [name=showClosed]": function(event, template){
-    var btnValue = $('[name=showClosed]:checked').val();
-      if(btnValue=='on'){
-        Pages.set({
-          filters: {}
-        });
-      }else{
-        Pages.set({
-          filters: {closed: {$ne:true}}
-        });
-      }
+  "click [class=close]":function(event,template){
+    Router.go('viewQuestions');
   },
-  "change [name=viewQsBtn]": function(event, template){
+      "change [name=showClosed]": function(event, template) {
+        var btnValue = $('[name=showClosed]:checked').val();
+        var filters = Session.get('filters');
+
+        if (btnValue == 'on') {
+          if(filters && filters.closed){
+            delete filters.closed;
+          }
+        } else {
+          filters.closed = {
+            $ne: true
+          };
+        }
+        Session.set('filters', filters);
+      },
+    "change [name=viewQsBtn]": function(event, template){
+      var filters = Session.get('filters');
     var btnValue = $('[name=viewQsBtn]:checked').val();
       switch (btnValue) {
         case "1":
@@ -35,10 +56,11 @@ Template.viewQuestions.events({
         case "3":
         $('[name=showClosed]:checked').prop('checked',false);
           Pages.set({
-    sort: {deadline: 1},
-    filters: {closed: {$ne:true}}
-  });
-
+    sort: {deadline: 1} });
+    filters.closed = {
+      $ne: true
+    };
+    Session.set('filters', filters);
           break;
         case "4":
           Pages.set({
