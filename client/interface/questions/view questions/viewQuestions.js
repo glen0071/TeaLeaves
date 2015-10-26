@@ -10,6 +10,14 @@ Template.viewQuestions.onCreated(function () {
   });
 });
 
+Template.viewQuestions.onDestroyed(function(){
+
+Session.set('filters',null);
+Pages.set({
+  sort: {createdOn: -1} });
+
+});
+
 Template.viewQuestions.helpers({
   theme:function(){
     return Iron.controller().getParams().theme;
