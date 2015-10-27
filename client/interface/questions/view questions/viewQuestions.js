@@ -116,3 +116,33 @@ Template.viewQuestion.events({
   },
 
 });
+
+Template.viewQuestion.helpers({
+  relevantInfo:function(){
+    var btnValue = $('[name=viewQsBtn]:checked').val();
+      if (btnValue==1 || btnValue ==2 || btnValue == null) {
+            var created=this.createdOn;
+            var createdMoment = moment(created);
+            var timeAgo = createdMoment.fromNow();
+            return "created "+timeAgo;
+    }else if (btnValue == 3 || btnValue == 7){
+        var deadline=this.deadline;
+        var deadMoment = moment(deadline);
+        var timeLeft = deadMoment.fromNow();
+        var ended = deadMoment.isBefore(moment());
+        if (ended){
+          return "ended "+timeLeft;
+        }else{
+          return "ends "+timeLeft;
+        }
+    }else if (btnValue == 4 || btnValue == 5){
+      var answers = this.answers;
+      return answers.length+" answers"
+    }else if (btnValue == 6){
+      var upvotes = this.upVotes;
+      return upvotes+" upvotes"
+    }else {
+    return "";
+  }
+}
+});

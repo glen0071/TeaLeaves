@@ -79,6 +79,12 @@ li {
   text-decoration: underline;
 }
 
+.relevantInfo{
+  color:grey;
+  font-size: 11px;
+  padding-left: 15px;
+}
+
 .view-question-list {
   margin: 10px;
 }

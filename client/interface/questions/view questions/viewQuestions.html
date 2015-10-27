@@ -56,7 +56,7 @@
 <template name="viewQuestion">
   <li class="single-question">
     <a href="{{pathFor 'questionDetail'}}" class="question-link">
-      {{headline}}</a>     {{#each themes}}<a href="#" class="theme-link">{{this}}</a> {{/each}} {{#unless deadlinePassed}}{{> votingSmall}}{{/unless}}
+      {{headline}}</a>     {{#each themes}}<a href="#" class="theme-link">{{this}}</a> {{/each}} <span class="relevantInfo">{{relevantInfo}}</span> {{#unless deadlinePassed}}{{> votingSmall}}{{/unless}}
   </li>
 </template>
 
