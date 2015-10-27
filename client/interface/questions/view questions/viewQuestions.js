@@ -24,7 +24,8 @@ Template.viewQuestions.helpers({
   },
   filters:function(){
     var filterz = Session.get('filters');
-    return (_.pairs(_.omit(filterz,'closed')));
+    var pairs = _.pairs(_.omit(filterz,'closed','adjudicatedOn','createdBy'));
+    return pairs;
   }
 });
 
@@ -49,6 +50,10 @@ Template.viewQuestions.events({
       },
     "change [name=viewQsBtn]": function(event, template){
       var filters = Session.get('filters');
+      $('[name=showClosed]').prop('disabled',false);
+      delete filters.adjudicatedOn;
+      delete filters.createdBy;
+
     var btnValue = $('[name=viewQsBtn]:checked').val();
       switch (btnValue) {
         case "1":
@@ -62,13 +67,13 @@ Template.viewQuestions.events({
   });
           break;
         case "3":
-        $('[name=showClosed]:checked').prop('checked',false);
+        $('[name=showClosed]').prop('checked',false);
+        $('[name=showClosed]').prop('disabled',true);
           Pages.set({
     sort: {deadline: 1} });
     filters.closed = {
       $ne: true
     };
-    Session.set('filters', filters);
           break;
         case "4":
           Pages.set({
@@ -85,7 +90,21 @@ Template.viewQuestions.events({
     sort: {upVotes: -1}
   });
           break;
+          case "7":
+            Pages.set({
+      sort: {deadline: -1}
+    });
+    filters.closed = true;
+    filters.adjudicatedOn = {
+      $exists:false
+    };
+    filters.createdBy = Meteor.userId();
+    $('[name=showClosed]').prop('checked',true);
+    $('[name=showClosed]').prop('disabled',true);
+            break;
       }
+      Session.set('filters', filters);
+
   },
 });
 
