@@ -1,13 +1,12 @@
 <template name="addQuestion">
   <h4 class="text-center">Add Question</h4>
-
     <form class="add-question-form">
       <ul>
         <li><input name="headline" placeholder="Headline" class="add-question-field" required></li>
         <li><textarea name="text" placeholder="What would you like to ask?" class="add-question-field question-text"></textarea></li>
         <li><input name="themes" placeholder="themes" class="add-question-field"></li>
         Deadline:<br>
-        <div class="input-group datetimepicker">
+          <div class="input-group datetimepicker">
             <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
             <input class="set-due-date form-control" type="text" placeholder="Deadline for answering"/>
           </div>
@@ -16,5 +15,4 @@
         </li>
       </ul>
     </form>
-
 </template>

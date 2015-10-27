@@ -19,7 +19,7 @@ var validator = $('.add-question-form').validate({
         }
       });
     }
-});
+  });
 });
 
 Template.addQuestion.events({
@@ -27,7 +27,7 @@ Template.addQuestion.events({
     event.preventDefault();
   }
 });
+
 Template.addQuestion.onRendered(function() {
     this.$('.datetimepicker').datetimepicker({minDate:new Date().setHours(0,0,0,0),defaultDate:moment().add(3, 'days')});
-
 });

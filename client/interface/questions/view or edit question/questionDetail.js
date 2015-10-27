@@ -1,11 +1,22 @@
+Template.questionDetail.onCreated(function() {
+  this.editQuestionMode = new ReactiveVar( false );
+});
+
 Template.questionDetail.helpers({
+  questionBelongsToCurrentUser: function() {
+    var createdBy = this.createdBy;
+    var currentUser = Meteor.userId();
+    return (createdBy === currentUser);
+  },
   questions: function(){
     return Questions.find();
+  },
+  showthemes: function() {
+    return this.themes.join(', ');
   },
   userName:function(){
     var user = Meteor.users.findOne({_id:this.createdBy});
     return user.username ? user.username : user.emails[0].address;
-
   },
   createdOnString:function(){
     var created=this.createdOn;
@@ -73,6 +84,21 @@ Template.questionDetail.helpers({
     if(filtered.length == 1) {
       return "disabled"
     }
+  },
+  editQuestionMode: function() {
+    return Template.instance().editQuestionMode.get();
+  },
+  testingtesting1: function() {
+   return this.deadline;
+  },
+  testingtesting2: function() {
+   return this.deadline.toString();
+  },
+  testingtesting3: function() {
+   return this.deadline.parse();
+  },
+  testingtesting4: function() {
+   return this.deadline.toISOString();
   }
 });
 
@@ -90,7 +116,7 @@ Template.questionDetail.events({
     'click #newVoteYes': function(event) {
       event.preventDefault();
       var currentUser = Meteor.userId();
-      currentQuestion = this._id;
+      var currentQuestion = this._id;
       if(!currentUser){
         alert('sorry, you must be logged in to do that. Please sign up or login now!')
       } else {
@@ -134,5 +160,29 @@ Template.questionDetail.events({
     'click #revoteNo': function(event) {
       event.preventDefault();
       alert("you already voted No");
+    },
+    'click #edit-question-link': function(event, template){
+        event.preventDefault();
+        template.editQuestionMode.set( true );
+
+    },
+    'submit form': function(event, template){
+        event.preventDefault();
+        var currentQuestion = this._id;
+        var newHeadline = $('[name=editHeadline]').val();
+        var newText = $('[name=editText]').val();
+        var newThemes = $('[name=editThemes]').val().split(/,+\s*/);
+        var newDeadline = $('.datetimepicker').data("DateTimePicker").date().toDate();
+        Meteor.call('updateQuestion', currentQuestion, newHeadline, newText, newThemes, newDeadline)
+        template.editQuestionMode.set( false );
+    },
+    'click #cancel-edits-link': function(event, template){
+        event.preventDefault();
+        template.editQuestionMode.set( false );
     }
+});
+
+Template.changeDeadline.onRendered(function() {
+    var currentDeadline = Template.parentData(0).deadline;
+    this.$('.datetimepicker').datetimepicker({defaultDate:currentDeadline});
 });

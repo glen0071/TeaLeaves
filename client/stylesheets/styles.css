@@ -157,7 +157,31 @@ a.question-link {
   border-width: thin;
   border-color: #006dcc;
   border-radius: 5px;
+
 }
-::-webkit-input-placeholder {color: rgba(0,109,204,.3);}
-::-moz-placeholder {color: rgba(0,109,204,.3);}
-:-ms-input-placeholder {color: rgba(0,109,204,.3);}
+
+/*           Edit Question Page            */
+#edit-question-headline {
+  font-size: 17px;
+  width: 650px;
+  margin: 10px 0px;
+}
+
+#description-label {
+  position: relative;
+  bottom: 15px;
+  margin-top: 10px;
+}
+
+#edit-question-text {
+  font-size: 14px;
+  width: 650px;
+  position: relative;
+  top: 20px;
+  left: 5px;
+  margin-top: 0px;
+}
+
+#edit-question-themes {
+  width: 600px;
+}

@@ -1,5 +1,19 @@
 <template name="questionDetail">
   {{#if Template.subscriptionsReady}}
+
+  {{#if editQuestionMode}}
+      {{testing}}
+      <form>
+        <h3>Question: <input type="test" name="editHeadline" id="edit-question-headline" value="{{headline}}"></h3>
+        <p id="description-label">Description: <textarea name="editText" id="edit-question-text" rows="3" value="{{text}}"></textarea></p>
+        <p>Themes: <input name="editThemes" id="edit-question-themes" value="{{showthemes}}"></p>
+        <p class="created-by">asked by <a href="#" class="profile-link">{{userName}}</a> on {{createdOnString}}</p>
+        <p>
+           <button type="submit">Save your changes</button>  <button id="cancel-edits-link">Cancel edits</button>
+        </p>
+        {{> changeDeadline}}
+      </form>
+  {{else}}  <!-- Edit Question Mode else-->
     <h3>
       {{headline}} &nbsp; &nbsp; {{> upVoteIcon}}
     </h3>
@@ -13,9 +27,26 @@
   <p class="created-by">asked by <a href="#" class="profile-link">{{userName}}</a> on {{createdOnString}}</p>
   <p class="question-text">{{text}}</p>
 {{> deadlineInfo}}
-{{else}}
-  <p>
-    articulating question...
-  </p>
-{{/if}}
+
+    {{#if questionBelongsToCurrentUser}}
+        <p>
+           As the author of this question, you have 48 hours to edit this question. <a href="#" id="edit-question-link"><em>Click here</em></a> to enter edit this question.
+        </p>
+    {{/if}}  <!-- CurrentUser Edit button closing /if-->
+
+    {{/if}}  <!-- Edit Question Mode closing /if-->
+{{else}}  <!--template subscription else-->
+      <p>
+        articulating question...
+      </p>
+
+{{/if}}   <!--template subscription is ready closing /if-->
+
+</template>
+
+<template name="changeDeadline">
+  <div class="input-group datetimepicker">
+    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+    <input class="set-due-date form-control" type="text"/>
+  </div>
 </template>
