@@ -9,7 +9,7 @@
         <p>Themes: <input name="editThemes" id="edit-question-themes" value="{{showthemes}}"></p>
         <p class="created-by">asked by <a href="#" class="profile-link">{{userName}}</a> on {{createdOnString}}</p>
         <p>
-           <button type="submit">Save your changes</button>  <button id="cancel-edits-link">Cancel edits</button>
+           <button type="submit">Save your changes</button> <button id="delete-question" class="btn-danger">Delete</button>  <button id="cancel-edits-link">Cancel edits</button>
         </p>
         {{> changeDeadline}}
       </form>
@@ -30,7 +30,7 @@
 
     {{#if questionBelongsToCurrentUser}}
         <p>
-           As the author of this question, you have 48 hours to edit this question. <a href="#" id="edit-question-link"><em>Click here</em></a> to enter edit this question.
+           As the author of this question, you may <a href="#" id="edit-question-link"><em>click here</em></a> to enter edit this question.
         </p>
     {{/if}}  <!-- CurrentUser Edit button closing /if-->
 

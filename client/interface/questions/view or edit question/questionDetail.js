@@ -179,6 +179,15 @@ Template.questionDetail.events({
     'click #cancel-edits-link': function(event, template){
         event.preventDefault();
         template.editQuestionMode.set( false );
+    },
+    'click #delete-question': function(event, template){
+      event.preventDefault();
+      var currentQuestion = this._id;
+      var confirmed = window.confirm("Are you sure you'd like to delete this question?")
+      if(confirmed){
+        Meteor.call('deleteQuestion', currentQuestion);
+        Router.go('myProfile');
+      }
     }
 });
 
