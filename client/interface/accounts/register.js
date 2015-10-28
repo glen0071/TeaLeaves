@@ -62,6 +62,8 @@ $.validator.setDefaults({
             }
           } else {
             Meteor.loginWithPassword(varEmail, varPassword);
+            var user = Meteor.userId();
+            Meteor.call('addDefaultRole', user);
             Router.go("viewQuestions");
           }
       });
