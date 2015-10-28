@@ -1,3 +1,6 @@
+Meteor.publish("allUsersData", function(){
+  return Meteor.users.find();
+});
 
 Meteor.publish("allUserData", function () {
   return Meteor.users.find({}, {fields: {'username':1,'emails': 1,'points':1}});

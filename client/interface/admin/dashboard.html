@@ -1,9 +1,54 @@
+<template name="dashboard">
+  <h3>User List</h3>
+  <div class="row">
+    <div class="col-xs-12">
+      User Count: {{userCount}}
+      <ul>
+        {{#each userList}}
+          {{> oneUser}}
+        {{/each}}
+      </ul>
+    </div>
+
+  <div class="col-xs-6">
+    <h3>Create New Users</h3>
+    <form><ul>
+      <li><input type="email" name="email" placeholder="email here" required></li>
+      <li><input type="username" name="username" placeholder="username (optional)"></li>
+      <li><input type="password" name="password" placeholder="password"></li>
+      <li>Points: <input style="width:75px" type="number" name="points" placeholder="0"></li>
+      <li><select name="user-type">
+        <option value="default-user">default-user</option>
+        <option value="admin">admin</option>
+      </select></li>
+      <li><button type="submit">Enter</button></li>
+    </ul></form>
+
+
+  </div>
+
+  </div>
+</template>
+
+<template name="oneUser">
+  <li style="width:100%"><span style="font-weight:bold">Username:</span>{{username}} role:
+    <span style="font-weight:bold">Role:</span>{{roles}}
+    <span style="font-weight:bold">Email:</span>{{email}}
+    <span style="font-weight:bold">Joined:</span>{{createdAt}}
+    <span style="font-weight:bold">ID:</span>{{_id}}
+    <button name="delete-user">Delete</button>
+  </li>
+</template>
+
 <!--
 
 
 onestop page displaying site activity
 
 Include statistics on
+- edit users
+- Page visits, daily, weekly, etc.
+- Logged in users daily, weekly, etc.
 - listing and accounting of users
 - most active users
 - most active Questions
