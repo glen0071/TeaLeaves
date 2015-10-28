@@ -1,9 +1,7 @@
 <template name="questionDetail">
   {{#if Template.subscriptionsReady}}
 
-  {{#if isInRole 'admin'}}
-    <p><buton id="edit-question-link">Click</buton> for edit mode</p>
-  {{/if}}
+
 
   {{#if editQuestionMode}}
       {{testing}}
@@ -45,6 +43,15 @@
       </p>
 
 {{/if}}   <!--template subscription is ready closing /if-->
+
+<footer>
+  {{#if isInRole 'admin'}}
+    <div id="admin-console">
+      <p>Admin Option:<br>
+        <button id="admin-edit-btn">Click</button> for edit mode</p>
+    </div>
+  {{/if}}
+</footer>
 
 </template>
 

@@ -191,3 +191,13 @@ a.question-link {
 #edit-question-themes {
   width: 600px;
 }
+
+#admin-console {
+  background-color: rgba(184, 230, 230,.2);
+  padding-left: 4px;
+  padding-top: 4px;
+  padding-bottom: 1px;
+  width: 150px;
+  float: right;
+
+}

@@ -1,5 +1,5 @@
 Template.questionDetail.onCreated(function() {
-  this.editQuestionMode = new ReactiveVar( false );
+    editQuestionMode = this.editQuestionMode = new ReactiveVar( false );
 });
 
 Template.questionDetail.helpers({
@@ -188,6 +188,10 @@ Template.questionDetail.events({
         Meteor.call('deleteQuestion', currentQuestion);
         Router.go('myProfile');
       }
+    },
+    'click #admin-edit-btn': function(event, template){
+      event.preventDefault();
+      editQuestionMode.toggle();
     }
 });
 
