@@ -29,7 +29,7 @@ Template.dashboard.events({
           followingThemes: [],
           followingUsers: []
     },function(){
-      var user = Meteor.userId();
+      var user = this._id;
       if(varRole==="admin"){
         Meteor.call('addAdmin', user, varPoints);
       } else {

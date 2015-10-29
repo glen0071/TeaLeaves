@@ -1,23 +1,17 @@
 <template name="leaderboard">
   <h2>Leaderboard!!</h2>
   <ul>
-    {{#each test}}
-      {{ name}}
-    {{/each}}
-  </ul>
-  <ul>
     {{#each leaders}}
-      <li>Username: {{username}}, Points: {{points}}</li>
+      {{> leader}}
     {{/each}}
   </ul>
 </template>
 
-<template name="oneLeader">
+<template name="leader">
   <li>
     <span style="font-weight:bold">Username:</span>{{username}}
     <span style="font-weight:bold">Points:</span>{{points}}
   </li>
 </template>
-
 
 <!-- I wonder if we should require usernames? Might make this type of function more usable -->

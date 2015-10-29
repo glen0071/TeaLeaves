@@ -1,4 +1,7 @@
 <template name="dashboard">
+
+  {{#if isInRole 'admin'}}
+
   <h3>User List</h3>
   <div class="row">
     <div class="col-xs-12">
@@ -28,6 +31,14 @@
   </div>
 
   </div>
+
+  {{else}}
+
+    <h3>It appears that this page is not available. </h3>
+    <h4>Please contact the website administrators by <a href="#">clicking here</a> if you think something went wrong </h4>
+
+  {{/if}}
+
 </template>
 
 <template name="oneUser">
@@ -39,6 +50,7 @@
     <span style="font-weight:bold">Points:</span>{{points}}
     <button name="delete-user">Delete</button>
   </li>
+
 </template>
 
 <!--
