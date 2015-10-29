@@ -6,6 +6,10 @@ Meteor.publish("allUserData", function () {
   return Meteor.users.find({}, {fields: {'username':1,'emails': 1,'points':1}});
 });
 
+Meteor.publish("editUserData", function () {
+  return Meteor.users.find();
+});
+
 Meteor.publish("userData", function (user) {
     return Meteor.users.find({_id: (user?user : this.userId)}, //get passed in user, otherwise currently logged in one
         {fields: {'username':1,'emails':1,'points':1}});

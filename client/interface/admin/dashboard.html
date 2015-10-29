@@ -5,7 +5,9 @@
   <h3>User List</h3>
   <div class="row">
     <div class="col-xs-12">
-      User Count: {{userCount}}
+
+      <h4>Total Number of Users: {{userCount}}</h4>
+
       <ul>
         {{#each userList}}
           {{> oneUser}}
@@ -14,29 +16,38 @@
     </div>
 
   <div class="col-xs-6">
-    <h3>Create New Users</h3>
+    {{#if editUserMode}}
+
+      {{> editUser}}
+
+    {{else}}
+
+    <h3>Create New User</h3>
     <form><ul>
-      <li><input type="email" name="email" placeholder="email here" required></li>
-      <li><input type="username" name="username" placeholder="username (optional)"></li>
-      <li><input type="password" name="password" placeholder="password"></li>
-      <li>Points: <input style="width:75px" type="number" name="points" placeholder="0"></li>
+      <li><input type="email" name="email" placeholder="email here"></li>
+      <li><input type="username" name="username" placeholder="username" ></li>
+      <li><input type="password" name="password" placeholder="password" ></li>
+      <li>Points: <input style="width:75px" type="number" name="points" placeholder="0" ></li>
       <li><select name="user-type">
         <option value="default-user">default-user</option>
         <option value="admin">admin</option>
       </select></li>
       <li><button type="submit">Enter</button></li>
     </ul></form>
-
-
+    {{/if}}
   </div>
-
+  <div>
+    <ul>
+      <li>Question Created Today:</li>
+      <li>Most Popular Question:</li>
+      <li>Question Created Today:</li>
+      <li>Question Created Today:</li>
+    </ul>
   </div>
-
+  </div>
   {{else}}
-
     <h3>It appears that this page is not available. </h3>
     <h4>Please contact the website administrators by <a href="#">clicking here</a> if you think something went wrong </h4>
-
   {{/if}}
 
 </template>
@@ -48,9 +59,24 @@
     <span style="font-weight:bold">Joined:</span>{{createdAt}}
     <span style="font-weight:bold">ID:</span>{{_id}}
     <span style="font-weight:bold">Points:</span>{{points}}
+    <a name="edit-user" href="/editUser/{{_id}}">Edit</a>
     <button name="delete-user">Delete</button>
   </li>
+</template>
 
+<template name="editUser">
+  <h3>Edit This User</h3>
+  <form><ul>
+    <li><input type="email" name="email" value="{{email}}"></li>
+    <li><input type="username" name="username" value="{{username}}"></li>
+    <li><input type="password" name="password"  value="{{password}}"></li>
+    <li>Points: <input style="width:75px" type="number" name="points" value="{{points}}"></li>
+    <li><select name="user-type">
+      <option value="default-user">default-user</option>
+      <option value="admin">admin</option>
+    </select></li>
+    <li><button type="submit">Enter</button></li>
+  </ul></form>
 </template>
 
 <!--

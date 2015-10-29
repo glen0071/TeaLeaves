@@ -1,11 +1,18 @@
 Template.dashboard.onCreated(function(){
-Meteor.subscribe("allUsersData");
+  Meteor.subscribe("allUsersData");
+  editUserMode = this.editUserMode = new ReactiveVar( false );
 });
 
 Template.dashboard.helpers({
-    userList: function(){
-      return Meteor.users.find();
+    userCount: function(){
+      return Meteor.users.find().count();
     },
+    userList: function(){
+      return Meteor.users.find({}, {sort: {createdAt: -1}});
+    },
+    editUserMode: function(){
+      return Template.instance().editUserMode.get();
+    }
 });
 
 Template.dashboard.events({
@@ -16,30 +23,32 @@ Template.dashboard.events({
     var varPassword = tpl.$('[name=password]').val();
     var varPoints = tpl.$('[name=points]').val();
     var varRole = tpl.$('[name=user-type]').val();
-
-    console.log('points: ' + varPoints);
-
-    Accounts.createUser({
-          email: varEmail,
-          password: varPassword,
-          username: varUsername,
-          createdOn: new Date(),
-          points: 0,
-          roles: varRole,
-          followingThemes: [],
-          followingUsers: []
-    },function(){
-      var user = this._id;
-      if(varRole==="admin"){
-        Meteor.call('addAdmin', user, varPoints);
-      } else {
-        Meteor.call('addDefaultRole', user, varPoints);
-      }
-    });
+    Meteor.call('adminCreateUser', varEmail, varUsername, varPassword, varPoints, varRole)
   },
-  'click [name=delete-user]': function(){
+  'click [name=delete-user]': function(event, tpl){
+    event.preventDefault()
+    var userId = this._id;
+    Meteor.call('deleteUser', userId)
+  },
+  'click [name=edit-user]': function(event, tpl){
+    // event.preventDefault();
     var userId = this._id;
     console.log(userId);
-    Meteor.call('deleteUser', userId)
+    // editUserMode.toggle();
   }
+});
+
+Template.editUser.events({
+  "submit form": function(event, tpl){
+    event.preventDefault();
+    var userId = this._id;
+    var varEmail = tpl.$('[name=email]').val();
+    var varUsername = tpl.$('[name=username]').val();
+    var varPassword = tpl.$('[name=password]').val();
+    var varPoints = tpl.$('[name=points]').val();
+    var varRole = tpl.$('[name=user-type]').val();
+    Meteor.call('adminEditUser', userId, varEmail, varUsername, varPassword, varPoints, varRole);
+    Router.go("dashboard");
+  }
+
 });
