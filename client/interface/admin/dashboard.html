@@ -16,11 +16,7 @@
     </div>
 
   <div class="col-xs-6">
-    {{#if editUserMode}}
 
-      {{> editUser}}
-
-    {{else}}
 
     <h3>Create New User</h3>
     <form><ul>
@@ -34,7 +30,7 @@
       </select></li>
       <li><button type="submit">Enter</button></li>
     </ul></form>
-    {{/if}}
+
   </div>
   <div>
     <ul>
@@ -59,7 +55,7 @@
     <span style="font-weight:bold">Joined:</span>{{createdAt}}
     <span style="font-weight:bold">ID:</span>{{_id}}
     <span style="font-weight:bold">Points:</span>{{points}}
-    <a name="edit-user" href="/editUser/{{_id}}">Edit</a>
+    <a id="edit-user-btn" name="edit-user" href="/editUser/{{_id}}">Edit</a>
     <button name="delete-user">Delete</button>
   </li>
 </template>

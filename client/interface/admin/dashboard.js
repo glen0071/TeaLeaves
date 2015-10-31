@@ -45,7 +45,7 @@ Template.editUser.events({
     var varEmail = tpl.$('[name=email]').val();
     var varUsername = tpl.$('[name=username]').val();
     var varPassword = tpl.$('[name=password]').val();
-    var varPoints = tpl.$('[name=points]').val();
+    var varPoints = parseInt(tpl.$('[name=points]').val());
     var varRole = tpl.$('[name=user-type]').val();
     Meteor.call('adminEditUser', userId, varEmail, varUsername, varPassword, varPoints, varRole);
     Router.go("dashboard");
