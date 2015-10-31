@@ -32,3 +32,10 @@ underscore
 themeteorchef:jquery-validation
 alanning:roles
 dferber:reactive-var-toggle
+accounts-facebook
+accounts-google
+accounts-twitter
+service-configuration
+http
+email
+meteorhacks:ssr
