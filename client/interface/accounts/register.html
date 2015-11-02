@@ -1,9 +1,18 @@
 <template name="register">
   <h2>Register</h2>
-  <form class="register">
-    <li><input type="email" name="email" placeholder="email here" required></li>
-    <li><input type="username" name="username" placeholder="username (optional)"></li>
-    <li><input type="password" name="password" placeholder="password"></li>
-    <li><button type="submit">Enter</button></li>
-  </form>
+  <div class='row'>
+    <div class="col-sm-6">
+      <form class="register">
+        <li class="entry-field"><input type="email" name="email" placeholder="email here" required></li>
+        <li class="entry-field"><input type="username" name="username" placeholder="username (optional)"></li>
+        <li class="entry-field"><input type="password" name="password" placeholder="password"></li>
+        <li class="entry-field"><button type="submit">Enter</button></li>
+      </form>
+    </div>
+
+    <div class="col-sm-6">
+      {{> externalLogin}}
+    </div>
+</div>
+
 </template>
