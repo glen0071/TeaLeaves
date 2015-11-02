@@ -1,47 +1,21 @@
 <template name="login">
-
-<!-- Facebook config -->
-<script>
-window.fbAsyncInit = function() {
-  FB.init({
-    appId      : '1725431744356376',
-    xfbml      : true,
-    version    : 'v2.5'
-  });
-};
-
-(function(d, s, id){
-   var js, fjs = d.getElementsByTagName(s)[0];
-   if (d.getElementById(id)) {return;}
-   js = d.createElement(s); js.id = id;
-   js.src = "//connect.facebook.net/en_US/sdk.js";
-   fjs.parentNode.insertBefore(js, fjs);
- }(document, 'script', 'facebook-jssdk'));
-</script>
-<!-- Facebook config end -->
-
-
-
   <h2>Login</h2>
+
+  <div class='row'>
+    <div class="col-sm-6">
+
   <form class="login">
-    <li><input type="email" name="email" placeholder="email here" required></li>
-    <li><input type="password" name="password" placeholder="password"></li>
-    <li><button type="submit">Enter</button></li>
+    <li class="entry-field"><input type="email" name="email" placeholder="email here" required></li>
+    <li class="entry-field"><input type="password" name="password" placeholder="password"></li>
+    <li class="entry-field"><button type="submit">Enter</button></li>
   </form>
-  <ul class="external-logins btn-list">
-    <li><button type="button" class="btn btn-social-login btn-facebook">Facebook</button></li>
-    <li><button type="button" class="btn btn-social-login btn-twitter">Twitter</button></li>
-    <li><button type="button" class="btn btn-social-login btn-google">Google</button></li>
-  </ul>
 
-<!-- Facebook kitsch  -->
-  <div
-  class="fb-like"
-  data-share="true"
-  data-width="450"
-  data-show-faces="true">
+  <a href="{{pathFor route="recoverPassword"}}">Forgot your password?</a>
 </div>
-<!-- Facebook kitsch end  -->
 
+<div class="col-sm-6">
+  {{> externalLogin}}
+</div>
+</div>
 
 </template>

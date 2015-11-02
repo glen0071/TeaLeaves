@@ -1,3 +1,5 @@
+/*           Entire Site            */
+
 .container {
   padding-top: 30px;
   padding-bottom:30px;
@@ -10,14 +12,14 @@ li {
   list-style-type: none;
 }
 
+/*           Question Detail Page            */
+
+
 .question-text {
   width: 300px;
   height: 80px;
 }
 
-.add-question-field {
-  margin: 4px;
-}
 .themes{
   font-size: 11px;
   font-style: italic;
@@ -117,6 +119,14 @@ a.question-link {
   float: right;
 }
 
+/*       Add Question page       */
+
+.add-question-field {
+  margin: 4px;
+}
+
+/*       Profile page       */
+
 #profile-pic {
   width: 175px;
   height: 150px;
@@ -211,3 +221,82 @@ a.question-link {
   float: right;
 
 }
+
+/*        Login and Sign pages           */
+
+.entry-field {
+  margin: 5px 0px;
+}
+
+.external-logins {
+  padding: 0;
+  display: block;
+}
+
+.btn-social-login {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.customGPlusSignIn {
+  margin:5px 0px;
+
+}
+
+/*       Google sign in icon        */
+
+#customBtn-google {
+     display: inline-block;
+     background: #DD4B39;
+     color: white;
+     width: 135px;
+     border-radius: 5px;
+     white-space: nowrap;
+   }
+
+   #customBtn:hover {
+     cursor: pointer;
+   }
+   span.label {
+     font-weight: bold;
+   }
+   span.icon {
+     background: url('/identity/sign-in/g-normal.png') transparent 5px 50% no-repeat;
+     display: inline-block;
+     vertical-align: middle;
+     width: 42px;
+     height: 42px;
+     border-right: #2265d4 1px solid;
+   }
+   span.buttonText {
+     display: inline-block;
+     vertical-align: middle;
+     padding-left: 7px;
+     padding-right: 42px;
+     font-size: 14px;
+     font-weight: bold;
+     /* Use the Roboto font that is loaded in the <head> */
+     font-family: 'Roboto', sans-serif;
+   }
+
+   /*       Facebook sign in icon        */
+
+   #customBtn-facebook {
+        display: inline-block;
+        background: #2D4373;
+        color: white;
+        width: 135px;
+        border-radius: 5px;
+        white-space: nowrap;
+      }
+
+   /*       Twitter sign in icon        */
+
+   #customBtn-twitter {
+        display: inline-block;
+        background: #2795E9;
+        color: white;
+        width: 135px;
+        border-radius: 5px;
+        white-space: nowrap;
+      }
