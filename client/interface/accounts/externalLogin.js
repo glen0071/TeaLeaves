@@ -5,6 +5,8 @@ Template.externalLogin.events({
     }, function(error) {
       if (error){
           console.log(error.reason)
+      }else{
+        Router.go("viewQuestions");
       }
     });
   },
@@ -14,13 +16,17 @@ Template.externalLogin.events({
     }, function(error){
       if (error) {
         console.log(error.reason);
+      }else{
+        Router.go("viewQuestions");
       }
     });
   },
   'click .btn-twitter': function(event){
-    Meteor.loginWithTwitter({
+    Meteor.loginWithTwitter({},function(error){
       if(error){
         console.log(error.reason);
+      }else{
+        Router.go("viewQuestions");
       }
     });
   },
