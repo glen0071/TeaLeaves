@@ -24,9 +24,6 @@ Template.myProfile.helpers({
   userName: function(){
     return Meteor.user().username ? Meteor.user().username : '';
   },
-  email: function(){
-    return Meteor.user().emails[0].address;
-  },
   aboutMe: function() {
     return Meteor.user().profile['aboutme'];
   },

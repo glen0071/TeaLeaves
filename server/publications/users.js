@@ -12,7 +12,16 @@ Meteor.publish("editUserData", function () {
 
 Meteor.publish("userData", function (user) {
     return Meteor.users.find({_id: (user?user : this.userId)}, //get passed in user, otherwise currently logged in one
-        {fields: {'username':1,'emails':1,'points':1}});
+        {fields:{
+          "services.facebook.email": 1,
+          "services.google.email": 1,
+          "services.twitter.screenName": 1,
+          "emails.address[0]": 1,
+          "profile": 1,
+          "username":1,
+          "points":1
+      }
+      });
 });
 
 Meteor.publish("creatorData", function (currentQuestion) {

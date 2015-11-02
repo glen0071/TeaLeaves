@@ -1,5 +1,5 @@
 <template name="userProfile">
-  <h3>{{userName}}'s Profile</h3>
+  <h3>{{#if userName}}{{userName}}{{else}}{{determineEmail}}{{/if}}'s Profile</h3>
 
   <h2>Points: {{points}}</h2>
 {{#if questionsAsked}}

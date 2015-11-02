@@ -1,13 +1,13 @@
 Template.navigation.onCreated(function(){
-Meteor.subscribe("userData");
+//Meteor.subscribe("userData");
 });
 
 Template.navigation.helpers({
   userName:function(){
-    return Meteor.user().username ? Meteor.user().username : Meteor.user().emails[0].address;
+    return Meteor.user().username;
   },
   points:function () {
-    return Meteor.user().points;
+    return Meteor.user().points ? Meteor.user().points : 0 ;
   }
 });
 

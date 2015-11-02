@@ -16,7 +16,7 @@ Template.questionDetail.helpers({
   },
   userName:function(){
     var user = Meteor.users.findOne({_id:this.createdBy});
-    return user.username ? user.username : user.emails[0].address;
+    return user.username;
   },
   createdOnString:function(){
     var created=this.createdOn;

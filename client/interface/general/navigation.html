@@ -21,7 +21,7 @@
               </ul>
               <ul class="nav navbar-nav navbar-right">
                 {{#if currentUser}}
-                <li><a href="{{pathFor route='myProfile'}}">My Profile ({{userName}})</a></li>
+                <li><a href="{{pathFor route='myProfile'}}">My Profile ({{#if userName}}{{userName}}{{else}}{{determineEmail}}{{/if}})</a></li>
                 {{#if isInRole 'admin'}}
                   <li><a href="{{pathFor route='dashboard'}}">Dashboard</a></li>
                 {{/if}}

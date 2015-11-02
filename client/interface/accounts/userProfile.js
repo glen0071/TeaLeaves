@@ -20,7 +20,7 @@ Template.userProfile.helpers({
   },
   userName:function(){
     var user = Meteor.users.findOne({_id:this._id});
-    return user.username ? user.username : user.emails[0].address;
+    return user.username;
     },
     points:function(){
       return Meteor.users.findOne({_id:this._id}).points;
@@ -30,3 +30,26 @@ Template.userProfile.helpers({
 Template.userProfile.events({
 
 });
+
+Template.registerHelper("determineEmail", function(){
+  var user = Meteor.users.findOne({_id: Meteor.userId()});
+  var emailAddress, services;
+  if (user.emails) {
+    return emailAddress = user.emails[0].address;
+  } else if (user.services) {
+    services = user.services;
+      switch (false) {
+        case !services.facebook:
+          return services.facebook.email;
+        case !services.google:
+          return services.google.email;
+        case !services.twitter:
+          return null;
+        default:
+          return null;
+      }
+  } else {
+    return null;
+  }
+}
+);
