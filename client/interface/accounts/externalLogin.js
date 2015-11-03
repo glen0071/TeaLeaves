@@ -26,6 +26,10 @@ Template.externalLogin.events({
       if(error){
         console.log(error.reason);
       }else{
+        var user = Meteor.users.findOne({_id: Meteor.userId()});
+        if (!user.username){
+          Meteor.call('updateProfile', user.services.twitter.screenName, '', user.profile.name);
+        }
         Router.go("viewQuestions");
       }
     });
