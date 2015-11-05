@@ -7,12 +7,26 @@
     <div class="col-xs-12">
 
       <h4>Total Number of Users: {{userCount}}</h4>
+      <div class="=user-table">
+        <div class="user-table-head">
+          <div class="user-table-cell username-col">Username</div>
+          <div class="user-table-cell email-col">Email</div>
+          <div class="user-table-cell join-col">Joined</div>
+          <div class="user-table-cell id-col">ID</div>
+          <div class="user-table-cell points-col">Points</div>
+          <div class="btn-table-cell edit-col"></div>
+          <div class="btn-table-cell del-col"></div>
+        </div>
+        <ul>
+          {{#each userList}}
+            <div class="user-row">
+              {{> oneUser}}
+            </div>
 
-      <ul>
-        {{#each userList}}
-          {{> oneUser}}
-        {{/each}}
-      </ul>
+          {{/each}}
+        </ul>
+      </div>
+
     </div>
 
   <div class="col-xs-6">
@@ -30,7 +44,6 @@
       </select></li>
       <li><button type="submit">Enter</button></li>
     </ul></form>
-
   </div>
   <div>
     <ul>
@@ -45,35 +58,50 @@
     <h3>It appears that this page is not available. </h3>
     <h4>Please contact the website administrators by <a href="#">clicking here</a> if you think something went wrong </h4>
   {{/if}}
-
 </template>
 
 <template name="oneUser">
-  <li style="width:100%"><span style="font-weight:bold">Username:</span>{{username}}
-    <span style="font-weight:bold">Role:</span>{{roles}}
-    <span style="font-weight:bold">Email:</span>{{email}}
-    <span style="font-weight:bold">Joined:</span>{{createdAt}}
-    <span style="font-weight:bold">ID:</span>{{_id}}
-    <span style="font-weight:bold">Points:</span>{{points}}
-    <a id="edit-user-btn" name="edit-user" href="/editUser/{{_id}}">Edit</a>
-    <button name="delete-user">Delete</button>
+  <li style="width:100%" class="one-user-table-li">
+    <div class="user-table-cell username-col">{{username}}</div>
+    <div class="user-table-cell email-col">{{userEmail}}</div>
+    <div class="user-table-cell join-col">{{joinDate}}</div>
+    <div class="user-table-cell id-col">{{_id}}</div>
+    <div class="user-table-cell points-col">{{points}}</div>
+    <div class="btn-table-cell edit-col"><a id="edit-user-btn" name="edit-user" href="/editUser/{{_id}}">Edit</a></div>
+    <div class="btn-table-cell del-col"><button name="delete-user">Delete</button></div>
   </li>
 </template>
 
 <template name="editUser">
   <h3>Edit This User</h3>
-  <form><ul>
-    <li><input type="email" name="email" value="{{email}}"></li>
-    <li><input type="username" name="username" value="{{username}}"></li>
-    <li><input type="password" name="password"  value="{{password}}"></li>
-    <li>Points: <input style="width:75px" type="number" name="points" value="{{points}}"></li>
-    <li><select name="user-type">
-      <option value="default-user">default-user</option>
-      <option value="admin">admin</option>
-    </select></li>
-    <li><button type="submit">Enter</button></li>
-  </ul></form>
+  <div class="row">
+    <div class="col-xs-6">
+      <form><ul>
+        <li>Email: {{userEmail}}  <!--<button name="editEmail">Edit Email</button>--></li>
+        <li>Username: <input type="username" name="username" value="{{username}}"></li>
+        <li>Password: <input type="password" name="password"  value="{{password}}"></li>
+        <li>Points: <input style="width:75px" type="number" name="points" value="{{points}}"></li>
+        <li><select name="user-type">
+          <option value="default-user">default-user</option>
+          <option value="admin">admin</option>
+        </select></li>
+        <li><button type="submit">Enter</button></li>
+      </ul></form>
+    </div>
+    <div class="col-xs-6">
+      {{#if editEmailMode}}
+        {{> adminEditEmail}}
+      {{/if}}
+    </div>
+  </div>
 </template>
+
+<!-- <template name="adminEditEmail">
+    <ul>
+      <li><input type="text" placeholder="no email saved" value={{userEmail}}></li>
+      <li><button name="save">Save</button><button name="cancel">Close</button></li>
+    </ul>
+</template> -->
 
 <!--
 

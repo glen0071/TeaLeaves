@@ -185,6 +185,44 @@ a.question-link {
   color: black;
 }
 
+.user-table {
+  display: table;
+}
+
+.user-row {
+  display: table-row;
+  font-style: italic;
+  display: inline;
+
+}
+
+.one-user-table-li {
+  position: relative;
+  right: 40px;
+  float: left;
+}
+
+.user-table-cell {
+  display: table-cell;
+  border: gray 1px solid;
+}
+
+.btn-table-cell {
+  display: table-cell;
+}
+
+.username-col {width: 100px;}
+.email-col {width: 200px}
+.join-col {width: 100px}
+.id-col {width: 200px}
+.points-col {width: 50px}
+.edit-col {width: 50px}
+.del-col {width: 50px}
+
+.user-row-btns {
+  display: inline;
+  float: right;
+}
 
 /*           Edit Question Page            */
 #edit-question-headline {

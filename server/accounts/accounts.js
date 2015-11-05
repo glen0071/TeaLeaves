@@ -14,10 +14,6 @@ Meteor.startup(function () {
  });
 
 
-
-
-
-
 Meteor.methods({
   addDefaultRole:function(user, varPoints){
     Roles.addUsersToRoles(user, ['default-user']);
@@ -45,14 +41,17 @@ Meteor.methods({
     }
     return Meteor.users.insert(newUserData);
   },
-  adminEditUser:function(userId, varEmail, varUsername, varPassword, varPoints, varRole){
+  adminEditUser:function(userId, varUsername, varPassword, varPoints, varRole){
     var editedData = {
-      email: varEmail,
       username: varUsername,
       password: varPassword,
       points: varPoints,
       roles: varRole,
     }
-    return Meteor.users.update({_id: userId }, {$set: editedData})
-  }
+    return Meteor.users.update({_id: userId}, {$set: editedData})
+  },
+  // changeEmail:function(userId, newEmail){
+  //   return Meteor.users.update({_id: userId}, {$set: {points: 50}});
+  //
+  // }
 });
