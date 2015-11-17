@@ -19,7 +19,7 @@ Template.navigation.events({
           console.log("error logging out: "+error);
         }
       });
-      Router.go('login');
+      Router.go('viewQuestions');
     },
     'click .my-profile-link': function(event) {
         event.preventDefault();

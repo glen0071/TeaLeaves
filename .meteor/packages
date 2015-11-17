@@ -39,3 +39,4 @@ service-configuration
 http
 email
 meteorhacks:ssr
+ian:accounts-ui-bootstrap-3
