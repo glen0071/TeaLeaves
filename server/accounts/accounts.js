@@ -10,7 +10,7 @@ Meteor.startup(function () {
     return 'Click on the link below to verify your address: ' + url;
   },
   Accounts.config({
-   sendVerificationEmail: true
+   sendVerificationEmail: false
  });
 
 
