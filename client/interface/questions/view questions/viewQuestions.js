@@ -1,6 +1,9 @@
 Template.viewQuestions.onCreated(function () {
+  this.filters = new ReactiveVar();
+
   this.autorun(function(c){
-    var filters=Session.get('filters');
+    var filters=  Template.instance().filters.get();
+
      //console.log('filters: '+EJSON.stringify(filters, {indent: true}));
      if(filters){
        Pages.set({
@@ -10,12 +13,22 @@ Template.viewQuestions.onCreated(function () {
   });
 });
 
-Template.viewQuestions.onDestroyed(function(){
+Template.viewQuestions.onRendered(function(){
+  this.autorun(function(c){
+    var currentRoute = Session.get('currentRoute');
+    if(currentRoute == 'viewQuestions'){
+    Template.instance().filters.set({closed: {$ne:true}});
+    }else if(currentRoute == 'viewTheme'){
+      var theTheme = Iron.controller().getParams().theme;
+      var theFilters =  {closed: {$ne:true},themes: theTheme};
+      Template.instance().filters.set(theFilters);
+    }
+  });
+});
 
-Session.set('filters',null);
+Template.viewQuestions.onDestroyed(function(){
 Pages.set({
   sort: {createdOn: -1} });
-
 });
 
 Template.viewQuestions.helpers({
@@ -23,9 +36,12 @@ Template.viewQuestions.helpers({
     return Iron.controller().getParams().theme;
   },
   filters:function(){
-    var filterz = Session.get('filters');
+    var filterz = Template.instance().filters.get();
     var pairs = _.pairs(_.omit(filterz,'closed','adjudicatedOn','createdBy'));
     return pairs;
+  },
+  currentRoute:function(){
+    return Session.get("currentRoute");
   }
 });
 
@@ -35,7 +51,7 @@ Template.viewQuestions.events({
   },
       "change [name=showClosed]": function(event, template) {
         var btnValue = $('[name=showClosed]:checked').val();
-        var filters = Session.get('filters');
+        var filters = Template.instance().filters.get();
 
         if (btnValue == 'on') {
           if(filters && filters.closed){
@@ -46,10 +62,10 @@ Template.viewQuestions.events({
             $ne: true
           };
         }
-        Session.set('filters', filters);
+        template.filters.set(filters);
       },
     "change [name=viewQsBtn]": function(event, template){
-      var filters = Session.get('filters');
+      var filters = Template.instance().filters.get();
       $('[name=showClosed]').prop('disabled',false);
       delete filters.adjudicatedOn;
       delete filters.createdBy;
@@ -103,7 +119,7 @@ Template.viewQuestions.events({
     $('[name=showClosed]').prop('disabled',true);
             break;
       }
-      Session.set('filters', filters);
+      template.filters.set(filters);
 
   },
 });
