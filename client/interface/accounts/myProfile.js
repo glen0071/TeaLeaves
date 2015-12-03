@@ -33,9 +33,9 @@ Template.myProfile.helpers({
   name: function() {
     return Meteor.user().profile['name'];
   },
-  // themesFollowed: function() {
-    // return Meteor.user().profile.themes.join(', ');
-  // },
+  themesFollowed: function() {
+    return Meteor.user().profile.followingThemes.join(', ');
+  },
   usersFollowed: function() {
     return Meteor.user().profile.followingUsers.join(', ');
   },

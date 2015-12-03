@@ -30,9 +30,7 @@ Template.userProfile.helpers({
 Template.userProfile.events({
   'click .follow-this-user': function(event, template){
     event.preventDefault();
-    console.log("message");
     var username = this.username
-    console.log(username);
     Meteor.call('followUser', username)
   }
 });

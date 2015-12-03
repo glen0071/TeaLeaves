@@ -106,15 +106,18 @@ Template.viewQuestions.events({
       Session.set('filters', filters);
 
   },
-});
-
-Template.viewQuestion.events({
   'click .theme-link': function(event) {
     event.preventDefault();
     var theTheme = event.target.text;
     Router.go('viewTheme',{theme:theTheme});
   },
-
+  'click .follow-theme': function(event, template){
+    event.preventDefault();
+    console.log("message");
+    var theme = this[1]
+    console.log(theme);
+    Meteor.call('followTheme', theme)
+  }
 });
 
 Template.viewQuestion.helpers({
