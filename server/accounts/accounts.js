@@ -28,7 +28,7 @@ Meteor.methods({
   deleteUser:function(userId){
     return Meteor.users.remove({_id: userId});
   },
-  adminCreateUser:function(varEmail, varUsername, varPassword, varPoints, varRole) {
+  adminCreateUser:function(varEmail, varUsername, varPoints, varRole) {
     var newUserData = {
       email: varEmail,
       username: varUsername,

@@ -1,4 +1,6 @@
+/* -------------------------------- */
 /*           Entire Site            */
+/* -------------------------------- */
 
 .container {
   padding-top: 30px;
@@ -12,7 +14,9 @@ li {
   list-style-type: none;
 }
 
+/* ----------------------------------------- */
 /*           Question Detail Page            */
+/* ----------------------------------------- */
 
 
 .question-text {
@@ -119,13 +123,17 @@ a.question-link {
   float: right;
 }
 
-/*       Add Question page       */
+/* -------------------------------- */
+/*       Add Question page          */
+/* -------------------------------- */
 
 .add-question-field {
   margin: 4px;
 }
 
-/*       Profile page       */
+/* -------------------------------- */
+/*             Profile page         */
+/* -------------------------------- */
 
 #profile-pic {
   width: 175px;
@@ -163,7 +171,16 @@ a.question-link {
   margin-top: 15px;
 }
 
+.following-section {
+  border-top: 1px solid black;
+  margin-top: 10px;
+  padding-top: 15px;
+}
+
+/* -------------------------------------- */
 /*           Adjudication Page            */
+/* -------------------------------------- */
+
 #judge-reason {
   margin: 5px 20px;
   position: relative;
@@ -176,7 +193,9 @@ a.question-link {
 
 }
 
+/* ----------------------------------- */
 /*           Dashboard Page            */
+/* ----------------------------------- */
 
 #edit-user-btn {
   border: #AFAFAF solid thin;
@@ -223,8 +242,10 @@ a.question-link {
   display: inline;
   float: right;
 }
-
+/* --------------------------------------- */
 /*           Edit Question Page            */
+/* --------------------------------------- */
+
 #edit-question-headline {
   font-size: 17px;
   width: 650px;
@@ -260,7 +281,10 @@ a.question-link {
 
 }
 
+/* ------------------------------------- */
 /*        Login and Sign pages           */
+/* ------------------------------------- */
+
 
 .entry-field {
   margin: 5px 0px;
@@ -281,7 +305,10 @@ a.question-link {
 
 }
 
-/*       Google sign in icon        */
+/* --------------------------------------- */
+/*       Google sign in icon               */
+/* --------------------------------------- */
+
 
 #customBtn-google {
      display: inline-block;
@@ -316,7 +343,7 @@ a.question-link {
      /* Use the Roboto font that is loaded in the <head> */
      font-family: 'Roboto', sans-serif;
    }
-
+   /* ---------------------------------- */
    /*       Facebook sign in icon        */
 
    #customBtn-facebook {
@@ -328,7 +355,10 @@ a.question-link {
         white-space: nowrap;
       }
 
-   /*       Twitter sign in icon        */
+   /* --------------------------------------- */
+   /*          Twitter sign in icon           */
+   /* --------------------------------------- */
+
 
    #customBtn-twitter {
         display: inline-block;

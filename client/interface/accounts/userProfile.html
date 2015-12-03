@@ -1,28 +1,32 @@
 <template name="userProfile">
   <h3>{{#if userName}}{{userName}}{{else}}{{determineEmail}}{{/if}}'s Profile</h3>
+  <button class="btn follow-this-user">Follow this User</button>
+<div class="row">
+  <div class="col-xs-9">
 
-  <h2>Points: {{points}}</h2>
-{{#if questionsAsked}}
-  <p>
-    Questions created by this user:
+
+      <h2>Points: {{points}}</h2>
+    {{#if questionsAsked}}
+      <p>
+        Questions created by this user:
 
         <ul>
-          {{#each questionsUserAsked}}
+            {{#each questionsUserAsked}}
+              {{> viewQuestion}}
+            {{/each}}
+        </ul>
+      </p>
+    {{/if}}
+    {{#if questionsAnswered}}
+      <p>
+        Questions answered by this user:
+        <ul>
+          {{#each questionsUserAnswered}}
             {{> viewQuestion}}
           {{/each}}
         </ul>
-  </p>
-{{/if}}
-{{#if questionsAnswered}}
-  <p>
-    Questions answered by this user:
-    <ul>
-      {{#each questionsUserAnswered}}
-        {{> viewQuestion}}
-      {{/each}}
-    </ul>
-  </p>
-  {{/if}}
-    {{followingThemes}}
-    {{followingUsers}}
+      </p>
+    {{/if}}
+  </div>
+</div>
 </template>

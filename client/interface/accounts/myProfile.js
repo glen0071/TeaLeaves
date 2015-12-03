@@ -32,7 +32,19 @@ Template.myProfile.helpers({
   },
   name: function() {
     return Meteor.user().profile['name'];
-  }
+  },
+  // themesFollowed: function() {
+    // return Meteor.user().profile.themes.join(', ');
+  // },
+  usersFollowed: function() {
+    return Meteor.user().profile.followingUsers.join(', ');
+  },
+  // followingThemes: function() {
+  //   return Meteor.user().profile['name'];
+  // },
+  // followingUsers: function() {
+  //   return Meteor.user().find({});
+  // },
 });
 
 Template.myProfile.events({
@@ -49,5 +61,4 @@ Template.myProfile.events({
 
       template.editProfileMode.set( false );
   },
-
 });

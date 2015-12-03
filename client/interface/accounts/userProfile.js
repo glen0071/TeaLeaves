@@ -21,14 +21,20 @@ Template.userProfile.helpers({
   userName:function(){
     var user = Meteor.users.findOne({_id:this._id});
     return user.username;
-    },
-    points:function(){
-      return Meteor.users.findOne({_id:this._id}).points;
-    }
+  },
+  points:function(){
+    return Meteor.users.findOne({_id:this._id}).points;
+  }
 });
 
 Template.userProfile.events({
-
+  'click .follow-this-user': function(event, template){
+    event.preventDefault();
+    console.log("message");
+    var username = this.username
+    console.log(username);
+    Meteor.call('followUser', username)
+  }
 });
 
 Template.registerHelper("determineEmail", function(){

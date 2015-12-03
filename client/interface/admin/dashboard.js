@@ -25,10 +25,9 @@ Template.dashboard.events({
     event.preventDefault();
     var varEmail = tpl.$('[name=email]').val();
     var varUsername = tpl.$('[name=username]').val();
-    var varPassword = tpl.$('[name=password]').val();
     var varPoints = tpl.$('[name=points]').val();
     var varRole = tpl.$('[name=user-type]').val();
-    Meteor.call('adminCreateUser', varEmail, varUsername, varPassword, varPoints, varRole)
+    Meteor.call('adminCreateUser', varEmail, varUsername, varPoints, varRole)
   },
   'click [name=delete-user]': function(event, tpl){
     event.preventDefault()
