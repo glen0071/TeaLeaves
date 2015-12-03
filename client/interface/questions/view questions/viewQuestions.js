@@ -26,6 +26,15 @@ Template.viewQuestions.helpers({
     var filterz = Session.get('filters');
     var pairs = _.pairs(_.omit(filterz,'closed','adjudicatedOn','createdBy'));
     return pairs;
+  },
+  hideFollowBtn:function() {
+    var array =  Meteor.user().profile.followingThemes;
+    var themeViewed = this[1];
+    if ($.inArray(themeViewed, array) >= 0) {
+        return "hideFollowBtn"
+    } else {
+      return ""
+    }
   }
 });
 
@@ -113,10 +122,19 @@ Template.viewQuestions.events({
   },
   'click .follow-theme': function(event, template){
     event.preventDefault();
-    console.log("message");
-    var theme = this[1]
-    console.log(theme);
-    Meteor.call('followTheme', theme)
+    var themeViewed = this[1];
+    console.log(themeViewed);
+    var array =  Meteor.user().profile.followingThemes;
+    console.log(array);
+    Meteor.call('followTheme', themeViewed)
+  },
+  'click .unfollow-theme': function(event, template){
+    event.preventDefault();
+    var themeViewed = this[1];
+    console.log(themeViewed);
+    var array =  Meteor.user().profile.followingThemes;
+    console.log(array);
+    Meteor.call('unfollowTheme', themeViewed)
   }
 });
 

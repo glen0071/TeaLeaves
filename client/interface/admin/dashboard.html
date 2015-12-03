@@ -1,6 +1,6 @@
 <template name="dashboard">
 
-  <!-- {{#if isInRole 'admin'}} -->
+  {{#if isInRole 'admin'}}
 
   <h3>User List</h3>
   <div class="row">
@@ -54,10 +54,10 @@
     </ul>
   </div>
   </div>
-  <!-- {{else}} -->
+  {{else}}
     <h3>It appears that this page is not available. </h3>
     <h4>Please contact the website administrators by <a href="#">clicking here</a> if you think something went wrong </h4>
-  <!-- {{/if}} -->
+  {{/if}}
 </template>
 
 <template name="oneUser">

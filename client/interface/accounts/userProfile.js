@@ -26,7 +26,6 @@ Template.userProfile.helpers({
     return Meteor.users.findOne({_id:this._id}).points;
   },
   hideFollowBtn:function() {
-    var currentUser = Meteor.userId();
     var userViewed = this.username;
     var array =  Meteor.user().profile.followingUsers;
     if ($.inArray(userViewed, array) >= 0) {
@@ -38,12 +37,12 @@ Template.userProfile.helpers({
 });
 
 Template.userProfile.events({
-  'click .follow-this-user': function(event, template){
+  'click .follow-user': function(event, template){
     event.preventDefault();
     var username = this.username;
     Meteor.call('followUser', username)
   },
-  'click .unfollow-this-user': function(event, template){
+  'click .unfollow-user': function(event, template){
     event.preventDefault();
     var username = this.username;
     Meteor.call('unfollowUser', username)

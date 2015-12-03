@@ -32,7 +32,15 @@
            <div class="alert alert-info">
              <button type="button" class="close" data-dismiss="alert">×</button>
              <strong>Theme</strong>: {{theme}}
-            <button class="follow-theme">Follow</button>
+
+             {{#if hideFollowBtn}}
+             <button class="unfollow-theme">Unfollow</button>
+             {{else}}
+             <button class="follow-theme">Follow</button>
+             {{/if}}
+
+
+
            </div>
 
            {{/each}}
