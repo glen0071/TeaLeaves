@@ -1,6 +1,12 @@
 <template name="userProfile">
   <h3>{{#if userName}}{{userName}}{{else}}{{determineEmail}}{{/if}}'s Profile</h3>
-  <button class="btn follow-this-user">Follow this User</button>
+
+  {{#if hideFollowBtn}}
+    <button class="btn unfollow-this-user">unfollow</button>
+  {{else}}
+    <button class="btn follow-this-user">Follow this User</button>
+  {{/if}}
+
 <div class="row">
   <div class="col-xs-9">
 
