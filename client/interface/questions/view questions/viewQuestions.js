@@ -1,29 +1,37 @@
 Template.viewQuestions.onCreated(function () {
-  this.filters = new ReactiveVar();
+  this.filters = new ReactiveDict();
+  this.filters.set("closed",{$ne: true});
+  this.showClosed = new ReactiveVar(false);
 
+});
+
+Template.viewQuestions.onRendered(function(){
   this.autorun(function(c){
-    var filters=  Template.instance().filters.get();
-
-     //console.log('filters: '+EJSON.stringify(filters, {indent: true}));
+    var filters=  Template.instance().filters.all();
+     console.log('filters: '+EJSON.stringify(filters, {indent: true}));
      if(filters){
        Pages.set({
               filters: filters
             });
     }
   });
-});
-
-Template.viewQuestions.onRendered(function(){
   this.autorun(function(c){
+    var sc = Template.instance().showClosed.get();
+  //  console.log("showclosed: "+sc);
     var currentRoute = Session.get('currentRoute');
-    if(currentRoute == 'viewQuestions'){
-    Template.instance().filters.set({closed: {$ne:true}});
-    }else if(currentRoute == 'viewTheme'){
+    if(sc === false){
+      Template.instance().filters.set("closed", {$ne:true});
+    }else{
+      Template.instance().filters.delete("closed");
+    }
+    if(currentRoute == 'viewTheme'){
       var theTheme = Iron.controller().getParams().theme;
-      var theFilters =  {closed: {$ne:true},themes: theTheme};
-      Template.instance().filters.set(theFilters);
+      Template.instance().filters.set("themes",theTheme);
+    }else{
+      Template.instance().filters.delete("themes");
     }
   });
+
 });
 
 Template.viewQuestions.onDestroyed(function(){
@@ -36,33 +44,26 @@ Template.viewQuestions.helpers({
     return Iron.controller().getParams().theme;
   },
   filters:function(){
-    var filterz = Template.instance().filters.get();
+    var filterz = Template.instance().filters.all();
     var pairs = _.pairs(_.omit(filterz,'closed','adjudicatedOn','createdBy'));
     return pairs;
   },
   currentRoute:function(){
     return Session.get("currentRoute");
-  }
+  },
+  showClosed: function() {
+   return Template.instance().showClosed.get();
+ }
 });
 
 Template.viewQuestions.events({
   "click [class=close]":function(event,template){
     Router.go('viewQuestions');
   },
-      "change [name=showClosed]": function(event, template) {
-        var btnValue = $('[name=showClosed]:checked').val();
-        var filters = Template.instance().filters.get();
-
-        if (btnValue == 'on') {
-          if(filters && filters.closed){
-            delete filters.closed;
-          }
-        } else {
-          filters.closed = {
-            $ne: true
-          };
-        }
-        template.filters.set(filters);
+       "change [name=showClosed]": function(event, template) {
+      // //  var btnValue = $('[name=showClosed]:checked').val();
+      //   var filters = Template.instance().filters.get();
+         template.showClosed.toggle();
       },
     "change [name=viewQsBtn]": function(event, template){
       var filters = Template.instance().filters.get();
