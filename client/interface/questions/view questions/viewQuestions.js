@@ -2,7 +2,8 @@ Template.viewQuestions.onCreated(function () {
   this.filters = new ReactiveDict();
   this.filters.set("closed",{$ne: true});
   this.showClosed = new ReactiveVar(false);
-
+  this.sorts = new ReactiveDict();
+  this.sorts.set("createdOn",-1);
 });
 
 Template.viewQuestions.onRendered(function(){
@@ -14,6 +15,13 @@ Template.viewQuestions.onRendered(function(){
               filters: filters
             });
     }
+    var sorts=  Template.instance().sorts.all();
+     console.log('sorts: '+EJSON.stringify(sorts, {indent: true}));
+     if(sorts){
+       Pages.set({
+              sort: sorts
+            });
+     }
   });
   this.autorun(function(c){
     var sc = Template.instance().showClosed.get();
@@ -34,11 +42,6 @@ Template.viewQuestions.onRendered(function(){
 
 });
 
-Template.viewQuestions.onDestroyed(function(){
-Pages.set({
-  sort: {createdOn: -1} });
-});
-
 Template.viewQuestions.helpers({
   theme:function(){
     return Iron.controller().getParams().theme;
@@ -53,6 +56,15 @@ Template.viewQuestions.helpers({
   },
   showClosed: function() {
    return Template.instance().showClosed.get();
+ },
+ sortIcon:function(property){
+   var sortDirection = Template.instance().sorts.all()[property];
+   if(sortDirection === -1){
+     return "glyphicon glyphicon-chevron-down";
+   }else if (sortDirection === 1){
+     return "glyphicon glyphicon-chevron-up";
+   }
+   return "glyphicon glyphicon-minus";
  }
 });
 
@@ -60,69 +72,46 @@ Template.viewQuestions.events({
   "click [class=close]":function(event,template){
     Router.go('viewQuestions');
   },
-       "change [name=showClosed]": function(event, template) {
-      // //  var btnValue = $('[name=showClosed]:checked').val();
-      //   var filters = Template.instance().filters.get();
-         template.showClosed.toggle();
-      },
-    "change [name=viewQsBtn]": function(event, template){
-      var filters = Template.instance().filters.get();
-      $('[name=showClosed]').prop('disabled',false);
-      delete filters.adjudicatedOn;
-      delete filters.createdBy;
+  "click [name=sortBtn]":function(event,template){
+console.log("event target: "+event.target.id);
+var prop;
+switch(event.target.id){
+  case "ageSortBtn":
+    prop = "createdOn";
+    break;
+  case "deadlineSortBtn":
+    prop = "deadline";
+    break;
+  case "answersSortBtn":
+    prop = "answerCount";
+    break;
+  case "upvotesSortBtn":
+    prop = "upVotes";
+    break;
+}
 
-    var btnValue = $('[name=viewQsBtn]:checked').val();
-      switch (btnValue) {
-        case "1":
-          Pages.set({
-    sort: {createdOn: -1}
-  });
-          break;
-        case "2":
-          Pages.set({
-    sort: {createdOn: 1}
-  });
-          break;
-        case "3":
-        $('[name=showClosed]').prop('checked',false);
-        $('[name=showClosed]').prop('disabled',true);
-          Pages.set({
-    sort: {deadline: 1} });
-    filters.closed = {
-      $ne: true
-    };
-          break;
-        case "4":
-          Pages.set({
-    sort: {answerCount: -1}
-  });
-          break;
-        case "5":
-          Pages.set({
-    sort: {answerCount: 1}
-  });
-          break;
-        case "6":
-          Pages.set({
-    sort: {upVotes: -1}
-  });
-          break;
-          case "7":
-            Pages.set({
-      sort: {deadline: -1}
-    });
-    filters.closed = true;
-    filters.adjudicatedOn = {
-      $exists:false
-    };
-    filters.createdBy = Meteor.userId();
-    $('[name=showClosed]').prop('checked',true);
-    $('[name=showClosed]').prop('disabled',true);
-            break;
-      }
-      template.filters.set(filters);
-
+    if(template.sorts.equals(prop,undefined)){
+      template.sorts.set(prop,-1);
+    }else if(template.sorts.equals(prop,-1)){
+      template.sorts.set(prop,1);
+    }else{
+      template.sorts.delete(prop);
+    }
   },
+  "change [name=showClosed]": function(event, template) {
+       template.showClosed.toggle();
+}
+
+//awaiting my adjudication - move to user profile?
+    //         Pages.set({
+    //   sort: {deadline: -1}
+    // });
+    // filters.closed = true;
+    // filters.adjudicatedOn = {
+    //   $exists:false
+    // };
+    // filters.createdBy = Meteor.userId();
+
 });
 
 Template.viewQuestion.events({
@@ -136,30 +125,32 @@ Template.viewQuestion.events({
 
 Template.viewQuestion.helpers({
   relevantInfo:function(){
-    var btnValue = $('[name=viewQsBtn]:checked').val();
-      if (btnValue==1 || btnValue ==2 || btnValue == null) {
+var bits = [];
+      if (Template.instance().parentTemplate(4).sorts.equals("createdOn",undefined)===false) {
             var created=this.createdOn;
             var createdMoment = moment(created);
             var timeAgo = createdMoment.fromNow();
-            return "created "+timeAgo;
-    }else if (btnValue == 3 || btnValue == 7){
-        var deadline=this.deadline;
-        var deadMoment = moment(deadline);
-        var timeLeft = deadMoment.fromNow();
-        var ended = deadMoment.isBefore(moment());
-        if (ended){
-          return "ended "+timeLeft;
-        }else{
-          return "ends "+timeLeft;
-        }
-    }else if (btnValue == 4 || btnValue == 5){
+            bits.push("created "+timeAgo);
+    }
+    if (Template.instance().parentTemplate(4).sorts.equals("deadline",undefined)===false) {
+            var deadline=this.deadline;
+            var deadMoment = moment(deadline);
+           var timeLeft = deadMoment.fromNow();
+           var ended = deadMoment.isBefore(moment());
+             if (ended){
+               bits.push("ended "+timeLeft);
+             }else{
+               bits.push("ends "+timeLeft);
+           }
+    }
+    if (Template.instance().parentTemplate(4).sorts.equals("answerCount",undefined)===false) {
       var answers = this.answers;
-      return answers.length+" answers"
-    }else if (btnValue == 6){
-      var upvotes = this.upVotes;
-      return upvotes+" upvotes"
-    }else {
-    return "";
-  }
+      bits.push(answers.length+" answers");
+}
+if (Template.instance().parentTemplate(4).sorts.equals("upVotes",undefined)===false) {
+     var upvotes = this.upVotes;
+      bits.push(upvotes+" upvotes");
+}
+    return bits.join(', ');
 }
 });

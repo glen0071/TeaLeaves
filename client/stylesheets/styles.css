@@ -12,6 +12,10 @@ li {
   list-style-type: none;
 }
 
+.form-control{
+  margin:5px 5px 5px 5px;
+}
+
 /*           Question Detail Page            */
 
 
@@ -89,6 +93,8 @@ li {
 
 .view-question-list {
   margin: 10px;
+  align: center;
+  margin-left: 100px;
 }
 
 .social-list {
