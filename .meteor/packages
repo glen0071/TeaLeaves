@@ -20,6 +20,7 @@ iron:router
 accounts-password
 twbs:bootstrap
 msavin:mongol
+msavin:jetsetter
 ejson
 tsega:bootstrap3-datetimepicker
 momentjs:moment
@@ -40,3 +41,4 @@ http
 email
 meteorhacks:ssr
 ian:accounts-ui-bootstrap-3
+reactive-dict
