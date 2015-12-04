@@ -20,12 +20,20 @@
     {{/each}} -->
 
     <div class="view-question-list">
-      {{#if Template.subscriptionsReady}}
-      {{ > Questions}}
-      {{else}}
-        <p>
-          gathering all the questions
-        </p>
-      {{/if}}
+      <h3>From Themes You Follow</h3>
+      <ul>
+       {{#each followedThemeQuestions}}
+         {{> viewQuestion}}
+       {{/each}}
+     </ul>
+    </div>
+
+    <div class="view-question-list">
+      <h3>From Users You Follow</h3>
+      <ul>
+       {{#each followedUserQuestions}}
+         {{> viewQuestion}}
+       {{/each}}
+      </ul>
     </div>
 </template>

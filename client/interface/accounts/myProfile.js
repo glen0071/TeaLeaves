@@ -39,12 +39,6 @@ Template.myProfile.helpers({
   usersFollowed: function() {
     return Meteor.user().profile.followingUsers.join(', ');
   },
-  // followingThemes: function() {
-  //   return Meteor.user().profile['name'];
-  // },
-  // followingUsers: function() {
-  //   return Meteor.user().find({});
-  // },
 });
 
 Template.myProfile.events({
@@ -60,5 +54,5 @@ Template.myProfile.events({
       Meteor.call('updateProfile', newUserName, newAboutMe, newName)
 
       template.editProfileMode.set( false );
-  },
+  }
 });
