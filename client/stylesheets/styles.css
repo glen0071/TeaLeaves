@@ -137,6 +137,10 @@ a.question-link {
   margin: 4px;
 }
 
+#tokenfield{
+  width: 800px;
+}
+
 /* -------------------------------- */
 /*             Profile page         */
 /* -------------------------------- */
