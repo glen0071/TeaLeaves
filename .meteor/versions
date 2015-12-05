@@ -4,6 +4,7 @@ accounts-google@1.0.6
 accounts-oauth@1.1.8
 accounts-password@1.1.4
 accounts-twitter@1.0.6
+ajduke:bootstrap-tokenfield@0.5.0
 alanning:roles@1.2.14
 alethes:pages@1.8.4
 anti:i18n@0.4.3
@@ -93,6 +94,7 @@ reactive-var@1.0.6
 reload@1.1.4
 retry@1.0.4
 routepolicy@1.0.6
+sergeyt:typeahead@0.11.1_6
 service-configuration@1.0.5
 session@1.1.1
 sha@1.0.4

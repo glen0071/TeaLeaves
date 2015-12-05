@@ -1,4 +1,8 @@
 Template.addQuestion.onRendered(function() {
+    this.$('.datetimepicker').datetimepicker({minDate:new Date().setHours(0,0,0,0),defaultDate:moment().add(3, 'days')});
+});
+
+Template.addQuestion.onRendered(function() {
 var validator = $('.add-question-form').validate({
     submitHandler: function(event){
       var varHeadline = $('[name=headline]').val();
@@ -22,12 +26,21 @@ var validator = $('.add-question-form').validate({
   });
 });
 
+
 Template.addQuestion.events({
   'submit form': function(event, template){
     event.preventDefault();
+  },
+  'keypress #tokenfield': function(event, templtate){
+    if (event.which === 13) {
+        event.preventDefault()
+        $('#tokenfield').tokenfield({
+          // autocomplete: {
+          //   source: ['red','blue','green','yellow','violet','brown','purple','black','white'],
+          //   delay: 100
+          // },
+        showAutocompleteOnFocus: true
+        });
+    };
   }
-});
-
-Template.addQuestion.onRendered(function() {
-    this.$('.datetimepicker').datetimepicker({minDate:new Date().setHours(0,0,0,0),defaultDate:moment().add(3, 'days')});
 });

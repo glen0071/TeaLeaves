@@ -23,11 +23,5 @@ Template.following.helpers({
       return userIds = Meteor.users.findOne({"username": obj})._id;
     });
     return Questions.find({createdBy: {$in: idsArray}});
-  }
-});
-
-Template.following.events({
-  "click #foo": function(event, template){
-
-  }
+  },
 });

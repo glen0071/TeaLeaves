@@ -1,63 +1,6 @@
 <template name="viewQuestions">
   <h4 class="text-center">View Questions</h4>
   <div class="row view-question-filters">
-<!-- <<<<<<< HEAD
-       <div class="col-sm-9">
-           <div class="btn-group" data-toggle="buttons">
-                <label class="btn btn-default active">
-                    <input type="radio" class="viewQuestionBtn" name="viewQsBtn" id="newestBtn" value="1"> Newest
-                </label>
-                <label class="btn btn-default">
-                    <input type="radio" class="viewQuestionBtn" name="viewQsBtn" id="oldestBtn" value="2"> Oldest
-                </label>
-                <label class="btn btn-default">
-                    <input type="radio" class="viewQuestionBtn" name="viewQsBtn" id="deadlinesApproachingBtn" value="3"> Deadlines Approaching
-                </label>
-                <label class="btn btn-default">
-                    <input type="radio" class="viewQuestionBtn" name="viewQsBtn" id="mostAnswersBtn" value="4"> The Most Answers
-                </label>
-                <label class="btn btn-default">
-                    <input type="radio" class="viewQuestionBtn" name="viewQsBtn" id="leastAnswersBtn" value="5"> The Least Answers
-                </label>
-                <label class="btn btn-default">
-                    <input type="radio" class="viewQuestionBtn" name="viewQsBtn" id="topRatedBtn" value="6"> Top Rated
-                </label>
-                <label class="btn btn-default">
-                    <input type="radio" class="viewQuestionBtn" name="viewQsBtn" id="awaitingAdjudicationBtn" value="7"> Awaiting My Adjudication
-                </label>
-           </div>
-           <label class="btn btn-default">
-               <input type="checkbox" class="viewQuestionBtn" name="showClosed"> Show closed questions
-           </label>
-           {{#each filters}}
-           <div class="alert alert-info">
-             <button type="button" class="close" data-dismiss="alert">×</button>
-             <strong>Theme</strong>: {{theme}}
-
-             {{#if hideFollowBtn}}
-             <button class="unfollow-theme">Unfollow</button>
-             {{else}}
-             <button class="follow-theme">Follow</button>
-             {{/if}}
-
-
-
-           </div>
-
-           {{/each}}
-    <div class="view-question-list">
-      {{#if Template.subscriptionsReady}}
-      {{ > Questions}}
-      {{else}}
-        <p>
-          gathering all the questions
-        </p>
-      {{/if}}
-    </div>
-  </div>
-
-=======
->>>>>>> master -->
     <div class="col-sm-3">
       <div class="panel panel-default">
         <div class="panel-heading">
