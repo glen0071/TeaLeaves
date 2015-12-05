@@ -6,16 +6,16 @@
     {{/each}}
   </ul>
 
-
-
-  <h2>Top Questions!!</h2>
+  <!-- <h2>Top Questions!!</h2> -->
 
 </template>
 
 <template name="leader">
   <li>
-    <span style="font-weight:bold">Username:</span>{{username}}
-    <span style="font-weight:bold">Points:</span>{{points}}
+    <span style="font-weight:bold">Username:</span>
+    <a href="user/{{_id}}" class="profile-link">{{username}}</a>
+    <span style="font-weight:bold">Points:</span>
+    {{points}}
   </li>
 </template>
 
