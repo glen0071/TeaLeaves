@@ -183,6 +183,13 @@ a.question-link {
   padding-top: 15px;
 }
 
+.delete-account-option {
+  background-color: lightgray;
+  float: right;
+  width: 500px;
+  margin-top: 100px;
+}
+
 /* -------------------------------------- */
 /*           Adjudication Page            */
 /* -------------------------------------- */

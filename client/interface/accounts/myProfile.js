@@ -52,7 +52,19 @@ Template.myProfile.events({
       var newAboutMe = $('[name=aboutme]').val();
       var newName = $('[name=name]').val();
       Meteor.call('updateProfile', newUserName, newAboutMe, newName)
-
       template.editProfileMode.set( false );
+  },
+  'click #cancel-changes': function(event, template){
+    template.editProfileMode.set( false );
+  },
+  'click #delete-account': function(event, template){
+    event.preventDefault();
+    console.log("test");
+    var dont_go = confirm("Are you sure you'd like to delete your account?");
+    if(dont_go){
+      var currentUser = Meteor.userId();
+      Meteor.call('delete_current_user', currentUser)
+      // automatically goes to viewQuestions page already
+    }
   }
 });

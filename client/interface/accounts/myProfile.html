@@ -1,7 +1,7 @@
 <template name="myProfile">
 {{#if editProfileMode}}
   <form>
-    <h2>My Profile &nbsp; &nbsp;<span id="save-profile-btn"><button type="submit" id="save-profile-link">Save Profile</button></span></h2>
+    <h2>My Profile &nbsp; &nbsp;<span id="save-profile-btn"><button type="submit" id="save-profile-link">Save Profile</button> &nbsp; <button id="cancel-changes">Cancel Changes</button></span></h2>
     <div class="row user-info-div">
       <div class="col-xs-3">
         <img src="assets/default_profile.jpg" alt="default profile photo" id="profile-pic" />
@@ -11,10 +11,6 @@
         <p>Name: <input type="name" name="name" value="{{name}}"></p>
         <h5>Email: <input type="email" name="email" value="{{determineEmail}}"></h5>
         <p>  About me: <textarea type="aboutme" name="aboutme" value="{{aboutMe}}"></textarea></p>
-      </div>
-      <div class="col-md-3">
-        Following:
-          Topics, Users
       </div>
     </div> <!--user info closing dive-->
   </form>
@@ -30,11 +26,7 @@
       <h5>Email: {{determineEmail}}</h5>
       <p>About me: {{aboutMe}}</p>
     </div>
-    <div class="col-md-6">
-      Following:
-        Topics, Users
-    </div>
-  </div> <!--user info closing dive-->
+  </div> <!--user info closing div-->
 {{/if}}
 
   <div class="row" id="question-record-div">
@@ -74,8 +66,16 @@
     <h5>Users You're following: {{usersFollowed}}</h5>
 
   </section>
-  <button class="test">test</button>
 
+{{#if editProfileMode}}
+<aside class="delete-account-option">
+  <h5>You may delete your account from this page</h5>
+  <p class="fine-print">Deleting your account will erase all of your personal information from our account. The questions that you have created will remain in the database and available for others to answer, but your account will no longer be associated with those questions.</p>
+  <p class="fine-print">Once your account is permanently deleted, there's no way to undo this action. You won't be able to reactivate the account or retrieve anything you've added to it.</p>
+  <a href="#" id="delete-account">Delete your profile?</a>
+</aside>
+
+{{/if}}
 
 </template>
 

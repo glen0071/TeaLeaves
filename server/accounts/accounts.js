@@ -50,8 +50,7 @@ Meteor.methods({
     }
     return Meteor.users.update({_id: userId}, {$set: editedData})
   },
-  // changeEmail:function(userId, newEmail){
-  //   return Meteor.users.update({_id: userId}, {$set: {points: 50}});
-  //
-  // }
+  delete_current_user:function(currentUser){
+    return Meteor.users.remove({_id: currentUser});
+  }
 });
