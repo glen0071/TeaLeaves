@@ -27,3 +27,7 @@ Template.navigation.events({
         Router.go('myProfile',{_id:user});
     }
 });
+
+Accounts.ui.config({
+  passwordSignupFields: 'USERNAME_AND_EMAIL'
+});
