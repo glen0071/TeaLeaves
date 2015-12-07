@@ -16,7 +16,11 @@ Template.questionDetail.helpers({
   },
   userName:function(){
     var user = Meteor.users.findOne({_id:this.createdBy});
+    if(user === undefined){
+      return "closed account"
+    } else {
     return user.username;
+    }
   },
   createdOnString:function(){
     var created=this.createdOn;

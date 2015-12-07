@@ -215,6 +215,10 @@ a.question-link {
   margin-top: 100px;
 }
 
+.changing-password {
+  display: block;
+}
+
 /* -------------------------------------- */
 /*           Adjudication Page            */
 /* -------------------------------------- */

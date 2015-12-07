@@ -1,19 +1,39 @@
 <template name="myProfile">
 {{#if editProfileMode}}
-  <form>
-    <h2>My Profile &nbsp; &nbsp;<span id="save-profile-btn"><button type="submit" id="save-profile-link">Save Profile</button> &nbsp; <button id="cancel-changes">Cancel Changes</button></span></h2>
-    <div class="row user-info-div">
-      <div class="col-xs-3">
-        <img src="assets/default_profile.jpg" alt="default profile photo" id="profile-pic" />
-      </div>
-      <div class="col-xs-6">
-        <h5>Username: <input type="username" name="username" value="{{userName}}"></h5>
-        <p>Name: <input type="name" name="name" value="{{name}}"></p>
-        <h5>Email: <input type="email" name="email" value="{{determineEmail}}"></h5>
-        <p>  About me: <textarea type="aboutme" name="aboutme" value="{{aboutMe}}"></textarea></p>
-      </div>
-    </div> <!--user info closing dive-->
-  </form>
+  <div class="row">
+
+        <h2>My Profile &nbsp; &nbsp;<span id="save-profile-btn"><button type="submit" id="save-profile-link">Save Profile</button> &nbsp; <button id="cancel-changes">Cancel Changes</button></span></h2>
+        <div class="row user-info-div">
+          <div class="col-xs-3">
+            <img src="assets/default_profile.jpg" alt="default profile photo" id="profile-pic" />
+          </div>
+          <div class="col-xs-5">
+            <h5>Username: <input type="username" name="username" value="{{userName}}"></h5>
+            <p>Name: <input type="name" name="name" value="{{name}}"></p>
+            {{#if editingEmail}}
+              <p>Email: <input type="name" name="newEmail" value="{{determineEmail}}"> <button id="save-new-email">Save New Email Address</button> <button id="edit-email">Cancel Email Edits</button></p>
+            {{else}}
+              <p>Email: {{determineEmail}} <button id="edit-email">Edit Email Address</button> </p>
+            {{/if}}
+            <p>  About me: <textarea type="aboutme" name="aboutme" value="{{aboutMe}}"></textarea></p>
+            <button id="edit-password-module">Update Password</button>
+          </div>
+
+          {{#if editingPassword}}
+
+            <div class="col-xs-4">
+              <form action="">
+                <input type="password" name="currentPassword" class="changing-password" placeholder="old password">
+                <input type="password" name="newPassword" class="changing-password" placeholder="new password">
+                <input type="password" name="confirmPassword" class="changing-password" placeholder="confirm password">
+                <button type="submit" id="update-password">Save</button><button id="cancel-change">Cancel</button>
+              </form>
+
+            </div>
+
+          {{/if}}
+        </div> <!--user info closing dive-->
+  </div>
 {{else}}
   <h2>My Profile &nbsp; &nbsp;<span id="edit-profile-btn"><a href="#" id="edit-profile-link">Edit Profile</a></span></h2>
   <div class="row user-info-div">
