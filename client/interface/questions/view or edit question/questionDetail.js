@@ -191,10 +191,14 @@ Template.questionDetail.events({
         var currentQuestion = this._id;
         var newHeadline = $('[name=editHeadline]').val();
         var newText = $('[name=editText]').val();
-        var newThemes = $('[name=editThemes]').val().split(/,+\s*/);
+        var newThemes = $('[name=editThemes]').val().toLowerCase().split(/,+\s*/);
         var newDeadline = $('.datetimepicker').data("DateTimePicker").date().toDate();
         Meteor.call('updateQuestion', currentQuestion, newHeadline, newText, newThemes, newDeadline)
         template.editQuestionMode.set( false );
+
+        var onlyDocument = PastThemes.findOne();
+        var collectionId = onlyDocument._id;
+        Meteor.call("insertNewThemes", collectionId, newThemes);
     },
     'click #cancel-edits-link': function(event, template){
         event.preventDefault();

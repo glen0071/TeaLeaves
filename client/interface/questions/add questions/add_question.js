@@ -22,6 +22,9 @@ var validator = $('.add-question-form').validate({
           $('.datetimepicker').val('');
         }
       });
+    var onlyDocument = PastThemes.findOne();
+    var collectionId = onlyDocument._id;
+    Meteor.call("insertNewThemes", collectionId, varThemes);
     }
   });
   this.$('.datetimepicker').datetimepicker({minDate:new Date().setHours(0,0,0,0),defaultDate:moment().add(3, 'days')});
