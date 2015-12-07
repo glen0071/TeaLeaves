@@ -18,6 +18,10 @@ li {
   margin:5px 5px 5px 5px;
 }
 
+.table-header{
+  font-weight: bold;
+}
+
 /* ----------------------------------------- */
 /*           Question Detail Page            */
 /* ----------------------------------------- */
@@ -139,6 +143,23 @@ a.question-link {
 
 #tokenfield{
   width: 800px;
+}
+
+/* -------------------------------- */
+/*       Leaderboard page          */
+/* -------------------------------- */
+
+#leaderboard{
+  border: darkslategrey solid 1px;
+}
+
+.leaderboard{
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+  align:center;
 }
 
 /* -------------------------------- */
