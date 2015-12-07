@@ -5,6 +5,7 @@ Template.myProfile.onCreated(function() {
   });
   this.editProfileMode = new ReactiveVar(false);
   this.editingPassword = new ReactiveVar(false);
+  this.editingEmail = new ReactiveVar(false);
 });
 
 Template.myProfile.helpers({
@@ -52,6 +53,9 @@ Template.myProfile.helpers({
   },
   editingPassword: function() {
     return Template.instance().editingPassword.get();
+  },
+  editingEmail: function() {
+    return Template.instance().editingEmail.get();
   }
 });
 
@@ -60,12 +64,13 @@ Template.myProfile.events({
     event.preventDefault();
     template.editProfileMode.set(true);
   },
-  'submit form': function(event, template) {
+  'click #save-profile-link': function(event, template) {
     event.preventDefault();
     var newUserName = $('[name=username]').val();
     var newAboutMe = $('[name=aboutme]').val();
     var newName = $('[name=name]').val();
-    Meteor.call('updateProfile', newUserName, newAboutMe, newName)
+    var newEmail = $('[name=email]')
+    Meteor.call('updateProfile', newUserName, newAboutMe, newName, newEmail)
     template.editProfileMode.set(false);
   },
   'click #cancel-changes': function(event, template) {
@@ -81,48 +86,56 @@ Template.myProfile.events({
         // automatically goes to viewQuestions page already
     }
   },
-  'click #add-email': function(event,template){
+  'click #edit-email': function(event, template) {
     event.preventDefault();
-    console.log("message");
-
+    console.log("edit Email mode");
+    template.editingEmail.set(true);
   },
-  'click #edit-password-module': function(event,template){
+  'click #save-new-email': function(event, template) {
+    event.preventDefault();
+    var updatedEmail = template.$('[name=newEmail]').val();
+
+    Meteor.call("userChangeEmail", updatedEmail, function(error, result){
+      if(error){
+        console.log("error", error);
+        return false
+      } else {
+        console.log("Your new email has been updated, and an email has been sent to that address to confirm it.");
+        template.editingEmail.set(false);
+      }
+
+    });
+  },
+  'click #cancel-edit-email': function(event, template) {
+    event.preventDefault();
+    template.editingEmail.set(false);
+  },
+  'click #edit-password-module': function(event, template) {
     event.preventDefault();
     console.log("edit password");
     template.editingPassword.set(true);
   },
-  'click #update-password': function(event,template){
+  'click #update-password': function(event, template) {
     event.preventDefault();
     var oldPassword = $('[name=currentPassword]').val();
     var newPassword = $('[name=confirmPassword]').val();
     var confirmPassword = $('[name=confirmPassword]').val();
     console.log(oldPassword + "  " + newPassword + " " + confirmPassword);
     if (newPassword !== confirmPassword) {
-            alert("passwords don't match")
-            return false;
-        }
+      alert("passwords don't match")
+      return false;
+    }
     Accounts.changePassword(oldPassword, newPassword, function(error) {
-            if (error) {
-                console.log('There was an issue: ' + error.reason);
-            } else {
-                console.log('You reset your password!');
-            }
+      if (error) {
+        console.log('There was an issue: ' + error.reason);
+      } else {
+        console.log('You reset your password!');
+      }
     });
   },
-  'click #cancel-change': function(event,template){
+  'click #cancel-change': function(event, template) {
     event.preventDefault();
     console.log("cancel save password");
     template.editingPassword.set(false);
-  },
-  //   Meteor.call("userAddEmail", dataObject, function(error, result){
-  //     if(error){
-  //       console.log("error", error);
-  //     }
-  //     if(result){
-  //
-  //     }
-  //   });
-  //
-
-
+  }
 });
