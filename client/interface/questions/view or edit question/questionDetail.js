@@ -2,6 +2,22 @@ Template.questionDetail.onCreated(function() {
     editQuestionMode = this.editQuestionMode = new ReactiveVar( false );
 });
 
+Template.changeDeadline.onRendered(function() {
+    var currentDeadline = Template.parentData(0).deadline;
+    this.$('.datetimepicker').datetimepicker({defaultDate:currentDeadline});
+
+    var onlyDocument = PastThemes.findOne();
+    var themesArray = onlyDocument.themes;
+    event.preventDefault();
+    $('#tokenfield').tokenfield({
+      autocomplete: {
+         source: themesArray,
+         delay: 100
+       },
+       showAutocompleteOnFocus: true
+    });
+});
+
 Template.questionDetail.helpers({
   questionBelongsToCurrentUser: function() {
     var createdBy = this.createdBy;
@@ -197,9 +213,4 @@ Template.questionDetail.events({
       event.preventDefault();
       editQuestionMode.toggle();
     }
-});
-
-Template.changeDeadline.onRendered(function() {
-    var currentDeadline = Template.parentData(0).deadline;
-    this.$('.datetimepicker').datetimepicker({defaultDate:currentDeadline});
 });
