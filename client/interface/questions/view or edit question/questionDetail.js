@@ -1,5 +1,6 @@
 Template.questionDetail.onCreated(function() {
     editQuestionMode = this.editQuestionMode = new ReactiveVar( false );
+    this.subscribe('pastThemes');
 });
 
 Template.changeDeadline.onRendered(function() {
