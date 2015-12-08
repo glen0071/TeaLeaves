@@ -1,10 +1,6 @@
 <template name="questionDetail">
 
-  {{test}}
-
   {{#if Template.subscriptionsReady}}
-
-
 
   {{#if editQuestionMode}}
       <form>
@@ -32,9 +28,12 @@
   <p class="question-text">{{text}}</p>
 {{> deadlineInfo}}
 
-    {{#if questionBelongsToCurrentUser}}
+    {{#if editable}}
         <p>
-           As the author of this question, you may <a href="#" id="edit-question-link"><em>click here</em></a> to enter edit this question.
+           As the author of this question, you may <a href="#" id="edit-question-link"><em>click here</em></a>
+           to enter edit this question up to 48 hours after creating it,<br>
+           but not within 48 hours of the question's deadline.<br>
+           These time limitations are subject to change by administrators.
         </p>
     {{/if}}  <!-- CurrentUser Edit button closing /if-->
 

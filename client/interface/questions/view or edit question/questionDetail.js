@@ -19,10 +19,22 @@ Template.changeDeadline.onRendered(function() {
 });
 
 Template.questionDetail.helpers({
-  questionBelongsToCurrentUser: function() {
+  editable: function() {
     var createdBy = this.createdBy;
     var currentUser = Meteor.userId();
-    return (createdBy === currentUser);
+    var now = new Date();
+    var createdAt = this.createdOn;
+    var closeTime = this.deadline;
+    var fortyEightHours = 172800000;
+    if (
+        (createdBy === currentUser) &&
+        (closeTime - now > fortyEightHours) &&
+        (now - createdAt < fortyEightHours)
+      ) {
+        return "true"
+      } else {
+        return ""
+      }
   },
   questions: function(){
     return Questions.find();
