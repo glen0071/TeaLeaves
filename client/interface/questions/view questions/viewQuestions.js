@@ -4,9 +4,18 @@ Template.viewQuestions.onCreated(function () {
   this.showClosed = new ReactiveVar(false);
   this.sorts = new ReactiveDict();
   this.sorts.set("createdOn",-1);
+  this.filterText = new ReactiveVar('');
 });
 
 Template.viewQuestions.onRendered(function(){
+this.autorun(function(c){
+  var filtText = Template.instance().filterText.get();
+  if(filtText && filtText!=""){
+    Template.instance().filters.set("$or",[{headline:{$regex: filtText+".*", $options: "i"}},{text:{$regex: filtText+".*", $options: "i"}},{themes:{$regex: filtText+".*", $options: "i"}}]);
+  }else{
+    Template.instance().filters.delete("$or");
+  }
+});
   this.autorun(function(c){
     var filters=  Template.instance().filters.all();
      console.log('filters: '+EJSON.stringify(filters, {indent: true}));
@@ -48,7 +57,7 @@ Template.viewQuestions.helpers({
   },
   filters:function(){
     var filterz = Template.instance().filters.all();
-    var pairs = _.pairs(_.omit(filterz,'closed','adjudicatedOn','createdBy'));
+    var pairs = _.pairs(_.omit(filterz,'closed','adjudicatedOn','createdBy','$or'));
     return pairs;
   },
   hideFollowBtn:function() {
@@ -78,6 +87,10 @@ Template.viewQuestions.helpers({
 });
 
 Template.viewQuestions.events({
+
+  'keyup #searchBox': function(event, template){
+    var sc = Template.instance().filterText.set(event.target.value);
+  },
   "click [class=close]":function(event,template){
     Router.go('viewQuestions');
   },
