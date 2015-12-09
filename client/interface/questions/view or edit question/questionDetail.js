@@ -1,12 +1,41 @@
 Template.questionDetail.onCreated(function() {
     editQuestionMode = this.editQuestionMode = new ReactiveVar( false );
+    this.subscribe('pastThemes');
+});
+
+Template.changeDeadline.onRendered(function() {
+    var currentDeadline = Template.parentData(0).deadline;
+    this.$('.datetimepicker').datetimepicker({defaultDate:currentDeadline});
+
+    var onlyDocument = PastThemes.findOne();
+    var themesArray = onlyDocument.themes;
+    event.preventDefault();
+    $('#tokenfield').tokenfield({
+      autocomplete: {
+         source: themesArray,
+         delay: 100
+       },
+       showAutocompleteOnFocus: true
+    });
 });
 
 Template.questionDetail.helpers({
-  questionBelongsToCurrentUser: function() {
+  editable: function() {
     var createdBy = this.createdBy;
     var currentUser = Meteor.userId();
-    return (createdBy === currentUser);
+    var now = new Date();
+    var createdAt = this.createdOn;
+    var closeTime = this.deadline;
+    var fortyEightHours = 172800000;
+    if (
+        (createdBy === currentUser) &&
+        (closeTime - now > fortyEightHours) &&
+        (now - createdAt < fortyEightHours)
+      ) {
+        return "true"
+      } else {
+        return ""
+      }
   },
   questions: function(){
     return Questions.find();
@@ -175,10 +204,14 @@ Template.questionDetail.events({
         var currentQuestion = this._id;
         var newHeadline = $('[name=editHeadline]').val();
         var newText = $('[name=editText]').val();
-        var newThemes = $('[name=editThemes]').val().split(/,+\s*/);
+        var newThemes = $('[name=editThemes]').val().toLowerCase().split(/,+\s*/);
         var newDeadline = $('.datetimepicker').data("DateTimePicker").date().toDate();
         Meteor.call('updateQuestion', currentQuestion, newHeadline, newText, newThemes, newDeadline)
         template.editQuestionMode.set( false );
+
+        var onlyDocument = PastThemes.findOne();
+        var collectionId = onlyDocument._id;
+        Meteor.call("insertNewThemes", collectionId, newThemes);
     },
     'click #cancel-edits-link': function(event, template){
         event.preventDefault();
@@ -197,9 +230,4 @@ Template.questionDetail.events({
       event.preventDefault();
       editQuestionMode.toggle();
     }
-});
-
-Template.changeDeadline.onRendered(function() {
-    var currentDeadline = Template.parentData(0).deadline;
-    this.$('.datetimepicker').datetimepicker({defaultDate:currentDeadline});
 });
