@@ -14,16 +14,18 @@
 
 <template name="leader">
   {{#if username}} {{#if points}}
-  <tr>
-    <td class="leaderboard">
-      <h2><a href="user/{{_id}}" class="profile-link">{{username}}</a></h2>
-    </td>
-    <td class="leaderboard">
-      <h1>
-        {{points}}
-      </h1>
-    </td>
-  </tr>
+    <tr>
+      <td class="leaderboard">
+        <h2><a href="user/{{_id}}" class="profile-link">{{username}}</a></h2>
+      </td>
+      <td class="leaderboard">
+        <h1>
+          {{points}}
+        </h1>
+      </td>
+    </tr>
+
+
   {{/if}} {{/if}}
 </template>
 

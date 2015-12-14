@@ -5,9 +5,6 @@
 .container {
   padding-top: 30px;
   padding-bottom:30px;
-  border-width: thin;
-  border-style: dashed;
-  border-color: black;
 }
 
 li {
@@ -20,6 +17,75 @@ li {
 
 .table-header{
   font-weight: bold;
+}
+
+body {
+  width: 100%;
+  font-family: 'Roboto', sans-serif;
+  background-color: rgb(229, 255, 249);
+}
+
+
+/* ----------------------------------------- */
+/*           Navbar header                   */
+/* ----------------------------------------- */
+
+.navbar-brand {
+  font-size: 1.3em;
+}
+
+.navbar {
+  font-size: 1.3em;
+}
+
+/* ----------------------------------------- */
+/*           View Questions Page            */
+/* ----------------------------------------- */
+
+.closed-questions-btn-label {
+
+}
+
+.show-closed-qs-btn {
+  width: auto;
+  word-wrap: break-word;
+}
+
+.single-question {
+  width: auto;
+  margin: 5px 0px;
+  width: 99%;
+  display: block;
+}
+
+.question-headline {
+  font-size: 1.3em;
+  color: rgb(0, 126, 128);
+}
+
+.navbar, .panel-title {
+  background-color: rgb(0, 248, 194);
+}
+
+.panel-heading {
+  background-color: rgb(0, 248, 194);
+}
+
+.panel-heading-custom {
+  background-color: rgb(0, 248, 194);
+  height: 38px;
+  padding: 10px 15px;
+  border-bottom: 1px solid transparent;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+
+.panel-body {
+  background-color: rgb(229, 255, 249);
+}
+
+.view-question-btn {
+  background-color: rgb(229, 255, 249);
 }
 
 /* ----------------------------------------- */
@@ -101,8 +167,7 @@ li {
 
 .view-question-list {
   margin: 10px;
-  align: center;
-  margin-left: 100px;
+  width: 100%;
 }
 
 .social-list {
@@ -120,11 +185,6 @@ li {
   margin-left: 60px;
 }
 
-.single-question {
-  width: 650px;
-  margin: 5px 0px;
-}
-
 a.question-link {
   display: inline;
 }
@@ -138,11 +198,18 @@ a.question-link {
 /* -------------------------------- */
 
 .add-question-field {
-  margin: 4px;
+  margin: 7px;
+  width: 100%;
 }
 
-#tokenfield{
-  width: 800px;
+.deadline-div {
+  margin: 5px;
+  margin-left: 8px;
+}
+
+.submit-question-btn {
+  margin: 4px;
+  margin-left: 8px;
 }
 
 /* -------------------------------- */
@@ -154,21 +221,26 @@ a.question-link {
 }
 
 .leaderboard{
-  padding-left: 50px;
-  padding-right: 50px;
+  padding-left: 37px;
+  padding-right: 37px;
   padding-top: 10px;
   padding-bottom: 10px;
   text-align: center;
   align:center;
 }
 
+/*
+.leaderboard-div {
+  margin: 0 auto;
+}*/
+
 /* -------------------------------- */
 /*             Profile page         */
 /* -------------------------------- */
 
 #profile-pic {
-  width: 175px;
-  height: 150px;
+  width: 200px;
+  height: auto;
   padding: 10px;
 }
 
@@ -290,7 +362,7 @@ a.question-link {
 
 #edit-question-headline {
   font-size: 17px;
-  width: 650px;
+  width: auto;
   margin: 10px 0px;
 }
 

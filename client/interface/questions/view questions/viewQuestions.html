@@ -1,14 +1,13 @@
 <template name="viewQuestions">
-  <h4 class="text-center">View Questions</h4>
   <div class="row view-question-filters">
-    <div class="col-sm-3">
+    <div class="col-sm-4">
       <div class="panel panel-default">
-        <div class="panel-heading">
+        <div class="panel-heading-custom">
           <h3 class="panel-title">Filter questions by...</h3>
         </div>
         <div class="panel-body">
-          <label class="btn btn-default">
-            <input type="checkbox" class="viewQuestionBtn" name="showClosed" checked={{showClosed}}> Show closed questions </label>
+          <label class="btn btn-default closed-questions-btn-label view-question-btn">
+            <input type="checkbox" class="viewQuestionBtn" name="showClosed" checked={{showClosed}}> <span class="show-closed-qs-btn">Show closed questions</span> </label>
           <input type="text" class="form-control" id="searchBox" placeholder="Filter by keyword...">
         </div>
         <div>
@@ -22,45 +21,49 @@
     </div>
     <div class="col-sm-8">
       <div class="panel panel-default">
-        <div class="panel-heading">
+        <div class="panel-heading-custom">
           <h3 class="panel-title">Sort questions by...</h3>
         </div>
         <div class="panel-body">
           <div class="btn-group" data-toggle="buttons" style="margin:20px">
-            <button class="btn btn-default" name="sortBtn" id="ageSortBtn">
+            <button class="btn btn-default view-question-btn" name="sortBtn" id="ageSortBtn">
               <span class="{{sortIcon 'createdOn'}}"></span>
               Question Age</button>
-            <button class="btn btn-default" name="sortBtn" id="deadlineSortBtn">
+            <button class="btn btn-default view-question-btn" name="sortBtn" id="deadlineSortBtn">
               <span class="{{sortIcon 'deadline'}}"></span>
               Deadline</button>
           </div>
           <div class="btn-group" data-toggle="buttons" style="margin:20px">
-            <button class="btn btn-default" name="sortBtn" id="answersSortBtn">
+            <button class="btn btn-default view-question-btn" name="sortBtn" id="answersSortBtn">
               <span class="{{sortIcon 'answerCount'}}"></span> Number of Answers
             </button>
-            <button class="btn btn-default" name="sortBtn" id="upvotesSortBtn">
+            <button class="btn btn-default view-question-btn" name="sortBtn" id="upvotesSortBtn">
               <span class="{{sortIcon 'upVotes'}}"></span> Number of Upvotes
             </button>
           </div>
         </div>
       </div>
     </div>
+      <div class="question-view-div col-sm-12">
+        <div class="view-question-list"> {{#if Template.subscriptionsReady}} {{ > Questions}} {{else}}
+          <p> gathering all the questions </p> {{/if}}
+        </div>
+        <!-- <div class="col-sm-3" style="float:right">
+          <div class="search-box"> {{> search}} </div>
+        </div> -->
+      </div>
   </div>
 
-  <div class="view-question-list"> {{#if Template.subscriptionsReady}} {{ > Questions}} {{else}}
-    <p> gathering all the questions </p> {{/if}}
-  </div>
 
-  <!-- <div class="col-sm-3" style="float:right">
-    <div class="search-box"> {{> search}} </div>
-  </div> -->
 </template>
 
 <template name="viewQuestion">
-  <li class="single-question"> <a href="{{pathFor
-'questionDetail'}}" class="question-link"> {{headline}}</a> {{#each themes}}
+  <li class="single-question">
+    <a href="{{pathFor 'questionDetail'}}" class="question-link question-headline"> {{headline}}</a><br>
+    {{#each themes}}
     <a href="#" class="theme-link">{{this}}</a> {{/each}}
-    <span class="relevantInfo">{{relevantInfo}}</span> {{#unless deadlinePassed}}{{> votingSmall}}{{/unless}} </li>
+    <span class="relevantInfo">{{relevantInfo}}</span> {{#unless deadlinePassed}}{{> votingSmall}}{{/unless}}
+  </li>
 </template>
 
 <template name="Questions"> {{> pages}} {{> pagesNav}} </template>

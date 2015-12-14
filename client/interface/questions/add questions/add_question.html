@@ -1,19 +1,21 @@
 <template name="addQuestion">
 
-  <h4 class="text-center">Add Question</h4>
+  <h4 class="text-center">Ask Your Question Here!</h4>
     <form class="add-question-form">
       <ul>
-        <li><input name="headline" placeholder="Headline" class="add-question-field" required></li>
-        <li><textarea name="text" placeholder="What would you like to ask?" class="add-question-field question-text"></textarea></li>
-        <li><input name="themes" placeholder="type a theme and press enter" id="tokenfield"  class="add-question-field"></li>
+        <li><input name="headline" placeholder="Please ask your question here" class="form-control add-question-field" required></li>
+        <li><textarea name="text" placeholder="Any links or extra info can go here" class="form-control add-question-field question-text"></textarea></li>
+        <li><input name="themes" placeholder="Type a theme and press enter" id="tokenfield"  class="form-control add-question-field"></li>
 
-        Deadline:<br>
-          <div class="input-group datetimepicker">
-            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-            <input class="set-due-date form-control" type="text" placeholder="Deadline for answering"/>
-          </div>
+        <div class="deadline-div">
+          Deadline for answering question:<br>
+            <div class="input-group datetimepicker">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+              <input class="set-due-date form-control" type="text" placeholder="Deadline for answering"/>
+            </div>
+        </div>
         <li>
-          <input type="submit" value="Submit Question" class="submit-question add-question-field"/>
+          <input type="submit" value="Submit Question" class="submit-question-btn btn btn-primary"/>
         </li>
       </ul>
     </form>

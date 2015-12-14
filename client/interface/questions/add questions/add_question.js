@@ -1,4 +1,4 @@
-Template.addQuestion.onCreated(function () {
+ Template.addQuestion.onCreated(function () {
   this.subscribe('pastThemes');
 });
 
