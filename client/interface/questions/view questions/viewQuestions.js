@@ -122,6 +122,22 @@ switch(event.target.id){
   },
   "change [name=showClosed]": function(event, template) {
        template.showClosed.toggle();
+},
+'click .follow-theme': function(event, template){
+  event.preventDefault();
+  var themeViewed = this[1];
+  console.log(themeViewed);
+  var array =  Meteor.user().profile.followingThemes;
+  console.log(array);
+  Meteor.call('followTheme', themeViewed)
+},
+'click .unfollow-theme': function(event, template){
+  event.preventDefault();
+  var themeViewed = this[1];
+  console.log(themeViewed);
+  var array =  Meteor.user().profile.followingThemes;
+  console.log(array);
+  Meteor.call('unfollowTheme', themeViewed)
 }
 
 //awaiting my adjudication - move to user profile?
@@ -141,22 +157,6 @@ Template.viewQuestion.events({
     var theTheme = event.target.text;
     Router.go('viewTheme',{theme:theTheme});
   },
-  'click .follow-theme': function(event, template){
-    event.preventDefault();
-    var themeViewed = this[1];
-    console.log(themeViewed);
-    var array =  Meteor.user().profile.followingThemes;
-    console.log(array);
-    Meteor.call('followTheme', themeViewed)
-  },
-  'click .unfollow-theme': function(event, template){
-    event.preventDefault();
-    var themeViewed = this[1];
-    console.log(themeViewed);
-    var array =  Meteor.user().profile.followingThemes;
-    console.log(array);
-    Meteor.call('unfollowTheme', themeViewed)
-  }
 });
 
 Template.viewQuestion.helpers({
