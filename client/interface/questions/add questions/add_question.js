@@ -1,8 +1,13 @@
-Template.addQuestion.onCreated(function () {
-  this.subscribe('pastThemes');
-});
-
 Template.addQuestion.onRendered(function() {
+     var onlyDocument = PastThemes.findOne();
+     var themesArray = onlyDocument.themes;
+    $('#tokenfield').tokenfield({
+      autocomplete: {
+         source: themesArray,
+         delay: 100
+       },
+       showAutocompleteOnFocus: true
+    });
 var validator = $('.add-question-form').validate({
     submitHandler: function(event){
       var varHeadline = $('[name=headline]').val();
@@ -28,16 +33,6 @@ var validator = $('.add-question-form').validate({
     }
   });
   this.$('.datetimepicker').datetimepicker({minDate:new Date().setHours(0,0,0,0),defaultDate:moment().add(3, 'days')});
-  var onlyDocument = PastThemes.findOne();
-  var themesArray = onlyDocument.themes;
-  event.preventDefault();
-  $('#tokenfield').tokenfield({
-    autocomplete: {
-       source: themesArray,
-       delay: 100
-     },
-     showAutocompleteOnFocus: true
-  });
 });
 
 Template.addQuestion.events({
@@ -46,10 +41,7 @@ Template.addQuestion.events({
   },
   'keypress #tokenfield': function(event, template){
   if (event.which === 13) {
-      event.preventDefault()
-      $('#tokenfield').tokenfield({
-      showAutocompleteOnFocus: true
-      });
+    event.preventDefault();
   };
 }
 
