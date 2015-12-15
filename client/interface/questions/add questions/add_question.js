@@ -44,4 +44,13 @@ Template.addQuestion.events({
   'submit form': function(event, template){
     event.preventDefault();
   },
+  'keypress #tokenfield': function(event, template){
+  if (event.which === 13) {
+      event.preventDefault()
+      $('#tokenfield').tokenfield({
+      showAutocompleteOnFocus: true
+      });
+  };
+}
+
 });
