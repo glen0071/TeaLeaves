@@ -60,9 +60,28 @@
 <template name="viewQuestion">
   <li class="single-question">
     <a href="{{pathFor 'questionDetail'}}" class="question-link question-headline"> {{headline}}</a><br>
-    {{#each themes}}
-    <a href="#" class="theme-link">{{this}}</a> {{/each}}
-    <span class="relevantInfo">{{relevantInfo}}</span> {{#unless deadlinePassed}}{{> votingSmall}}{{/unless}}
+    <div class="one-question-meta-data">
+      {{#each themes}}
+      <a href="#" class="theme-link">{{this}}</a> {{/each}}
+      <span class="relevantInfo">{{relevantInfo}}</span>
+    </div>
+    <div class="add-2-any-btn">
+      <!-- AddToAny BEGIN -->
+        <a class="a2a_dd add-2-any-btn" href="https://www.addtoany.com/share"><img src="//static.addtoany.com/buttons/favicon.png" width="16" height="16" border="0" alt="Share"/></a>
+        <script type="text/javascript">
+          var a2a_config = a2a_config || {};
+          a2a_config.onclick = 1;
+          a2a_config.color_main = "04498D";
+          a2a_config.color_border = "04498D";
+          a2a_config.color_link_text = "333333";
+          a2a_config.color_link_text_hover = "333333";
+          a2a_config.color_arrow_hover = "fff";
+        </script>
+        <script type="text/javascript" src="//static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+    </div>
+    {{#unless deadlinePassed}}{{> votingSmall}}{{/unless}}
+
   </li>
 </template>
 
