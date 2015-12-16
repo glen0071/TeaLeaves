@@ -22,7 +22,8 @@ li {
 body {
   width: 100%;
   font-family: 'Roboto', sans-serif;
-  background-color: rgb(229, 255, 249);
+  /*background-color: rgb(229, 255, 249);*/
+  background-color: #fff;
 }
 
 
@@ -32,10 +33,22 @@ body {
 
 .navbar-brand {
   font-size: 1.3em;
+  color: white;
 }
 
-.navbar {
+.navbar a {
   font-size: 1.3em;
+  color: white;
+  font-weight: 300;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: white;
+}
+
+.navbar-default .navbar-brand {
+    color: white;
+    font-size: 1.7em;
 }
 
 /* ----------------------------------------- */
@@ -59,20 +72,29 @@ body {
 }
 
 .question-headline {
-  font-size: 1.3em;
-  color: rgb(0, 126, 128);
+  font-size: 1.4em;
+  /*color: rgb(0, 126, 128);*/
+  /*color: #rgb(178, 58, 17);*/
+  color: #04498D;
 }
 
 .navbar, .panel-title {
-  background-color: rgb(0, 248, 194);
+  /*background-color: rgb(0, 248, 194);*/
+  /*background-color: #rgb(178, 58, 17);*/
+  background-color: #04498D;
+  color: white;
 }
 
 .panel-heading {
-  background-color: rgb(0, 248, 194);
+  /*background-color: rgb(0, 248, 194);*/
+  /*background-color: #rgb(178, 58, 17);*/
+  background-color: #04498D;
 }
 
 .panel-heading-custom {
-  background-color: rgb(0, 248, 194);
+  /*background-color: rgb(0, 248, 194);*/
+  background-color: #04498D;
+  /*background-color: #rgb(178, 58, 17);*/
   height: 38px;
   padding: 10px 15px;
   border-bottom: 1px solid transparent;
@@ -81,11 +103,22 @@ body {
 }
 
 .panel-body {
-  background-color: rgb(229, 255, 249);
+  /*background-color: rgb(229, 255, 249);*/
+  background-color: #fff;
 }
 
 .view-question-btn {
-  background-color: rgb(229, 255, 249);
+  /*background-color: rgb(229, 255, 249);*/
+  background-color: #fff;
+  /*color: #rgb(178, 58, 17);*/
+  color: #04498D;
+}
+
+.view-question-btn:hover {
+  /*background-color: rgb(229, 255, 249);*/
+  background-color: rgb(209,209,209);
+  /*color: #rgb(178, 58, 17);*/
+  color: #04498D;
 }
 
 /* ----------------------------------------- */
@@ -161,7 +194,7 @@ body {
 
 .relevantInfo{
   color:grey;
-  font-size: 11px;
+  font-size: 13px;
   padding-left: 15px;
 }
 
