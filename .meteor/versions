@@ -38,6 +38,7 @@ email@1.0.8
 es5-shim@4.1.14
 facebook@1.2.2
 fastclick@1.0.7
+fortawesome:fontawesome@4.2.0_2
 geojson-utils@1.0.4
 google@1.1.7
 hot-code-push@1.0.0
@@ -57,6 +58,7 @@ iron:url@1.0.11
 jquery@1.11.4
 lai:collection-extensions@0.1.4
 launch-screen@1.0.4
+liberation:shareit@1.1.1
 livedata@1.0.15
 localstorage@1.0.5
 logging@1.0.8
