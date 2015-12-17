@@ -1,37 +1,11 @@
 <template name="voting">
-<table>
- <tr>
-   {{#if unanswered}}
-     <td id="newVoteYes" class="voteYes btn btn-success"><a href="#">Yes</a></td>
-     <td id="newVoteNo" class="voteNo btn btn-danger"><a href="#">No</a></td>
-   {{/if}}
-   {{#if answeredYes}}
-     <td id="revoteYes" class="voteYes btn btn-success {{votedYes}}"><a href="#">Yes</a></td>
-     <td id="changeVoteNo" class="voteNo btn btn-danger {{votedNo}}"><a href="#">No</a></td>
-   {{/if}}
-   {{#if answeredNo}}
-     <td id="changeVoteYes" class="voteYes btn btn-success {{votedYes}}"><a href="#">Yes</a></td>
-     <td id="revoteNo" class="voteNo btn btn-danger {{votedNo}}"><a href="#">No</a></td>
-   {{/if}}
- </tr>
-</table>
+  <div>
+      <input type="checkbox" class="switch" id={{id}} data-on-color="success" data-off-color="danger" data-on-text="Yes" data-off-text="No" data-size="large" data-indeterminate={{unanswered}} checked={{answeredYes}}>
+    </div>
 </template>
 
 <template name="votingSmall">
-<table class="small-btn">
- <tr>
-   {{#if unanswered}}
-     <td id="newVoteYes" class="btn btn-xs btn-success"><a href="#">Yes</a></td>
-     <td id="newVoteNo" class="btn btn-xs btn-danger"><a href="#">No</a></td>
-   {{/if}}
-   {{#if answeredYes}}
-     <td id="revoteYes" class="btn btn-xs  btn-success {{votedYes}}"><a href="#">Yes</a></td>
-     <td id="changeVoteNo" class="btn btn-xs btn-danger {{votedNo}}"><a href="#">No</a></td>
-   {{/if}}
-   {{#if answeredNo}}
-     <td id="changeVoteYes" class="btn btn-xs btn-success {{votedYes}}"><a href="#">Yes</a></td>
-     <td id="revoteNo" class="btn btn-xs btn-danger {{votedNo}}"><a href="#">No</a></td>
-   {{/if}}
- </tr>
-</table>
+  <div>
+      <input type="checkbox" class="switch" id={{id}} data-on-color="success" data-off-color="danger" data-on-text="Yes" data-off-text="No" data-size="small" data-indeterminate={{unanswered}} checked={{answeredYes}}>
+    </div>
 </template>
