@@ -48,7 +48,6 @@ this.autorun(function(c){
       Template.instance().filters.delete("themes");
     }
   });
-
 });
 
 Template.viewQuestions.helpers({
@@ -122,6 +121,9 @@ switch(event.target.id){
   },
   "change [name=showClosed]": function(event, template) {
        template.showClosed.toggle();
+},
+"click .collapse-link": function(event, template) {
+  event.preventDefault();
 }
 
 //awaiting my adjudication - move to user profile?
