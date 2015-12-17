@@ -86,7 +86,6 @@ Template.viewQuestions.helpers({
 });
 
 Template.viewQuestions.events({
-
   'keyup #searchBox': function(event, template){
     var sc = Template.instance().filterText.set(event.target.value);
   },

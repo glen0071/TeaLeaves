@@ -1,17 +1,7 @@
 <template name="following">
-  <h4 class="text-center page-header">Following</h4>
 
     <div class="view-question-list">
-      <h3>From Themes You Follow</h3>
-      <ul>
-       {{#each followedThemeQuestions}}
-         {{> viewQuestion}}
-       {{/each}}
-     </ul>
-    </div>
-
-    <div class="view-question-list">
-      <h3>From Users You Follow</h3>
+      <h3>Open questions from the Users and Themes that you follow</h3>
       <ul>
        {{#each followedUserQuestions}}
          {{> viewQuestion}}
