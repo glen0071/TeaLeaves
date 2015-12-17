@@ -48,7 +48,6 @@ this.autorun(function(c){
       Template.instance().filters.delete("themes");
     }
   });
-
 });
 
 Template.viewQuestions.helpers({
@@ -138,6 +137,9 @@ switch(event.target.id){
   var array =  Meteor.user().profile.followingThemes;
   console.log(array);
   Meteor.call('unfollowTheme', themeViewed)
+},
+"click .collapse-link": function(event, template) {
+  event.preventDefault();
 }
 
 //awaiting my adjudication - move to user profile?

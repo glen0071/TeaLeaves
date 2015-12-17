@@ -1,0 +1,15 @@
+/* iPhone queries: http://stackoverflow.com/questions/12539697/iphone-5-css-media-query; http://stephen.io/mediaqueries/ */
+/* iPhone 6 queries:  http://stackoverflow.com/questions/25759046/iphone-6-and-6-plus-media-queries*/
+
+
+@media only screen
+and (min-width: 360px)
+and (orientation: portrait)
+and (-webkit-min-device-pixel-ratio: 3.0) {
+    /* Target Nexus 5 .... Tested: true */
+
+    /* ----------------------------------------- */
+    /*           header + navbar                 */
+    /* ----------------------------------------- */
+
+}

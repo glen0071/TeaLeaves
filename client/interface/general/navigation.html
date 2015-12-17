@@ -1,5 +1,5 @@
 <template name="navigation">
-  <nav class="navbar navbar-default">
+  <nav class="navbar navbar-default ">
           <div class="container-fluid">
             <div class="navbar-header">
               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -12,21 +12,21 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
-                <li><a href="{{pathFor route='social'}}">Social</a></li>
-                <li><a href="{{pathFor route='leaderboard'}}">Leaderboard</a></li>
-                <li><a href="{{pathFor route='viewQuestions'}}">View Questions</a></li>
+                <li><a class="nav-link" href="{{pathFor route='social'}}">Social</a></li>
+                <li><a class="nav-link" href="{{pathFor route='leaderboard'}}">Leaderboard</a></li>
+                <li><a class="nav-link" href="{{pathFor route='viewQuestions'}}">View Questions</a></li>
                 {{#if currentUser}}
-                <li><a href="{{pathFor route='addQuestion'}}" style="color:red">Ask a Question</a></li>
+                <li><a class="nav-link" href="{{pathFor route='addQuestion'}}">Ask a Question</a></li>
                 {{/if }}
               </ul>
               <ul class="nav navbar-nav navbar-right">
                 {{#if currentUser}}
-                  <li><a href="{{pathFor route='myProfile'}}">My Profile ({{#if userName}}{{userName}}{{else}}{{determineEmail}}{{/if}})</a></li>
+                  <li><a class="nav-link" href="{{pathFor route='myProfile'}}">My Profile ({{#if userName}}{{userName}}{{else}}{{determineEmail}}{{/if}})</a></li>
                 {{#if isInRole 'admin'}}
-                  <li><a href="{{pathFor route='dashboard'}}">Dashboard</a></li>
+                  <li><a class="nav-link" href="{{pathFor route='dashboard'}}">Dashboard</a></li>
                 {{/if}}
                   <li><a href="#">Points: {{points}}</a></li>
-                  <li><a href="#" class="logout">Logout</a></li>
+                  <li><a href="#" class="logout nav-link">Logout</a></li>
                 {{else}}
                   <li class="login-btn-li">{{> loginButtons}}</li>
                 {{/if}}

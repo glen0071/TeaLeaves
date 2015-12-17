@@ -27,7 +27,6 @@
   <p class="created-by">asked by <a href="#" class="profile-link">{{#if userName}}{{userName}}{{else}}{{determineEmail}}{{/if}}</a> on {{createdOnString}}</p>
   <p class="question-text">{{text}}</p>
 {{> deadlineInfo}}
-
     {{#if editable}}
         <p>
            As the author of this question, you may <a href="#" id="edit-question-link"><em>click here</em></a>
@@ -36,6 +35,16 @@
            These time limitations are subject to change by administrators.
         </p>
     {{/if}}  <!-- CurrentUser Edit button closing /if-->
+
+    <!-- AddToAny BEGIN -->
+    <div class="a2a_kit a2a_default_style">
+      <a class="a2a_button_facebook"></a>
+      <a class="a2a_button_twitter"></a>
+      <a class="a2a_button_google_plus"></a>
+      <a class="a2a_button_reddit"></a>
+    </div>
+    <script type="text/javascript" src="//static.addtoany.com/menu/page.js"></script>
+    <!-- AddToAny END -->
 
     {{/if}}  <!-- Edit Question Mode closing /if-->
 {{else}}  <!--template subscription else-->
