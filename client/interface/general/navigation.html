@@ -15,7 +15,7 @@
                 <li><a class="nav-link" href="{{pathFor route='social'}}">Social</a></li>
                 <li><a class="nav-link" href="{{pathFor route='leaderboard'}}">Leaderboard</a></li>
                 <li><a class="nav-link" href="{{pathFor route='viewQuestions'}}">View Questions</a></li>
-                {{#if currentUser}}
+                {{#if isInRole 'admin'}}
                 <li><a class="nav-link" href="{{pathFor route='addQuestion'}}">Ask a Question</a></li>
                 {{/if }}
               </ul>
