@@ -25,6 +25,15 @@ Template.following.helpers({
       ]
     });
   },
+  followingCount: function() {
+    usersFollowedLength = Meteor.user().profile.followingThemes.length;
+    themesFollowedLength = Meteor.user().profile.followingUsers.length;
+    if (usersFollowedLength + themesFollowedLength == 0) {
+      return false;
+    } else {
+        return true;
+    }
+  }
 });
 
 

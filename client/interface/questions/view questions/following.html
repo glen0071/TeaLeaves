@@ -1,5 +1,7 @@
 <template name="following">
 
+    {{#if followingCount}}
+
     <div class="view-question-list">
       <h3>Open questions from the Users and Themes that you follow</h3>
       <ul>
@@ -8,5 +10,14 @@
        {{/each}}
       </ul>
     </div>
+
+    {{else}}
+
+      <h4>
+        You can choose themes and users to follow on the <a href="{{pathFor route='viewQuestions'}}">View Questions</a> page,
+        then you'll see a list of questions here generated from the themes and users that you are intereted in.
+      </h4>
+
+    {{/if}}
 
 </template>
