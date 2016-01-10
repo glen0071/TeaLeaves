@@ -69,6 +69,13 @@ body {
     font-size: 1.7em;
 }
 
+.dropdown-toggle {
+  color: white;
+  font-size: 1.4em;
+  position: relative;
+  top: 10px;
+}
+
 /* ----------------------------------------- */
 /*           View Questions Page             */
 /* ----------------------------------------- */
