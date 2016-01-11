@@ -35,6 +35,12 @@ body {
 /*           Navbar header                   */
 /* ----------------------------------------- */
 
+.nav-logo {
+  width: 47px;
+  position: relative;
+  top: -14px;
+}
+
 .navbar-brand {
   font-size: 1.3em;
   color: white;
@@ -81,8 +87,16 @@ body {
 /* ----------------------------------------- */
 
 .following-qts-ul {
-  margin: 0;
   padding: 0;
+}
+
+
+/* ----------------------------------------- */
+/*           View Question Template          */
+/* ----------------------------------------- */
+
+.question-pic {
+  width: 50px;
 }
 
 /* ----------------------------------------- */
@@ -252,10 +266,6 @@ a.question-link {
   display: inline;
 }
 
-.small-btn {
-  float: right;
-}
-
 .one-question-meta-data {
   display: block;
   padding: 3px 0px;
@@ -284,11 +294,11 @@ a.question-link {
 /*       Leaderboard page          */
 /* -------------------------------- */
 
-#leaderboard{
-  border: darkslategrey solid 1px;
+.leaderboard {
+  margin: 0px auto;
 }
 
-.leaderboard{
+.leaderboard {
   padding-left: 37px;
   padding-right: 37px;
   padding-top: 10px;
@@ -297,10 +307,16 @@ a.question-link {
   align:center;
 }
 
-/*
-.leaderboard-div {
-  margin: 0 auto;
-}*/
+.leaderboard-pic {
+  width: 100px;
+  padding: 10px;
+}
+
+.one-leader {
+  border: thin darkblue solid;
+  background-color: rgba(255,255,255,.9);
+  margin: 10px;
+}
 
 /* -------------------------------- */
 /*             Profile page         */

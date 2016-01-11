@@ -1,10 +1,8 @@
 <template name="leaderboard">
-  <h2>All Time High Scores!!</h2>
+  <section class="leaderboard">
+    <h2>All Time High Scores</h2>
+  </section>
   <table id="leaderboard" class="leaderboard">
-    <tr class="table-header leaderboard">
-      <td>Username</td>
-      <td>Points</td>
-    </tr>
     {{#each leaders}} {{> leader}} {{/each}}
   </table>
 
@@ -13,8 +11,13 @@
 </template>
 
 <template name="leader">
+
+
   {{#if username}} {{#if points}}
-    <tr>
+    <tr class="one-leader">
+      <td>
+        <img src="assets/tea_leaves_logo_1.png" alt="default profile photo" class="leaderboard-pic" />
+      </td>
       <td class="leaderboard">
         <h2><a href="user/{{_id}}" class="profile-link">{{username}}</a></h2>
       </td>
@@ -28,6 +31,3 @@
 
   {{/if}} {{/if}}
 </template>
-
-<!-- I wonder if we should require usernames? Might make this type of function more usable -->
-<!-- add # of questions correct, percentage correct, # of questions created? -->
