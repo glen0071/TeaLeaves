@@ -46,10 +46,10 @@ Template.myProfile.helpers({
     return Meteor.user().profile['name'];
   },
   themesFollowed: function() {
-    return Meteor.user().profile.followingThemes.join(', ');
+    return Meteor.user().profile.followingThemes;
   },
   usersFollowed: function() {
-    return Meteor.user().profile.followingUsers.join(', ');
+    return Meteor.user().profile.followingUsers;
   },
   editingPassword: function() {
     return Template.instance().editingPassword.get();
@@ -137,5 +137,15 @@ Template.myProfile.events({
     event.preventDefault();
     console.log("cancel save password");
     template.editingPassword.set(false);
-  }
+  },
+  'click .themes-link': function(event) {
+    event.preventDefault();
+    var theTheme = event.target.text;
+    Router.go('viewTheme',{theme:theTheme});
+  },
+  'click .profile-link': function(event) {
+      event.preventDefault();
+      var user=this;
+      Router.go('userProfile',{_id:user});
+  },
 });

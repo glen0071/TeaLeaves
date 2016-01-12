@@ -136,11 +136,6 @@ Template.questionDetail.helpers({
 });
 
 Template.questionDetail.events({
-  'click .profile-link': function(event) {
-      event.preventDefault();
-      var user=this.createdBy;
-      Router.go('userProfile',{_id:user});
-    },
     'click .theme-link': function(event) {
       event.preventDefault();
       var theTheme = event.target.text;

@@ -7,7 +7,7 @@
         <h3>Question: <input type="test" name="editHeadline" id="edit-question-headline" value="{{headline}}"></h3>
         <p id="description-label">Description: <textarea name="editText" id="edit-question-text" rows="3" value="{{text}}"></textarea></p>
         <p>Themes: <input name="editThemes" id="tokenfield" class="edit-question-themes" value="{{showthemes}}"></p>
-        <p class="created-by">asked by <a href="#" class="profile-link">{{#if userName}}{{userName}}{{else}}{{determineEmail}}{{/if}}</a> on {{createdOnString}}</p>
+        <p class="created-by">Asked on {{createdOnString}}</p>
         <p>
            <button type="submit">Save your changes</button> <button id="delete-question" class="btn-danger">Delete</button>  <button id="cancel-edits-link">Cancel edits</button>
         </p>
@@ -24,7 +24,7 @@
       {{/each}}
     </ul>
   </p>
-  <p class="created-by">asked by <a href="#" class="profile-link">{{#if userName}}{{userName}}{{else}}{{determineEmail}}{{/if}}</a> on {{createdOnString}}</p>
+  <p class="created-by">Asked on {{createdOnString}}</p>
   <p class="question-text">{{text}}</p>
 {{> deadlineInfo}}
     {{#if editable}}

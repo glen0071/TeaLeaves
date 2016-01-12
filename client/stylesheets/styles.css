@@ -328,6 +328,10 @@ a.question-link {
   padding: 10px;
 }
 
+.profile-info {
+  font-size: 1.3em;
+}
+
 #edit-profile-btn {
   font-size: 10px;
   line-height: 10px;
@@ -359,7 +363,6 @@ a.question-link {
 }
 
 .following-section {
-  border-top: 1px solid black;
   margin-top: 10px;
   padding-top: 15px;
 }
@@ -373,6 +376,21 @@ a.question-link {
 
 .changing-password {
   display: block;
+}
+
+.questions-you-answered-list {
+  padding: 0px;
+  float: left;
+  clear: both;
+}
+
+.mypage-follows {
+  font-style: italic;
+  padding: 0px 5px;
+  background-color: #04498D;
+  border-radius: 5%;
+  color: white;
+  font-size: .9em;
 }
 
 /* -------------------------------------- */
