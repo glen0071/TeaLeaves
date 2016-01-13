@@ -103,6 +103,10 @@ body {
 /*           View Questions Page             */
 /* ----------------------------------------- */
 
+.question-detail-pic {
+  width: 60px;
+}
+
 .show-closed-qs-btn {
   width: auto;
   word-wrap: break-word;
