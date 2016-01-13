@@ -38,10 +38,14 @@ var validator = $('.add-question-form').validate({
 Template.addQuestion.events({
   'submit form': function(event, template){
     event.preventDefault();
+    console.log('worked');
   },
   'keypress #tokenfield': function(event, template){
   if (event.which === 13) {
     event.preventDefault();
+    $('#tokenfield').tokenfield({
+      showAutocompleteOnFocus: true
+    });
   };
 }
 
