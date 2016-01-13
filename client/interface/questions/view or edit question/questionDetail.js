@@ -6,17 +6,6 @@ Template.questionDetail.onCreated(function() {
 Template.changeDeadline.onRendered(function() {
     var currentDeadline = Template.parentData(0).deadline;
     this.$('.datetimepicker').datetimepicker({defaultDate:currentDeadline});
-
-    var onlyDocument = PastThemes.findOne();
-    var themesArray = onlyDocument.themes;
-    event.preventDefault();
-    $('#tokenfield').tokenfield({
-      autocomplete: {
-         source: themesArray,
-         delay: 100
-       },
-       showAutocompleteOnFocus: true
-    });
 });
 
 Template.questionDetail.helpers({
@@ -224,5 +213,13 @@ Template.questionDetail.events({
     'click #admin-edit-btn': function(event, template){
       event.preventDefault();
       editQuestionMode.toggle();
+    },
+    'keypress #tokenfield': function(event, template){
+      if (event.which === 13) {
+          event.preventDefault()
+          $('#tokenfield').tokenfield({
+          showAutocompleteOnFocus: true
+          });
+      };
     }
 });
