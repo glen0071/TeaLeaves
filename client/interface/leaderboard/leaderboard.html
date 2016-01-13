@@ -1,6 +1,6 @@
 <template name="leaderboard">
   <section class="leaderboard">
-    <h2>All Time High Scores</h2>
+    <h2>High Scores</h2>
   </section>
   <table id="leaderboard" class="leaderboard">
     {{#each leaders}} {{> leader}} {{/each}}
@@ -16,7 +16,7 @@
   {{#if username}} {{#if points}}
     <tr class="one-leader">
       <td>
-        <img src="assets/tea_leaves_logo_1.png" alt="default profile photo" class="leaderboard-pic" />
+        <img src="/assets/tea_leaves_logo_1.png" alt="default profile photo" class="leaderboard-pic" />
       </td>
       <td class="leaderboard">
         <h2><a href="user/{{_id}}" class="profile-link">{{username}}</a></h2>
