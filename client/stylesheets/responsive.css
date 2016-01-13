@@ -8,8 +8,11 @@ and (orientation: portrait)
 and (-webkit-min-device-pixel-ratio: 3.0) {
     /* Target Nexus 5 .... Tested: true */
 
-    /* ----------------------------------------- */
-    /*           header + navbar                 */
-    /* ----------------------------------------- */
+}
 
+
+@media screen and (max-width: 450px) {
+  .questions-you-answered-list {
+    width: 100%;
+  }
 }

@@ -15,16 +15,16 @@
 
   {{#if username}} {{#if points}}
     <tr class="one-leader">
-      <td>
+      <td class="leaderboard-cell">
         <img src="/assets/anonymous_pic_1.png" alt="default profile photo" class="leaderboard-pic" />
       </td>
-      <td class="leaderboard">
-        <h2><a href="user/{{_id}}" class="profile-link leader-username-display">{{username}}</a></h2>
+      <td class="leaderboard-cell">
+        <p><a href="user/{{_id}}" class="profile-link leader-username-display">{{username}}</a></p>
       </td>
-      <td class="leaderboard">
-        <h1>
+      <td class="leaderboard-cell">
+        <p class="leaderboard-points">
           {{points}}
-        </h1>
+        </p>
       </td>
     </tr>
 
