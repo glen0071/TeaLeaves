@@ -64,7 +64,9 @@
 
 <template name="oneUser">
   <li style="width:100%" class="one-user-table-li">
-    <div class="user-table-cell username-col">{{username}}</div>
+    <div class="user-table-cell username-col">
+      <a href="user/{{_id}}">{{username}}</a>
+    </div>
     <div class="user-table-cell email-col">{{userEmail}}</div>
     <div class="user-table-cell join-col">{{joinDate}}</div>
     <div class="user-table-cell id-col">{{_id}}</div>
