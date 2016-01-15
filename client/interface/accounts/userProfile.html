@@ -12,23 +12,29 @@
   </section>
 
 <div class="row">
-
   <div class="col-xs-9">
-
       <h2>Points: {{points}}</h2>
-
     {{#if questionsAnswered}}
       <p>
         Questions answered by this user:
         <ul>
           {{#each questionsUserAnswered}}
-            {{> viewQuestion}}
+            {{> userAnswers}}
           {{/each}}
         </ul>
       </p>
+    {{else}}
+      After this user answers some questions, they will be listed here.
     {{/if}}
   </div>
 </div>
+</template>
+
+<template name="userAnswers">
+  <div>
+    This user answered {{aUserAnswer}} to this question. What do you think?
+  </div>
+  {{> viewQuestion}}
 </template>
 
  <!-- maybe include when the user joined? -->
