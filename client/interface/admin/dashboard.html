@@ -2,17 +2,17 @@
 
   {{#if isInRole 'admin'}}
 
-  <h3>User List</h3>
   <div class="row">
-    <div class="col-xs-12">
+    <div class="col-xs-12 user-table-div">
 
       <h4>Total Number of Users: {{userCount}}</h4>
-      <div class="=user-table">
+      <table class="user-table">
         <div class="user-table-head">
           <div class="user-table-cell username-col">Username</div>
           <div class="user-table-cell email-col">Email</div>
           <div class="user-table-cell join-col">Joined</div>
           <div class="user-table-cell id-col">ID</div>
+          <div class="user-table-cell id-col">Role</div>
           <div class="user-table-cell points-col">Points</div>
           <div class="btn-table-cell edit-col"></div>
           <div class="btn-table-cell del-col"></div>
@@ -25,12 +25,13 @@
 
           {{/each}}
         </ul>
-      </div>
+      </table>
 
     </div>
 
-  <div class="col-xs-6">
+  <!-- <div class="col-xs-6">
 
+    Hide this create user section until it can be made to work nicely with the Accounts package
 
     <h3>Create New User</h3>
     <form><ul>
@@ -44,7 +45,8 @@
       </select></li>
       <li><button type="submit">Enter</button></li>
     </ul></form>
-  </div>
+  </div> -->
+
   <div>
     <ul>
       <li>Question Created Today:</li>
@@ -66,9 +68,10 @@
     <div class="user-table-cell email-col">{{userEmail}}</div>
     <div class="user-table-cell join-col">{{joinDate}}</div>
     <div class="user-table-cell id-col">{{_id}}</div>
+    <div class="user-table-cell id-col">{{roles}}</div>
     <div class="user-table-cell points-col">{{points}}</div>
-    <div class="btn-table-cell edit-col"><a id="edit-user-btn" name="edit-user" href="/editUser/{{_id}}">Edit</a></div>
-    <div class="btn-table-cell del-col"><button name="delete-user">Delete</button></div>
+    <div class="btn-table-cell edit-col"><a name="edit-user" class="edit-user-btn" href="/editUser/{{_id}}">Edit</a></div>
+    <div class="btn-table-cell del-col"><button name="delete-user" class="delete-user-btn">Delete</button></div>
   </li>
 </template>
 
@@ -80,11 +83,15 @@
         <li>Email: {{userEmail}}  <!--<button name="editEmail">Edit Email</button>--></li>
         <li>Username: <input type="username" name="username" value="{{username}}"></li>
         <li>Points: <input style="width:75px" type="number" name="points" value="{{points}}"></li>
-        <li><select name="user-type">
-          <option value="default-user">default-user</option>
-          <option value="admin">admin</option>
-        </select></li>
-        <li><button type="submit">Enter</button></li>
+        <li>
+
+          <select name="user-type">
+            <option {{selectedRole "default-user"}}>default-user</option>
+            <option {{selectedRole "admin"}}>admin</option>
+          </select>
+
+      </li>
+        <li><button type="submit">Enter</button><button type="cancel">Cancel</button></li>
       </ul></form>
     </div>
     <div class="col-xs-6">

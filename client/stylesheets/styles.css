@@ -437,15 +437,27 @@ a.question-link {
 /*           Dashboard Page            */
 /* ----------------------------------- */
 
-#edit-user-btn {
+.edit-user-btn {
   border: #AFAFAF solid thin;
   background-color: #E9E9E9;
   padding: 3px 6px;
   color: black;
+  margin: 0px 5px;
+
+}
+
+.delete-user-btn {
+  margin: 3px 5px;
 }
 
 .user-table {
   display: table;
+  font-size: 1.2em;
+  margin: 10px 0px;
+}
+
+.user-table-div {
+  min-width: 1200px;
 }
 
 .user-row {
