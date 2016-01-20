@@ -5,9 +5,8 @@
     <div class="view-question-list">
       <h3>Open questions from the Themes that you follow</h3>
       <ul class="following-qts-ul">
-       {{#each followedUserQuestions}}
-         {{> viewQuestion}}
-       {{/each}}
+        {{#if Template.subscriptionsReady}} {{ > infiniteFollowing}} {{else}}
+        <p> gathering all the questions </p> {{/if}}
       </ul>
     </div>
 
@@ -20,4 +19,10 @@
 
     {{/if}}
 
+</template>
+
+
+<template name="infiniteFollowing">
+    {{> pages}}
+    {{> pagesNav}}  <!--Bottom navigation-->
 </template>
