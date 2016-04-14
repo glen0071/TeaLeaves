@@ -1,33 +1,5 @@
-Features and Functions:
+# Prediction game app on Meteor.js
 
-Collections
-1. Users
- Properties:
-  {
-    _id: "string",
-    createdOn: new Date(),
-    email: "string",
-    password: "string",
-    Score: Number
-  }  
-2. Questions
-  Properties:
-    {
-      _id: "string",
-      createdBy: user._id,
-      createdOn: new Date(),
-      text: "string",
-      headline: "string",
-      deadline: Date() || null,
-      themes: ["array", "array"],
-      userAnswer: boolean,
-      correctAnswer: boolean
-    }
+My first app.
 
-Views/Templates:
- - Edit one's own profile page
- - List of questions (organized or filtered by theme)
- - Single question page
-
- Login view:
-  - List of questions - must login before answering
+Built entirely on Meteor.js, which uses MongoDB on the backend, and bunches of node packages to extend functionality.
