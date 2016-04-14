@@ -1,6 +1,4 @@
 Meteor.startup(function () {
-  // process.env.MAIL_URL = 'smtp://postmaster%40sandboxbab0cba908394430952999ae9eba16e4.mailgun.org:c8fd4d04f3cdb90e7733b0a224d41695@smtp.mailgun.org:587';
-  process.env.MAIL_URL = 'smtp://postmaster%40tealeaves.co:51025bef39c5b12f959fab4e71c7b18e@smtp.mailgun.org:587';
 });
   Accounts.emailTemplates.from = "support@tealeaves.co";
   Accounts.emailTemplates.sitename = "Tea Leaves";
