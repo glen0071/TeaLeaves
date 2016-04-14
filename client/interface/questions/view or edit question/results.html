@@ -1,5 +1,6 @@
 <template name="results">
   <p class="results">The correct answer was {{correctAnswerInWords}}.</p>
+  <p class="results">Reasoning: &quot;{{reasoning}}&quot;</p>
   {{#if numberOfVotes}}
     {{> highchartsHelper chartId="results" chartObject=resultsChart}}
   {{/if}}

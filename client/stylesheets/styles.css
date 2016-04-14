@@ -35,6 +35,12 @@ body {
 /*           Navbar header                   */
 /* ----------------------------------------- */
 
+.nav-logo {
+  width: 47px;
+  position: relative;
+  top: -14px;
+}
+
 .navbar-brand {
   font-size: 1.3em;
   color: white;
@@ -69,9 +75,42 @@ body {
     font-size: 1.7em;
 }
 
+.dropdown-toggle {
+  color: white;
+  font-size: 1.4em;
+  position: relative;
+  top: 10px;
+}
+
+.dropdown-toggle:hover {
+  color: white;
+  font-size: 1.5em;
+}
+
+/* ----------------------------------------- */
+/*        Following Question Page            */
+/* ----------------------------------------- */
+
+.following-qts-ul {
+  padding: 0;
+}
+
+
+/* ----------------------------------------- */
+/*           View Question Template          */
+/* ----------------------------------------- */
+
+.question-pic {
+  width: 50px;
+}
+
 /* ----------------------------------------- */
 /*           View Questions Page             */
 /* ----------------------------------------- */
+
+.question-detail-pic {
+  width: 60px;
+}
 
 .show-closed-qs-btn {
   width: auto;
@@ -139,7 +178,6 @@ body {
 /* ----------------------------------------- */
 /*           Question Detail Page            */
 /* ----------------------------------------- */
-
 
 .question-text {
   width: 300px;
@@ -237,10 +275,6 @@ a.question-link {
   display: inline;
 }
 
-.small-btn {
-  float: right;
-}
-
 .one-question-meta-data {
   display: block;
   padding: 3px 0px;
@@ -269,11 +303,15 @@ a.question-link {
 /*       Leaderboard page          */
 /* -------------------------------- */
 
-#leaderboard{
-  border: darkslategrey solid 1px;
+.leaderboard {
+  margin: 0px auto;
 }
 
-.leaderboard{
+.leaderboard-cell {
+  min-width: 100px;
+}
+
+.leaderboard {
   padding-left: 37px;
   padding-right: 37px;
   padding-top: 10px;
@@ -282,19 +320,40 @@ a.question-link {
   align:center;
 }
 
-/*
-.leaderboard-div {
-  margin: 0 auto;
-}*/
+.leaderboard-pic {
+  width: 100px;
+  padding: 10px;
+}
+
+.one-leader {
+  border: thin darkblue solid;
+  background-color: rgba(255,255,255,.9);
+  margin: 10px;
+  width: 100%;
+}
+
+.leader-username-display {
+  font-size: 2.5em;
+  padding: 20px;
+}
+
+
+.leaderboard-points {
+  font-size: 2.5em;
+}
 
 /* -------------------------------- */
 /*             Profile page         */
 /* -------------------------------- */
 
-#profile-pic {
+.profile-pic {
   width: 200px;
   height: auto;
   padding: 10px;
+}
+
+.profile-info {
+  font-size: 1.3em;
 }
 
 #edit-profile-btn {
@@ -328,7 +387,6 @@ a.question-link {
 }
 
 .following-section {
-  border-top: 1px solid black;
   margin-top: 10px;
   padding-top: 15px;
 }
@@ -342,6 +400,21 @@ a.question-link {
 
 .changing-password {
   display: block;
+}
+
+.questions-you-answered-list {
+  padding: 0px;
+  float: left;
+  clear: both;
+}
+
+.mypage-follows {
+  font-style: italic;
+  padding: 0px 5px;
+  background-color: #04498D;
+  border-radius: 5%;
+  color: white;
+  font-size: .9em;
 }
 
 /* -------------------------------------- */
@@ -364,15 +437,27 @@ a.question-link {
 /*           Dashboard Page            */
 /* ----------------------------------- */
 
-#edit-user-btn {
+.edit-user-btn {
   border: #AFAFAF solid thin;
   background-color: #E9E9E9;
   padding: 3px 6px;
   color: black;
+  margin: 0px 5px;
+
+}
+
+.delete-user-btn {
+  margin: 3px 5px;
 }
 
 .user-table {
   display: table;
+  font-size: 1.2em;
+  margin: 10px 0px;
+}
+
+.user-table-div {
+  min-width: 1200px;
 }
 
 .user-row {

@@ -8,14 +8,15 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="{{pathFor route='following'}}">Guess</a>
+              <a class="navbar-brand" href="{{pathFor route='following'}}">
+                <img src="/assets/tea_leaves_logo_1.png" alt="logo" class="nav-logo" />
+              </a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
-                <li><a class="nav-link" href="{{pathFor route='social'}}">Social</a></li>
                 <li><a class="nav-link" href="{{pathFor route='leaderboard'}}">Leaderboard</a></li>
                 <li><a class="nav-link" href="{{pathFor route='viewQuestions'}}">View Questions</a></li>
-                {{#if currentUser}}
+                {{#if isInRole 'admin'}}
                 <li><a class="nav-link" href="{{pathFor route='addQuestion'}}">Ask a Question</a></li>
                 {{/if }}
               </ul>

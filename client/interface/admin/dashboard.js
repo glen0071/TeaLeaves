@@ -66,6 +66,9 @@ Template.editUser.helpers({
   },
   editEmailMode: function(){
     return Template.instance().editEmailMode.get();
+  },
+  selectedRole: function(key){
+    return key == this.roles ? 'selected' : "";
   }
 });
 
@@ -84,7 +87,7 @@ Template.editUser.events({
   "click [name=editEmail]": function(event, tpl){
     event.preventDefault();
     editEmailMode.toggle();
-  }
+  },
 });
 
 // Template.adminEditEmail.helpers({

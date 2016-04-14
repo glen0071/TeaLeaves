@@ -35,4 +35,4 @@ createServiceConfiguration = function(service, clientId, secret) {
 
 createServiceConfiguration('facebook', '1725431744356376', 'c0b0dcdc1611999a246d0a251647b0ec');
 createServiceConfiguration('google', '513547070841-p1783f5mnjbf3av128i0b8974933tfdh.apps.googleusercontent.com', 'cySSkuX1zq5sInZXa77ZGd7C');
-createServiceConfiguration('twitter', 'QJy2FyGrfHQXvPDijnS150tFd', 'IXqLVr7f7txMNCIUmJRS2Cp0TUK21VTfoDZwXYWZWbsoF0ULFv');
+createServiceConfiguration('twitter', '1Gd7rwwhvbXw4omT15BfNOZxK', 'k7ggTAuxunxQbIIegQxrg8QPBibdIq3L4YfIp8hrA3IbzVSrTx');

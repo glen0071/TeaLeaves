@@ -1,39 +1,40 @@
 <template name="userProfile">
-  <h3>{{#if userName}}{{userName}}{{else}}{{determineEmail}}{{/if}}'s Profile</h3>
-
-  {{#if hideFollowBtn}}
-    <button class="unfollow-user">unfollow</button>
-  {{else}}
-    <button class="follow-user">Follow this User</button>
-  {{/if}}
+  <section >
+    <h3>{{#if userName}}{{userName}}{{else}}{{determineEmail}}{{/if}}'s Profile</h3>
+    <img src="/assets/anonymous_pic_1.png" class="profile-pic">
+  </section>
+  <section>
+    {{#if hideFollowBtn}}
+      <button class="unfollow-user">unfollow</button>
+    {{else}}
+      <button class="follow-user">Follow this User</button>
+    {{/if}}
+  </section>
 
 <div class="row">
   <div class="col-xs-9">
-
       <h2>Points: {{points}}</h2>
-    {{#if questionsAsked}}
-      <p>
-        Questions created by this user:
-
-        <ul>
-            {{#each questionsUserAsked}}
-              {{> viewQuestion}}
-            {{/each}}
-        </ul>
-      </p>
-    {{/if}}
     {{#if questionsAnswered}}
       <p>
         Questions answered by this user:
         <ul>
           {{#each questionsUserAnswered}}
-            {{> viewQuestion}}
+            {{> userAnswers}}
           {{/each}}
         </ul>
       </p>
+    {{else}}
+      After this user answers some questions, they will be listed here.
     {{/if}}
   </div>
 </div>
+</template>
+
+<template name="userAnswers">
+  <div>
+    This user answered {{aUserAnswer}} to this question. What do you think?
+  </div>
+  {{> viewQuestion}}
 </template>
 
  <!-- maybe include when the user joined? -->

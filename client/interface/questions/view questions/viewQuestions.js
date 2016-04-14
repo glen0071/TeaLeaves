@@ -18,14 +18,14 @@ this.autorun(function(c){
 });
   this.autorun(function(c){
     var filters=  Template.instance().filters.all();
-     console.log('filters: '+EJSON.stringify(filters, {indent: true}));
+    //  console.log('filters: '+EJSON.stringify(filters, {indent: true}));
      if(filters){
        Pages.set({
               filters: filters
             });
     }
     var sorts=  Template.instance().sorts.all();
-     console.log('sorts: '+EJSON.stringify(sorts, {indent: true}));
+    //  console.log('sorts: '+EJSON.stringify(sorts, {indent: true}));
      if(sorts){
        Pages.set({
               sort: sorts
@@ -93,7 +93,7 @@ Template.viewQuestions.events({
     Router.go('viewQuestions');
   },
   "click [name=sortBtn]":function(event,template){
-console.log("event target: "+event.target.id);
+// console.log("event target: "+event.target.id);
 var prop;
 switch(event.target.id){
   case "ageSortBtn":
@@ -124,17 +124,17 @@ switch(event.target.id){
 'click .follow-theme': function(event, template){
   event.preventDefault();
   var themeViewed = this[1];
-  console.log(themeViewed);
+  // console.log(themeViewed);
   var array =  Meteor.user().profile.followingThemes;
-  console.log(array);
+  // console.log(array);
   Meteor.call('followTheme', themeViewed)
 },
 'click .unfollow-theme': function(event, template){
   event.preventDefault();
   var themeViewed = this[1];
-  console.log(themeViewed);
+  // console.log(themeViewed);
   var array =  Meteor.user().profile.followingThemes;
-  console.log(array);
+  // console.log(array);
   Meteor.call('unfollowTheme', themeViewed)
 },
 "click .collapse-link": function(event, template) {
